@@ -54,7 +54,7 @@ private extension ViewController {
 // MARK: - Appearance
 private extension ViewController {
 	enum Appearance {
-		static let welcomeText = "Welcome to Swift-Base"
+		static let welcomeText = "Welcome to SB-MDEditor"
 		static let backgroundColor = Theme.color(usage: .background)
 	}
 }

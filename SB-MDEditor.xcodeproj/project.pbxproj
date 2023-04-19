@@ -56,19 +56,19 @@
 			containerPortal = 5A48061129DBA73B0096B7D8 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 5A48061829DBA73B0096B7D8;
-			remoteInfo = "Swift-Base";
+			remoteInfo = "SB-MDEditor";
 		};
 		5A48065229DBCBFB0096B7D8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 5A48061129DBA73B0096B7D8 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 5A48061829DBA73B0096B7D8;
-			remoteInfo = "Swift-Base";
+			remoteInfo = "SB-MDEditor";
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		5A48061929DBA73B0096B7D8 /* Swift-Base.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Swift-Base.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5A48061929DBA73B0096B7D8 /* SB-MDEditor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SB-MDEditor.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A48061C29DBA73B0096B7D8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5A48061E29DBA73B0096B7D8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		5A48062029DBA73B0096B7D8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -79,9 +79,9 @@
 		5A48063429DBAC2C0096B7D8 /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		5A48063629DBAC450096B7D8 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		5A48063929DBC5690096B7D8 /* Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
-		5A48063F29DBCB8D0096B7D8 /* Swift-BaseTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Swift-BaseTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5A48063F29DBCB8D0096B7D8 /* SB-MDEditorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SB-MDEditorTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A48064129DBCB8D0096B7D8 /* Swift_BaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Swift_BaseTests.swift; sourceTree = "<group>"; };
-		5A48064C29DBCBFB0096B7D8 /* Swift-BaseUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Swift-BaseUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5A48064C29DBCBFB0096B7D8 /* SB-MDEditorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SB-MDEditorUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A48064E29DBCBFB0096B7D8 /* Swift_BaseUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Swift_BaseUITests.swift; sourceTree = "<group>"; };
 		5A48065029DBCBFB0096B7D8 /* Swift_BaseUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Swift_BaseUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		5A61DD3C29E13FF9001E8665 /* UIView+Preview.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Preview.swift"; sourceTree = "<group>"; };
@@ -146,9 +146,9 @@
 				5A48063229DBABAA0096B7D8 /* README.md */,
 				5A48063629DBAC450096B7D8 /* .gitignore */,
 				5A48063429DBAC2C0096B7D8 /* .swiftlint.yml */,
-				5A48061B29DBA73B0096B7D8 /* Swift-Base */,
-				5A48064029DBCB8D0096B7D8 /* Swift-BaseTests */,
-				5A48064D29DBCBFB0096B7D8 /* Swift-BaseUITests */,
+				5A48061B29DBA73B0096B7D8 /* SB-MDEditor */,
+				5A48064029DBCB8D0096B7D8 /* SB-MDEditorTests */,
+				5A48064D29DBCBFB0096B7D8 /* SB-MDEditorUITests */,
 				5A48061A29DBA73B0096B7D8 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -156,14 +156,14 @@
 		5A48061A29DBA73B0096B7D8 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				5A48061929DBA73B0096B7D8 /* Swift-Base.app */,
-				5A48063F29DBCB8D0096B7D8 /* Swift-BaseTests.xctest */,
-				5A48064C29DBCBFB0096B7D8 /* Swift-BaseUITests.xctest */,
+				5A48061929DBA73B0096B7D8 /* SB-MDEditor.app */,
+				5A48063F29DBCB8D0096B7D8 /* SB-MDEditorTests.xctest */,
+				5A48064C29DBCBFB0096B7D8 /* SB-MDEditorUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		5A48061B29DBA73B0096B7D8 /* Swift-Base */ = {
+		5A48061B29DBA73B0096B7D8 /* SB-MDEditor */ = {
 			isa = PBXGroup;
 			children = (
 				5A48063029DBA8B40096B7D8 /* App */,
@@ -172,7 +172,7 @@
 				5A65415629DE1A470042503D /* Library */,
 				5A48063129DBA9150096B7D8 /* Resources */,
 			);
-			path = "Swift-Base";
+			path = "SB-MDEditor";
 			sourceTree = "<group>";
 		};
 		5A48063029DBA8B40096B7D8 /* App */ = {
@@ -200,21 +200,21 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		5A48064029DBCB8D0096B7D8 /* Swift-BaseTests */ = {
+		5A48064029DBCB8D0096B7D8 /* SB-MDEditorTests */ = {
 			isa = PBXGroup;
 			children = (
 				5A48064129DBCB8D0096B7D8 /* Swift_BaseTests.swift */,
 			);
-			path = "Swift-BaseTests";
+			path = "SB-MDEditorTests";
 			sourceTree = "<group>";
 		};
-		5A48064D29DBCBFB0096B7D8 /* Swift-BaseUITests */ = {
+		5A48064D29DBCBFB0096B7D8 /* SB-MDEditorUITests */ = {
 			isa = PBXGroup;
 			children = (
 				5A48064E29DBCBFB0096B7D8 /* Swift_BaseUITests.swift */,
 				5A48065029DBCBFB0096B7D8 /* Swift_BaseUITestsLaunchTests.swift */,
 			);
-			path = "Swift-BaseUITests";
+			path = "SB-MDEditorUITests";
 			sourceTree = "<group>";
 		};
 		5A65415429DE19EF0042503D /* Models */ = {
@@ -354,9 +354,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		5A48061829DBA73B0096B7D8 /* Swift-Base */ = {
+		5A48061829DBA73B0096B7D8 /* SB-MDEditor */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 5A48062D29DBA73F0096B7D8 /* Build configuration list for PBXNativeTarget "Swift-Base" */;
+			buildConfigurationList = 5A48062D29DBA73F0096B7D8 /* Build configuration list for PBXNativeTarget "SB-MDEditor" */;
 			buildPhases = (
 				5A48063829DBAF680096B7D8 /* Run SwiftLint */,
 				5A48061529DBA73B0096B7D8 /* Sources */,
@@ -367,14 +367,14 @@
 			);
 			dependencies = (
 			);
-			name = "Swift-Base";
-			productName = "Swift-Base";
-			productReference = 5A48061929DBA73B0096B7D8 /* Swift-Base.app */;
+			name = "SB-MDEditor";
+			productName = "SB-MDEditor";
+			productReference = 5A48061929DBA73B0096B7D8 /* SB-MDEditor.app */;
 			productType = "com.apple.product-type.application";
 		};
-		5A48063E29DBCB8D0096B7D8 /* Swift-BaseTests */ = {
+		5A48063E29DBCB8D0096B7D8 /* SB-MDEditorTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 5A48064529DBCB8D0096B7D8 /* Build configuration list for PBXNativeTarget "Swift-BaseTests" */;
+			buildConfigurationList = 5A48064529DBCB8D0096B7D8 /* Build configuration list for PBXNativeTarget "SB-MDEditorTests" */;
 			buildPhases = (
 				5A48063B29DBCB8D0096B7D8 /* Sources */,
 				5A48063C29DBCB8D0096B7D8 /* Frameworks */,
@@ -385,14 +385,14 @@
 			dependencies = (
 				5A48064429DBCB8D0096B7D8 /* PBXTargetDependency */,
 			);
-			name = "Swift-BaseTests";
-			productName = "Swift-BaseTests";
-			productReference = 5A48063F29DBCB8D0096B7D8 /* Swift-BaseTests.xctest */;
+			name = "SB-MDEditorTests";
+			productName = "SB-MDEditorTests";
+			productReference = 5A48063F29DBCB8D0096B7D8 /* SB-MDEditorTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		5A48064B29DBCBFB0096B7D8 /* Swift-BaseUITests */ = {
+		5A48064B29DBCBFB0096B7D8 /* SB-MDEditorUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 5A48065429DBCBFB0096B7D8 /* Build configuration list for PBXNativeTarget "Swift-BaseUITests" */;
+			buildConfigurationList = 5A48065429DBCBFB0096B7D8 /* Build configuration list for PBXNativeTarget "SB-MDEditorUITests" */;
 			buildPhases = (
 				5A48064829DBCBFB0096B7D8 /* Sources */,
 				5A48064929DBCBFB0096B7D8 /* Frameworks */,
@@ -403,9 +403,9 @@
 			dependencies = (
 				5A48065329DBCBFB0096B7D8 /* PBXTargetDependency */,
 			);
-			name = "Swift-BaseUITests";
-			productName = "Swift-BaseUITests";
-			productReference = 5A48064C29DBCBFB0096B7D8 /* Swift-BaseUITests.xctest */;
+			name = "SB-MDEditorUITests";
+			productName = "SB-MDEditorUITests";
+			productReference = 5A48064C29DBCBFB0096B7D8 /* SB-MDEditorUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -431,7 +431,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 5A48061429DBA73B0096B7D8 /* Build configuration list for PBXProject "Swift-Base" */;
+			buildConfigurationList = 5A48061429DBA73B0096B7D8 /* Build configuration list for PBXProject "SB-MDEditor" */;
 			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -444,9 +444,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				5A48061829DBA73B0096B7D8 /* Swift-Base */,
-				5A48063E29DBCB8D0096B7D8 /* Swift-BaseTests */,
-				5A48064B29DBCBFB0096B7D8 /* Swift-BaseUITests */,
+				5A48061829DBA73B0096B7D8 /* SB-MDEditor */,
+				5A48063E29DBCB8D0096B7D8 /* SB-MDEditorTests */,
+				5A48064B29DBCBFB0096B7D8 /* SB-MDEditorUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -565,12 +565,12 @@
 /* Begin PBXTargetDependency section */
 		5A48064429DBCB8D0096B7D8 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 5A48061829DBA73B0096B7D8 /* Swift-Base */;
+			target = 5A48061829DBA73B0096B7D8 /* SB-MDEditor */;
 			targetProxy = 5A48064329DBCB8D0096B7D8 /* PBXContainerItemProxy */;
 		};
 		5A48065329DBCBFB0096B7D8 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 5A48061829DBA73B0096B7D8 /* Swift-Base */;
+			target = 5A48061829DBA73B0096B7D8 /* SB-MDEditor */;
 			targetProxy = 5A48065229DBCBFB0096B7D8 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -712,7 +712,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 54TCRG7M8F;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Swift-Base/Resources/Info.plist";
+				INFOPLIST_FILE = "SB-MDEditor/Resources/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -724,7 +724,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "ru.sas.start.Swift-Base";
+				PRODUCT_BUNDLE_IDENTIFIER = "ru.sas.start.SB-MDEditor";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -741,7 +741,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 54TCRG7M8F;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Swift-Base/Resources/Info.plist";
+				INFOPLIST_FILE = "SB-MDEditor/Resources/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -753,7 +753,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "ru.sas.start.Swift-Base";
+				PRODUCT_BUNDLE_IDENTIFIER = "ru.sas.start.SB-MDEditor";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -770,12 +770,12 @@
 				DEVELOPMENT_TEAM = 54TCRG7M8F;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "ru.sas.start.Swift-BaseTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "ru.sas.start.SB-MDEditorTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Swift-Base.app/Swift-Base";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SB-MDEditor.app/SB-MDEditor";
 			};
 			name = Debug;
 		};
@@ -788,12 +788,12 @@
 				DEVELOPMENT_TEAM = 54TCRG7M8F;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "ru.sas.start.Swift-BaseTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "ru.sas.start.SB-MDEditorTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Swift-Base.app/Swift-Base";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SB-MDEditor.app/SB-MDEditor";
 			};
 			name = Release;
 		};
@@ -805,12 +805,12 @@
 				DEVELOPMENT_TEAM = 54TCRG7M8F;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "ru.sas.start.Swift-BaseUITests";
+				PRODUCT_BUNDLE_IDENTIFIER = "ru.sas.start.SB-MDEditorUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = "Swift-Base";
+				TEST_TARGET_NAME = "SB-MDEditor";
 			};
 			name = Debug;
 		};
@@ -822,19 +822,19 @@
 				DEVELOPMENT_TEAM = 54TCRG7M8F;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "ru.sas.start.Swift-BaseUITests";
+				PRODUCT_BUNDLE_IDENTIFIER = "ru.sas.start.SB-MDEditorUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = "Swift-Base";
+				TEST_TARGET_NAME = "SB-MDEditor";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		5A48061429DBA73B0096B7D8 /* Build configuration list for PBXProject "Swift-Base" */ = {
+		5A48061429DBA73B0096B7D8 /* Build configuration list for PBXProject "SB-MDEditor" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				5A48062B29DBA73F0096B7D8 /* Debug */,
@@ -843,7 +843,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		5A48062D29DBA73F0096B7D8 /* Build configuration list for PBXNativeTarget "Swift-Base" */ = {
+		5A48062D29DBA73F0096B7D8 /* Build configuration list for PBXNativeTarget "SB-MDEditor" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				5A48062E29DBA73F0096B7D8 /* Debug */,
@@ -852,7 +852,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		5A48064529DBCB8D0096B7D8 /* Build configuration list for PBXNativeTarget "Swift-BaseTests" */ = {
+		5A48064529DBCB8D0096B7D8 /* Build configuration list for PBXNativeTarget "SB-MDEditorTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				5A48064629DBCB8D0096B7D8 /* Debug */,
@@ -861,7 +861,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		5A48065429DBCBFB0096B7D8 /* Build configuration list for PBXNativeTarget "Swift-BaseUITests" */ = {
+		5A48065429DBCBFB0096B7D8 /* Build configuration list for PBXNativeTarget "SB-MDEditorUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				5A48065529DBCBFB0096B7D8 /* Debug */,

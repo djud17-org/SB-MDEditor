@@ -1,6 +1,6 @@
 //
 //  Theme+DateFormatter.swift
-//  Swift-Base
+//  SB-MDEditor
 //
 //  Created by SERGEY SHLYAKHIN on 18.04.2023.
 //
