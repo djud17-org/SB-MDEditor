@@ -8,9 +8,11 @@
 import UIKit
 
 final class EmptyView: UIView {
+	// MARK: - UI Elements
 	private lazy var emptyImageView = makeEmptyImageView()
 	private lazy var emptyTextLabel = makeEmptyTextLabel()
 
+	// MARK: - Inits
 	override init(frame: CGRect) {
 		super.init(frame: frame)
 
@@ -24,7 +26,10 @@ final class EmptyView: UIView {
 	}
 }
 
+// MARK: - Extensions
 extension EmptyView {
+
+	/// Функция для обновления View на EmptyViewProvider
 	@discardableResult
 	func update(with data: EmptyInputData) -> Self {
 		emptyImageView.image = data.image

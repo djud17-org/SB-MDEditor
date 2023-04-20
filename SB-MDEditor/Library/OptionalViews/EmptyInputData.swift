@@ -15,11 +15,18 @@ struct EmptyInputData {
 extension EmptyInputData {
 	static let emptyFolder = EmptyInputData(
 		image: UIImage(asset: Asset.Placeholders.emptyPlaceholder),
-		message: "Empty folder"
+		message: Appearance.emptyFolderMessage
 	)
 
 	static let noResentFiles = EmptyInputData(
 		image: UIImage(asset: Asset.Placeholders.recentFilesPlaceholder),
-		message: "No recent file"
+		message: Appearance.noResentFilesMessage
 	)
+}
+
+private extension EmptyInputData {
+	enum Appearance {
+		static let emptyFolderMessage = "Empty folder"
+		static let noResentFilesMessage = "No recent file"
+	}
 }
