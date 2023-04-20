@@ -43,7 +43,12 @@ extension Di: ModuleFactory {
 		let worker = MainWorker()
 		let interactor = MainInteractor(presenter: presenter, worker: worker)
 		let router = MainRouter()
-		let viewController = MainViewController(interactor: interactor, router: router)
+		let sectionManager = SectionManager()
+		let viewController = MainViewController(
+			interactor: interactor,
+			router: router,
+			sectionManager: sectionManager
+		)
 
 		presenter.viewController = viewController
 		router.viewController = viewController
