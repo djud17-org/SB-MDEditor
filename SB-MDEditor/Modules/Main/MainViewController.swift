@@ -17,17 +17,23 @@ protocol MainDisplayLogic: AnyObject {
 }
 
 final class MainViewController: UIViewController, MainDisplayLogic {
-	var interactor: MainBusinessLogic?
-	var router: (NSObjectProtocol & MainRoutingLogic & MainDataPassing)?
+	// MARK: - Parameters
 
-	private lazy var errorView = ErrorView()
+	private var interactor: MainBusinessLogic?
+	private var router: (NSObjectProtocol & MainRoutingLogic & MainDataPassing)?
+
+	private var sectionManager: SectionManager?
+
+	// MARK: - Inits
 
 	init(
 		interactor: MainBusinessLogic,
-		router: (NSObjectProtocol & MainRoutingLogic & MainDataPassing)
+		router: (NSObjectProtocol & MainRoutingLogic & MainDataPassing),
+		sectionManager: SectionManager
 	) {
 		self.interactor = interactor
 		self.router = router
+		self.sectionManager = sectionManager
 		super.init(nibName: nil, bundle: nil)
 	}
 
@@ -35,16 +41,29 @@ final class MainViewController: UIViewController, MainDisplayLogic {
 		super.init(coder: aDecoder)
 	}
 
-	// MARK: View lifecycle
+	// MARK: ViewController lifecycle
+
+	override func loadView() {
+		guard let sections = sectionManager?.getSections() else { return }
+
+		let mainView = MainView(layoutSections: sections)
+		self.view = mainView
+	}
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
 		setup()
-		applyStyle()
-		setupConstraints()
+	}
 
-		doSomething()
+	// MARK: - Private funcs
+
+	private func setup() {
+		title = L10n.Main.title
+		view.backgroundColor = Theme.color(usage: .background)
+
+		(view as? MainView)?.setupCollectionViewDelegate(delegate: self)
+		(view as? MainView)?.setupCollectionViewDataSource(dataSource: self)
 	}
 
 	// MARK: Do something
@@ -56,40 +75,50 @@ final class MainViewController: UIViewController, MainDisplayLogic {
 	func displaySomething(viewModel: Main.Something.ViewModel) {}
 }
 
-// MARK: - UI
-private extension MainViewController {
-	func setup() {
-		let testMessage = ErrorInputData(
-			emoji: "🙈",
-			message: "Переход к экрану: О приложении"
-		) { [weak self] in
-			self?.router?.navigate(.toAbout)
+// MARK: - CollectionView dataSource extension
+
+extension MainViewController: UICollectionViewDataSource {
+	func numberOfSections(in collectionView: UICollectionView) -> Int {
+		guard let sections = sectionManager?.getSections() else { return .zero }
+
+		return sections.count
+	}
+
+	func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+		guard let sections = sectionManager?.getSections() else { return .zero }
+
+		switch sections[section] {
+		case .recentFiles:
+			return 10 // заменить данные
+		case .menu:
+			return 5 // заменить данные
 		}
-		errorView.update(with: testMessage)
-		errorView.show()
 	}
-	func applyStyle() {
-		title = Appearance.title
-		view.backgroundColor = Theme.color(usage: .background)
-	}
-	func setupConstraints() {
-		[
-			errorView
-		].forEach { item in
-			item.translatesAutoresizingMaskIntoConstraints = false
-			view.addSubview(item)
+
+	func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+		guard let sections = sectionManager?.getSections() else { return UICollectionViewCell() }
+
+		let model: CellViewAnyModel
+		switch sections[indexPath.section] {
+		case .recentFiles:
+			// заменить данные
+			model = RecentFileCell.RecentFileCellModel(fileCoverColor: .brown, fileName: "Test")
+		case .menu:
+			// заменить данные
+			model = MenuItemCell.MenuItemCellModel(itemIcon: .init(systemName: "menucard"), itemName: "Открыть")
 		}
 
-		errorView.makeEqualToSuperview()
+		return collectionView.dequeueReusableCell(withModel: model, for: indexPath)
 	}
 }
 
-// MARK: - Appearance
-private extension MainViewController {
-	enum Appearance {
-		static let title = "MD Editor"
-	}
+// MARK: - CollectionView delegate extension
+
+extension MainViewController: UICollectionViewDelegate {
+	func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) { }
 }
+
+// MARK: - SwiftUI preview
 
 #if canImport(SwiftUI) && DEBUG
 import SwiftUI
