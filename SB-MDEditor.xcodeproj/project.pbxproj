@@ -51,6 +51,8 @@
 		5ACEB2A129EED8A7008E80A2 /* CreateDocViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ACEB2A029EED8A7008E80A2 /* CreateDocViewController.swift */; };
 		5ACEB2A929EEED86008E80A2 /* CellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ACEB2A629EEED86008E80A2 /* CellViewModel.swift */; };
 		5ACEB2AB29EFE90F008E80A2 /* UITableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ACEB2AA29EFE90F008E80A2 /* UITableView+Extensions.swift */; };
+		60D43BB929F1A80000C5AF4F /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D43BB829F1A80000C5AF4F /* EmptyView.swift */; };
+		60D43BBB29F1B0A100C5AF4F /* MDViewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D43BBA29F1B0A100C5AF4F /* MDViewData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -120,6 +122,8 @@
 		5ACEB2A029EED8A7008E80A2 /* CreateDocViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateDocViewController.swift; sourceTree = "<group>"; };
 		5ACEB2A629EEED86008E80A2 /* CellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellViewModel.swift; sourceTree = "<group>"; };
 		5ACEB2AA29EFE90F008E80A2 /* UITableView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+Extensions.swift"; sourceTree = "<group>"; };
+		60D43BB829F1A80000C5AF4F /* EmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
+		60D43BBA29F1B0A100C5AF4F /* MDViewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDViewData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -332,7 +336,9 @@
 			isa = PBXGroup;
 			children = (
 				5ACEB29329EEA690008E80A2 /* ErrorInputData.swift */,
+				60D43BBA29F1B0A100C5AF4F /* MDViewData.swift */,
 				5ACEB29129EEA64D008E80A2 /* ErrorView.swift */,
+				60D43BB829F1A80000C5AF4F /* EmptyView.swift */,
 			);
 			path = OptionalViews;
 			sourceTree = "<group>";
@@ -550,6 +556,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5ACEB29229EEA64D008E80A2 /* ErrorView.swift in Sources */,
+				60D43BBB29F1B0A100C5AF4F /* MDViewData.swift in Sources */,
 				5ACEB27929EE64D9008E80A2 /* Di.swift in Sources */,
 				5ACEB28E29EE7AB5008E80A2 /* MainViewController.swift in Sources */,
 				5ACEB29E29EED6CA008E80A2 /* OpenDocViewController.swift in Sources */,
@@ -577,6 +584,7 @@
 				5ACEB2A129EED8A7008E80A2 /* CreateDocViewController.swift in Sources */,
 				5ACEB27F29EE65A8008E80A2 /* UIColor+Dynamic.swift in Sources */,
 				5ACEB27A29EE64D9008E80A2 /* Di+AppFactory.swift in Sources */,
+				60D43BB929F1A80000C5AF4F /* EmptyView.swift in Sources */,
 				5ACEB28B29EE7AB5008E80A2 /* MainWorker.swift in Sources */,
 				5ACEB29429EEA690008E80A2 /* ErrorInputData.swift in Sources */,
 				5ACEB28D29EE7AB5008E80A2 /* MainModels.swift in Sources */,
