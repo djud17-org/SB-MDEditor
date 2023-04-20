@@ -5,6 +5,11 @@ import Foundation
 // swiftlint:disable all
 
 internal enum L10n {
+
+  internal enum Main {
+    /// MD Editor
+    internal static let title = L10n.tr("Localizable", "main.title")
+  }
 }
 
 extension L10n {
