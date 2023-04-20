@@ -26,7 +26,7 @@ final class EmptyView: UIView {
 
 extension EmptyView {
 	@discardableResult
-	func update(with data: MDViewData) -> Self {
+	func update(with data: EmptyInputData) -> Self {
 		emptyImageView.image = data.image
 		emptyTextLabel.text = data.message
 		return self
@@ -91,7 +91,7 @@ import SwiftUI
 struct EmptyViewProvider: PreviewProvider {
 	static var previews: some View {
 		let emptyView = EmptyView()
-		emptyView.update(with: MDViewData.EmptyViewData)
+		emptyView.update(with: EmptyInputData.emptyFolder)
 		return Group {
 			VStack(spacing: 0) {
 				emptyView.preview().frame(height: 100).padding(.bottom, 20)
