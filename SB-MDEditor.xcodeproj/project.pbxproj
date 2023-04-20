@@ -48,6 +48,7 @@
 		5ACEB2A129EED8A7008E80A2 /* CreateDocViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ACEB2A029EED8A7008E80A2 /* CreateDocViewController.swift */; };
 		5ACEB2A929EEED86008E80A2 /* CellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ACEB2A629EEED86008E80A2 /* CellViewModel.swift */; };
 		5ACEB2AB29EFE90F008E80A2 /* UITableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ACEB2AA29EFE90F008E80A2 /* UITableView+Extensions.swift */; };
+		601BEFF529F16C1E00E88D83 /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 601BEFF429F16C1E00E88D83 /* EmptyView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -113,6 +114,7 @@
 		5ACEB2A029EED8A7008E80A2 /* CreateDocViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateDocViewController.swift; sourceTree = "<group>"; };
 		5ACEB2A629EEED86008E80A2 /* CellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellViewModel.swift; sourceTree = "<group>"; };
 		5ACEB2AA29EFE90F008E80A2 /* UITableView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+Extensions.swift"; sourceTree = "<group>"; };
+		601BEFF429F16C1E00E88D83 /* EmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -227,6 +229,7 @@
 		5A65415529DE1A1F0042503D /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				601BEFF429F16C1E00E88D83 /* EmptyView.swift */,
 				5ACEB29C29EECCA6008E80A2 /* About */,
 				5ACEB29029EE7B7D008E80A2 /* Main */,
 				5ACEB29F29EED863008E80A2 /* OpenDoc */,
@@ -531,6 +534,7 @@
 				5ACEB29929EEAAB0008E80A2 /* UIView+hide.swift in Sources */,
 				5A48061F29DBA73B0096B7D8 /* SceneDelegate.swift in Sources */,
 				5ACEB2A129EED8A7008E80A2 /* CreateDocViewController.swift in Sources */,
+				601BEFF529F16C1E00E88D83 /* EmptyView.swift in Sources */,
 				5ACEB27F29EE65A8008E80A2 /* UIColor+Dynamic.swift in Sources */,
 				5ACEB27A29EE64D9008E80A2 /* Di+AppFactory.swift in Sources */,
 				5ACEB28B29EE7AB5008E80A2 /* MainWorker.swift in Sources */,
