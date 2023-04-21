@@ -17,8 +17,10 @@ protocol MainDisplayLogic: AnyObject {
 }
 
 final class MainViewController: UIViewController, MainDisplayLogic {
-	var interactor: MainBusinessLogic?
-	var router: (NSObjectProtocol & MainRoutingLogic & MainDataPassing)?
+	private var interactor: MainBusinessLogic?
+	private var router: (NSObjectProtocol & MainRoutingLogic & MainDataPassing)?
+	private lazy var recentFilesView = makeRecentFilesView()
+	private lazy var menuView = makeMenuView()
 
 	private lazy var errorView = ErrorView()
 
@@ -43,7 +45,7 @@ final class MainViewController: UIViewController, MainDisplayLogic {
 		setup()
 		applyStyle()
 		setupConstraints()
-
+		_ = menuView.backgroundColor // used only for the sake of layout demonstration purpose as it's lazy property
 		doSomething()
 	}
 
@@ -81,6 +83,36 @@ private extension MainViewController {
 		}
 
 		errorView.makeEqualToSuperview()
+	}
+
+	func makeRecentFilesView() -> UIView {
+		let recentFilesView = UIView()
+		recentFilesView.backgroundColor = .systemTeal
+		view.addSubview(recentFilesView)
+		recentFilesView.makeConstraints { make in
+			[
+				make.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+				make.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+				make.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+				make.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.20)
+			]
+		}
+		return recentFilesView
+	}
+
+	func makeMenuView() -> UIView {
+		let menuView = UIView()
+		menuView.backgroundColor = .systemOrange
+		view.addSubview(menuView)
+		menuView.makeConstraints { make in
+			[
+				make.topAnchor.constraint(equalTo: recentFilesView.bottomAnchor),
+				make.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+				make.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+				make.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+			]
+		}
+		return menuView
 	}
 }
 
