@@ -21,4 +21,13 @@ extension UICollectionView {
 
 		return cell
 	}
+
+	/// Функция для регистрации переиспользуемой ячейки
+	/// - Parameter models: Модель данных
+	func register(models: [CellViewAnyModel.Type]) {
+		for model in models {
+			let identifier = String(describing: model.cellAnyType)
+			self.register(model.cellAnyType, forCellWithReuseIdentifier: identifier)
+		}
+	}
 }

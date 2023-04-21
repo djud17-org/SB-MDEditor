@@ -8,60 +8,23 @@
 import UIKit
 
 final class RecentFileCell: UICollectionViewCell {
-	static let identifier = "RecentFileCell"
-
 	// MARK: - UI Elements
 
-	private lazy var fileCoverView: UIView = {
-		let view = UIView()
-		view.translatesAutoresizingMaskIntoConstraints = false
-
-		return view
-	}()
-
-	private lazy var fileNameLabel: UILabel = {
-		let label = UILabel()
-		label.font = Theme.font(style: .smallTitle)
-		label.numberOfLines = 0
-		label.translatesAutoresizingMaskIntoConstraints = false
-
-		return label
-	}()
+	private lazy var fileCoverView = UIView()
+	private lazy var fileNameLabel = makeFileNameLabel()
 
 	// MARK: - Inits
 
 	override init(frame: CGRect) {
 		super.init(frame: frame)
 
-		setupView()
 		setupLayout()
 	}
 
 	required init?(coder: NSCoder) {
 		super.init(coder: coder)
 
-		setupView()
 		setupLayout()
-	}
-
-	// MARK: - Private funcs
-
-	private func setupView() {
-		contentView.addSubview(fileCoverView)
-		contentView.addSubview(fileNameLabel)
-	}
-
-	private func setupLayout() {
-		NSLayoutConstraint.activate([
-			fileCoverView.topAnchor.constraint(equalTo: topAnchor),
-			fileCoverView.leftAnchor.constraint(equalTo: leftAnchor, constant: 10),
-			fileCoverView.rightAnchor.constraint(equalTo: rightAnchor, constant: -10),
-			fileCoverView.heightAnchor.constraint(equalToConstant: 150),
-
-			fileNameLabel.topAnchor.constraint(equalTo: fileCoverView.bottomAnchor, constant: 5),
-			fileNameLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
-			fileNameLabel.heightAnchor.constraint(equalToConstant: 30)
-		])
 	}
 
 	// MARK: - Data model for cell
@@ -78,5 +41,48 @@ extension RecentFileCell.RecentFileCellModel: CellViewModel {
 	func setup(cell: RecentFileCell) {
 		cell.fileCoverView.backgroundColor = fileCoverColor
 		cell.fileNameLabel.text = fileName
+	}
+}
+
+// MARK: - UI
+private extension RecentFileCell {
+	func makeFileNameLabel() -> UILabel {
+		let label = UILabel()
+		label.font = Theme.font(style: .caption)
+		label.numberOfLines = .zero
+
+		return label
+	}
+
+	func setupLayout() {
+		[
+			fileCoverView,
+			fileNameLabel
+		].forEach { contentView.addSubview($0) }
+
+		fileCoverView.makeConstraints { make in
+			[
+				make.topAnchor.constraint(equalTo: contentView.topAnchor),
+				make.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: Theme.spacing(usage: .standard)),
+				make.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -Theme.spacing(usage: .standard)),
+				make.heightAnchor.constraint(equalToConstant: Appearance.fileCoverHeight)
+			]
+		}
+
+		fileNameLabel.makeConstraints { make in
+			[
+				make.topAnchor.constraint(equalTo: fileCoverView.bottomAnchor, constant: Theme.spacing(usage: .standardHalf)),
+				make.centerXAnchor.constraint(equalTo: centerXAnchor),
+				make.heightAnchor.constraint(equalToConstant: Appearance.fileNameHeight)
+			]
+		}
+	}
+}
+
+// MARK: - Appearance
+private extension RecentFileCell {
+	enum Appearance {
+		static let fileCoverHeight = 136.0
+		static let fileNameHeight = 24.0
 	}
 }

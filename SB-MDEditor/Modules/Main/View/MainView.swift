@@ -60,15 +60,10 @@ final class MainView: UIView {
 		let layout = createLayout(for: sections)
 		collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
 		collectionView?.translatesAutoresizingMaskIntoConstraints = false
-		collectionView?.register(
-			RecentFileCell.self,
-			forCellWithReuseIdentifier: RecentFileCell.identifier
-		)
-
-		collectionView?.register(
-			MenuItemCell.self,
-			forCellWithReuseIdentifier: MenuItemCell.identifier
-		)
+		collectionView?.register(models: [
+			RecentFileCell.RecentFileCellModel.self,
+			MenuItemCell.MenuItemCellModel.self
+		])
 	}
 
 	private func createLayout(for sections: [Section]) -> UICollectionViewCompositionalLayout {

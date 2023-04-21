@@ -22,14 +22,14 @@ final class MainViewController: UIViewController, MainDisplayLogic {
 	private var interactor: MainBusinessLogic?
 	private var router: (NSObjectProtocol & MainRoutingLogic & MainDataPassing)?
 
-	private var sectionManager: SectionManager?
+	private var sectionManager: ISectionManager?
 
 	// MARK: - Inits
 
 	init(
 		interactor: MainBusinessLogic,
 		router: (NSObjectProtocol & MainRoutingLogic & MainDataPassing),
-		sectionManager: SectionManager
+		sectionManager: ISectionManager
 	) {
 		self.interactor = interactor
 		self.router = router
