@@ -226,7 +226,6 @@
 				5A65415529DE1A1F0042503D /* Modules */,
 				5A65415629DE1A470042503D /* Library */,
 				5A48063129DBA9150096B7D8 /* Resources */,
-				25FC42F729F1D349001895ED /* Services */,
 			);
 			path = "SB-MDEditor";
 			sourceTree = "<group>";
@@ -359,6 +358,7 @@
 		5ACEB29029EE7B7D008E80A2 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				25FC42F729F1D349001895ED /* Services */,
 				25FC42F229F1CD6A001895ED /* View */,
 				5ACEB28429EE7AB5008E80A2 /* MainPresenter.swift */,
 				5ACEB28529EE7AB5008E80A2 /* MainWorker.swift */,
