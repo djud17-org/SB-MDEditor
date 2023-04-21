@@ -336,8 +336,8 @@
 			isa = PBXGroup;
 			children = (
 				5ACEB29329EEA690008E80A2 /* ErrorInputData.swift */,
-				60D43BBA29F1B0A100C5AF4F /* EmptyInputData.swift */,
 				5ACEB29129EEA64D008E80A2 /* ErrorView.swift */,
+				60D43BBA29F1B0A100C5AF4F /* EmptyInputData.swift */,
 				60D43BB829F1A80000C5AF4F /* EmptyView.swift */,
 			);
 			path = OptionalViews;

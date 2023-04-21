@@ -10,7 +10,7 @@ import UIKit
 final class EmptyView: UIView {
 	// MARK: - UI Elements
 	private lazy var emptyImageView = makeEmptyImageView()
-	private lazy var emptyTextLabel = makeEmptyTextLabel()
+	private lazy var emptyMessageLabel = makeEmptyMessageLabel()
 
 	// MARK: - Inits
 	override init(frame: CGRect) {
@@ -29,11 +29,11 @@ final class EmptyView: UIView {
 // MARK: - Extensions
 extension EmptyView {
 
-	/// Функция для обновления View на EmptyViewProvider
+	/// Метод для обновления данных во View
 	@discardableResult
 	func update(with data: EmptyInputData) -> Self {
 		emptyImageView.image = data.image
-		emptyTextLabel.text = data.message
+		emptyMessageLabel.text = data.message
 		return self
 	}
 }
@@ -49,7 +49,7 @@ private extension EmptyView {
 		return image
 	}
 
-	func makeEmptyTextLabel() -> UILabel {
+	func makeEmptyMessageLabel() -> UILabel {
 		let label = UILabel()
 		label.textColor = Theme.color(usage: .gray)
 		label.font = Theme.font(style: .title)
@@ -83,7 +83,7 @@ private extension EmptyView {
 
 		[
 			emptyImageView,
-			emptyTextLabel
+			emptyMessageLabel
 		].forEach { stackContainer.addArrangedSubview($0) }
 
 		backgroundView.addSubview(stackContainer)

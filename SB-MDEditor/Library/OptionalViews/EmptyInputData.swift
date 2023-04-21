@@ -27,6 +27,6 @@ extension EmptyInputData {
 private extension EmptyInputData {
 	enum Appearance {
 		static let emptyFolderMessage = "Empty folder"
-		static let noResentFilesMessage = "No recent file"
+		static let noResentFilesMessage = "No recent files"
 	}
 }
