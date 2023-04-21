@@ -8,8 +8,6 @@
 import UIKit
 
 final class MenuItemCell: UICollectionViewCell {
-	static let identifier = "MenuItemCell"
-
 	// MARK: - UI Elements
 
 	private lazy var iconImageView: UIImageView = {
