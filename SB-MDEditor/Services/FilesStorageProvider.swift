@@ -3,7 +3,6 @@ import UIKit
 protocol IFilesStorageProvider {
 	var bandlePath: String { get }
 	var aboutPath: String { get }
-	var capacity: Int { get }
 	var currentPath: String? { get set }
 	func removeCurrentPath()
 	func getRecentFiles() -> [String]
@@ -23,7 +22,7 @@ struct FilesStorageProvider: IFilesStorageProvider {
 	private let userDefaults: UserDefaults
 	let bandlePath: String
 	let aboutPath: String
-	let capacity: Int
+	private let capacity: Int
 
 	private var fileNames = [String]()
 	var currentPath: String? {
@@ -67,7 +66,7 @@ struct FilesStorageProvider: IFilesStorageProvider {
 		guard fileNames.contains(fileName) == false else { return }
 
 		fileNames.insert(fileName, at: 0)
-		if fileNames.count >= capacity {
+		if fileNames.count > capacity {
 			fileNames.removeLast()
 		}
 
