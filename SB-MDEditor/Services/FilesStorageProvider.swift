@@ -1,11 +1,24 @@
 import UIKit
 
 protocol IFilesStorageProvider {
+	/// Путь до фалов бандла.
 	var bandlePath: String { get }
+
+	/// Путь до файла с описание приложения.
 	var aboutPath: String { get }
+
+	/// Путь до файлов для текущего экрана Открыть документ.
 	var currentPath: String? { get set }
+
+	/// Удаляет путь для экрана Открыть документ.
 	func removeCurrentPath()
+
+	/// Возвращает список имен недавно открытых файлов.
+	/// - Returns: список имен недавно открытых файлов.
 	func getRecentFiles() -> [String]
+
+	/// Добавить имя в список недавно открытых файлов.
+	/// - Parameter fileName: имя файла
 	mutating func add(fileName: String)
 }
 
