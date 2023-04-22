@@ -51,8 +51,9 @@
 		5ACEB2A129EED8A7008E80A2 /* CreateDocViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ACEB2A029EED8A7008E80A2 /* CreateDocViewController.swift */; };
 		5ACEB2A929EEED86008E80A2 /* CellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ACEB2A629EEED86008E80A2 /* CellViewModel.swift */; };
 		5ACEB2AB29EFE90F008E80A2 /* UITableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ACEB2AA29EFE90F008E80A2 /* UITableView+Extensions.swift */; };
-		5AFA77C929F418DB0010478E /* FilesStorageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFA77C829F418DB0010478E /* FilesStorageProvider.swift */; };
+    5AFA77C929F418DB0010478E /* FilesStorageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFA77C829F418DB0010478E /* FilesStorageProvider.swift */; };
 		5AFA77CC29F43EF30010478E /* Di+ServiceFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFA77CB29F43EF30010478E /* Di+ServiceFactory.swift */; };
+		60D43BB729F1A61300C5AF4F /* MD_Bandle in Resources */ = {isa = PBXBuildFile; fileRef = 60D43BB629F1A61300C5AF4F /* MD_Bandle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -124,6 +125,7 @@
 		5ACEB2AA29EFE90F008E80A2 /* UITableView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+Extensions.swift"; sourceTree = "<group>"; };
 		5AFA77C829F418DB0010478E /* FilesStorageProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilesStorageProvider.swift; sourceTree = "<group>"; };
 		5AFA77CB29F43EF30010478E /* Di+ServiceFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Di+ServiceFactory.swift"; sourceTree = "<group>"; };
+		60D43BB629F1A61300C5AF4F /* MD_Bandle */ = {isa = PBXFileReference; lastKnownFileType = folder; path = MD_Bandle; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -186,6 +188,7 @@
 		5A48061B29DBA73B0096B7D8 /* SB-MDEditor */ = {
 			isa = PBXGroup;
 			children = (
+				60D43BB329F1A56900C5AF4F /* Assets */,
 				5A48063029DBA8B40096B7D8 /* App */,
 				5AFA77CA29F418F70010478E /* Services */,
 				5A65415429DE19EF0042503D /* Models */,
@@ -381,6 +384,13 @@
 				5AFA77C829F418DB0010478E /* FilesStorageProvider.swift */,
 			);
 			path = Services;
+      sourceTree = "<group>";
+		60D43BB329F1A56900C5AF4F /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				60D43BB629F1A61300C5AF4F /* MD_Bandle */,
+			);
+			path = Assets;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -490,6 +500,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				60D43BB729F1A61300C5AF4F /* MD_Bandle in Resources */,
 				5A48063729DBAC450096B7D8 /* .gitignore in Resources */,
 				2545566229F072F500B9CFD0 /* Localizable.strings in Resources */,
 				5A48063529DBAC2C0096B7D8 /* .swiftlint.yml in Resources */,
@@ -519,7 +530,7 @@
 		2545565F29F071A600B9CFD0 /* Run SwiftGen */ = {
 			isa = PBXShellScriptBuildPhase;
 			alwaysOutOfDate = 1;
-			buildActionMask = 2147483647;
+			buildActionMask = 12;
 			files = (
 			);
 			inputFileListPaths = (

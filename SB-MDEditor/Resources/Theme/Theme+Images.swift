@@ -3,7 +3,8 @@ import UIKit
 extension Theme {
 	// MARK: - Images
 	enum ImageAsset: String {
-		case exampleLogo
+		case aboutMenuIcon, newFileMenuIcon, openMenuIcon
+		case emptyPlaceholder, recentFilesPlaceholder
 	}
 
 	static func image(kind: ImageAsset) -> UIImage {
