@@ -19,23 +19,20 @@ protocol MainDisplayLogic: AnyObject {
 final class MainViewController: UIViewController, MainDisplayLogic {
 	var interactor: MainBusinessLogic?
 	var router: (NSObjectProtocol & MainRoutingLogic & MainDataPassing)?
-	var storage: IFilesStorageProvider
 
 	private lazy var errorView = ErrorView()
 
 	init(
 		interactor: MainBusinessLogic,
-		router: (NSObjectProtocol & MainRoutingLogic & MainDataPassing),
-		dep: IMainModuleDepencency
+		router: (NSObjectProtocol & MainRoutingLogic & MainDataPassing)
 	) {
 		self.interactor = interactor
 		self.router = router
-		self.storage = dep.storage
 		super.init(nibName: nil, bundle: nil)
 	}
 
-	required init?(coder: NSCoder) {
-		fatalError("init(coder:) has not been implemented")
+	required init?(coder aDecoder: NSCoder) {
+		super.init(coder: aDecoder)
 	}
 
 	// MARK: View lifecycle
@@ -54,31 +51,6 @@ final class MainViewController: UIViewController, MainDisplayLogic {
 	func doSomething() {
 		let request = Main.Something.Request()
 		interactor?.doSomething(request: request)
-
-		print(storage.bandlePath)
-		print(storage.aboutPath)
-
-		print("================")
-
-		storage.add(fileName: "FileName")
-		storage.add(fileName: "FileName2")
-		storage.add(fileName: "FileName")
-		storage.add(fileName: "FileName3")
-		storage.add(fileName: "FileName")
-		storage.add(fileName: "FileName4")
-		storage.add(fileName: "FileName")
-		storage.add(fileName: "FileName5")
-		storage.add(fileName: "FileName")
-		storage.add(fileName: "FileName6")
-		print(storage.getRecentFiles())
-
-		print("================")
-
-		storage.currentPath = "123/456"
-		print(storage.currentPath ?? "данных нет")
-
-		storage.removeCurrentPath()
-		print(storage.currentPath ?? "данных нет")
 	}
 
 	func displaySomething(viewModel: Main.Something.ViewModel) {}
