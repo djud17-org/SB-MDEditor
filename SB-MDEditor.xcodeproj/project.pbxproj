@@ -51,6 +51,8 @@
 		5ACEB2A129EED8A7008E80A2 /* CreateDocViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ACEB2A029EED8A7008E80A2 /* CreateDocViewController.swift */; };
 		5ACEB2A929EEED86008E80A2 /* CellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ACEB2A629EEED86008E80A2 /* CellViewModel.swift */; };
 		5ACEB2AB29EFE90F008E80A2 /* UITableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ACEB2AA29EFE90F008E80A2 /* UITableView+Extensions.swift */; };
+		5AFA77CE29F4B36A0010478E /* Di+ServiceFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFA77CD29F4B36A0010478E /* Di+ServiceFactory.swift */; };
+		5AFA77D129F4B3D10010478E /* FilesStorageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFA77D029F4B3D10010478E /* FilesStorageProvider.swift */; };
 		60D43BB729F1A61300C5AF4F /* MD_Bandle in Resources */ = {isa = PBXBuildFile; fileRef = 60D43BB629F1A61300C5AF4F /* MD_Bandle */; };
 /* End PBXBuildFile section */
 
@@ -121,6 +123,8 @@
 		5ACEB2A029EED8A7008E80A2 /* CreateDocViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateDocViewController.swift; sourceTree = "<group>"; };
 		5ACEB2A629EEED86008E80A2 /* CellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellViewModel.swift; sourceTree = "<group>"; };
 		5ACEB2AA29EFE90F008E80A2 /* UITableView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+Extensions.swift"; sourceTree = "<group>"; };
+		5AFA77CD29F4B36A0010478E /* Di+ServiceFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Di+ServiceFactory.swift"; sourceTree = "<group>"; };
+		5AFA77D029F4B3D10010478E /* FilesStorageProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilesStorageProvider.swift; sourceTree = "<group>"; };
 		60D43BB629F1A61300C5AF4F /* MD_Bandle */ = {isa = PBXFileReference; lastKnownFileType = folder; path = MD_Bandle; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -202,6 +206,7 @@
 				5ACEB28029EE6EC7008E80A2 /* RootViewController.swift */,
 				5ACEB28229EE7829008E80A2 /* MainRouting.swift */,
 				5ACEB27229EE64D9008E80A2 /* Di */,
+				5AFA77CF29F4B3D10010478E /* Services */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -302,6 +307,7 @@
 			children = (
 				5ACEB27529EE64D9008E80A2 /* Di.swift */,
 				5ACEB27429EE64D9008E80A2 /* Di+ModuleFactory.swift */,
+				5AFA77CD29F4B36A0010478E /* Di+ServiceFactory.swift */,
 				5ACEB27629EE64D9008E80A2 /* Di+AppFactory.swift */,
 			);
 			path = Di;
@@ -370,6 +376,14 @@
 				5ACEB2A629EEED86008E80A2 /* CellViewModel.swift */,
 			);
 			path = Protocols;
+			sourceTree = "<group>";
+		};
+		5AFA77CF29F4B3D10010478E /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				5AFA77D029F4B3D10010478E /* FilesStorageProvider.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 		60D43BB329F1A56900C5AF4F /* Assets */ = {
@@ -568,6 +582,7 @@
 				5ACEB28129EE6EC7008E80A2 /* RootViewController.swift in Sources */,
 				5ACEB26E29EE0E37008E80A2 /* Theme+Sizes+Spacing.swift in Sources */,
 				5ACEB27029EE0E96008E80A2 /* Theme+DateFormatter.swift in Sources */,
+				5AFA77CE29F4B36A0010478E /* Di+ServiceFactory.swift in Sources */,
 				5A48062129DBA73B0096B7D8 /* ViewController.swift in Sources */,
 				2545566929F0733200B9CFD0 /* Assets.swift in Sources */,
 				5A48063A29DBC5690096B7D8 /* Theme.swift in Sources */,
@@ -589,6 +604,7 @@
 				5ACEB2A129EED8A7008E80A2 /* CreateDocViewController.swift in Sources */,
 				5ACEB27F29EE65A8008E80A2 /* UIColor+Dynamic.swift in Sources */,
 				5ACEB27A29EE64D9008E80A2 /* Di+AppFactory.swift in Sources */,
+				5AFA77D129F4B3D10010478E /* FilesStorageProvider.swift in Sources */,
 				5ACEB28B29EE7AB5008E80A2 /* MainWorker.swift in Sources */,
 				5ACEB29429EEA690008E80A2 /* ErrorInputData.swift in Sources */,
 				5ACEB28D29EE7AB5008E80A2 /* MainModels.swift in Sources */,
