@@ -8,10 +8,6 @@ protocol ServicesFactory {
 
 extension Di: ServicesFactory {
 	func makeFilesStorageProvider(_ storage: UserDefaults) -> IFilesStorageProvider {
-		FilesStorageProvider(
-			userDefaults: storage,
-			bandlePath: "",
-			aboutPath: ""
-		)
+		FilesStorageProvider(userDefaults: storage)
 	}
 }

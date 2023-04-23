@@ -1,12 +1,6 @@
 import UIKit
 
 protocol IFilesStorageProvider {
-	/// Путь до фалов бандла.
-	var bandlePath: String { get }
-
-	/// Путь до файла с описание приложения.
-	var aboutPath: String { get }
-
 	/// Путь до файлов для текущего экрана Открыть документ.
 	var currentPath: String? { get set }
 
@@ -33,8 +27,6 @@ extension IFilesStorageProvider {
 
 struct FilesStorageProvider: IFilesStorageProvider {
 	private let userDefaults: UserDefaults
-	let bandlePath: String
-	let aboutPath: String
 	private let capacity: Int
 
 	private var fileNames = [String]()
@@ -54,13 +46,9 @@ struct FilesStorageProvider: IFilesStorageProvider {
 
 	init(
 		userDefaults: UserDefaults,
-		bandlePath: String,
-		aboutPath: String,
 		capacity: Int = 5
 	) {
 		self.userDefaults = userDefaults
-		self.bandlePath = bandlePath
-		self.aboutPath = aboutPath
 		self.capacity = capacity
 		fileNames = userDefaults.stringArray(forKey: recentFilesKey) ?? [String]()
 	}
