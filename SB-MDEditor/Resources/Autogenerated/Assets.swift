@@ -43,11 +43,55 @@ internal struct ColorAsset {
 
 internal enum Asset {
   internal static let accentColor = ColorAsset(name: "AccentColor")
+  internal enum Menu {
+    internal static let aboutMenuIcon = ImageAsset(name: "aboutMenuIcon")
+    internal static let newFileMenuIcon = ImageAsset(name: "newFileMenuIcon")
+    internal static let openMenuIcon = ImageAsset(name: "openMenuIcon")
+  }
+  internal enum Placeholders {
+    internal static let emptyPlaceholder = ImageAsset(name: "EmptyPlaceholder")
+    internal static let recentFilesPlaceholder = ImageAsset(name: "recentFilesPlaceholder")
+  }
+  internal static let icBack = ImageAsset(name: "ic_back")
+  internal static let icBook = ImageAsset(name: "ic_book")
+  internal static let icCompress = ImageAsset(name: "ic_compress")
+  internal static let icFile = ImageAsset(name: "ic_file")
+  internal static let icFileCode = ImageAsset(name: "ic_file_code")
+  internal static let icFolder = ImageAsset(name: "ic_folder")
+  internal static let icGrid = ImageAsset(name: "ic_grid")
+  internal static let icMemory = ImageAsset(name: "ic_memory")
+  internal static let icNext = ImageAsset(name: "ic_next")
+  internal static let icOcr = ImageAsset(name: "ic_ocr")
+  internal static let icPause = ImageAsset(name: "ic_pause")
+  internal static let icPlay = ImageAsset(name: "ic_play")
+  internal static let icResume = ImageAsset(name: "ic_resume")
+  internal static let icStop = ImageAsset(name: "ic_stop")
+  internal static let icTrash = ImageAsset(name: "ic_trash")
 
   internal static let allColors: [ColorAsset] = [
     accentColor,
   ]
   internal static let allImages: [ImageAsset] = [
+    Menu.aboutMenuIcon,
+    Menu.newFileMenuIcon,
+    Menu.openMenuIcon,
+    Placeholders.emptyPlaceholder,
+    Placeholders.recentFilesPlaceholder,
+    icBack,
+    icBook,
+    icCompress,
+    icFile,
+    icFileCode,
+    icFolder,
+    icGrid,
+    icMemory,
+    icNext,
+    icOcr,
+    icPause,
+    icPlay,
+    icResume,
+    icStop,
+    icTrash,
   ]
   @available(*, deprecated, renamed: "allImages")
   internal static let allValues: [AssetType] = allImages
