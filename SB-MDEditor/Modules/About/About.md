@@ -9,7 +9,7 @@ https://github.com/zzzarya
 https://github.com/djud17
 3. Dmitriy Churilov
 https://github.com/chuRealOff
-4. Sergei Shliakhin
+4. Sergei Shliakhin (Team leader)
 https://github.com/SShliakhin
 
 
