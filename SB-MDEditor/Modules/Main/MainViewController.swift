@@ -19,10 +19,9 @@ protocol MainDisplayLogic: AnyObject {
 final class MainViewController: UIViewController, MainDisplayLogic {
 	// MARK: - Parameters
 
-	private var interactor: MainBusinessLogic?
-	private var router: (NSObjectProtocol & MainRoutingLogic & MainDataPassing)?
-
-	private var sectionManager: ISectionManager?
+	private let interactor: MainBusinessLogic
+	private let router: (NSObjectProtocol & MainRoutingLogic & MainDataPassing)
+	private let sectionManager: ISectionManager
 
 	// MARK: - Inits
 
@@ -38,14 +37,13 @@ final class MainViewController: UIViewController, MainDisplayLogic {
 	}
 
 	required init?(coder aDecoder: NSCoder) {
-		super.init(coder: aDecoder)
+		fatalError("init(coder:) has not been implemented")
 	}
 
 	// MARK: ViewController lifecycle
 
 	override func loadView() {
-		guard let sections = sectionManager?.getSections() else { return }
-
+		let sections = sectionManager.getSections()
 		let mainView = MainView(layoutSections: sections)
 		self.view = mainView
 	}
@@ -69,7 +67,7 @@ final class MainViewController: UIViewController, MainDisplayLogic {
 	// MARK: Do something
 	func doSomething() {
 		let request = Main.Something.Request()
-		interactor?.doSomething(request: request)
+		interactor.doSomething(request: request)
 	}
 
 	func displaySomething(viewModel: Main.Something.ViewModel) {}
@@ -79,13 +77,11 @@ final class MainViewController: UIViewController, MainDisplayLogic {
 
 extension MainViewController: UICollectionViewDataSource {
 	func numberOfSections(in collectionView: UICollectionView) -> Int {
-		guard let sections = sectionManager?.getSections() else { return .zero }
-
-		return sections.count
+		sectionManager.getSections().count
 	}
 
 	func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-		guard let sections = sectionManager?.getSections() else { return .zero }
+		let sections = sectionManager.getSections()
 
 		switch sections[section] {
 		case .recentFiles:
@@ -96,7 +92,7 @@ extension MainViewController: UICollectionViewDataSource {
 	}
 
 	func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-		guard let sections = sectionManager?.getSections() else { return UICollectionViewCell() }
+		let sections = sectionManager.getSections()
 
 		let model: CellViewAnyModel
 		switch sections[indexPath.section] {
