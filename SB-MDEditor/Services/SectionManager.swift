@@ -14,7 +14,7 @@ enum Section {
 
 protocol ISectionManager {
 
-	/// Функция позволяет получить доступные секции для коллекции.
+	/// Возвращает доступные секции для коллекции.
 	/// - Returns: массив секций.
 	func getSections() -> [Section]
 }

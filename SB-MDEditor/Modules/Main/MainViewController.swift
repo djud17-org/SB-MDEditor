@@ -46,22 +46,15 @@ final class MainViewController: UIViewController, MainDisplayLogic {
 		let sections = sectionManager.getSections()
 		let mainView = MainView(layoutSections: sections)
 		self.view = mainView
+
+		mainView.setupCollectionViewDelegate(delegate: self)
+		mainView.setupCollectionViewDataSource(dataSource: self)
 	}
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
-		setup()
-	}
-
-	// MARK: - Private funcs
-
-	private func setup() {
-		title = L10n.Main.title
-		view.backgroundColor = Theme.color(usage: .background)
-
-		(view as? MainView)?.setupCollectionViewDelegate(delegate: self)
-		(view as? MainView)?.setupCollectionViewDataSource(dataSource: self)
+		setupView()
 	}
 
 	// MARK: Do something
@@ -71,6 +64,14 @@ final class MainViewController: UIViewController, MainDisplayLogic {
 	}
 
 	func displaySomething(viewModel: Main.Something.ViewModel) {}
+}
+
+// MARK: - UI setup
+private extension MainViewController {
+	func setupView() {
+		title = L10n.Main.title
+		view.backgroundColor = Theme.color(usage: .background)
+	}
 }
 
 // MARK: - CollectionView dataSource extension

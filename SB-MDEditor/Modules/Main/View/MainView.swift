@@ -30,29 +30,31 @@ final class MainView: UIView {
 		fatalError("init(coder:) has not been implemented")
 	}
 
-	// MARK: - Public funcs
+	// MARK: - Public methods
 
-	/// Функция для установки источника данных коллекции
+	/// Установка источника данных коллекции
 	/// - Parameter dataSource: источник данных
 	func setupCollectionViewDataSource(dataSource: UICollectionViewDataSource) {
 		collectionView.dataSource = dataSource
 	}
 
-	/// Функция для установки делегата коллекции
+	/// Установка делегата коллекции
 	/// - Parameter delegate: делегат
 	func setupCollectionViewDelegate(delegate: UICollectionViewDelegate) {
 		collectionView.delegate = delegate
 	}
+}
 
-	// MARK: - Private funcs
+// MARK: - UI setup
 
-	private func setupView() {
+private extension MainView {
+	func setupView() {
 		backgroundColor = Theme.color(usage: .white)
 
 		addSubview(collectionView)
 	}
 
-	private func setupLayout() {
+	func setupLayout() {
 		collectionView.makeConstraints { make in
 			[
 				make.topAnchor.constraint(equalTo: topAnchor),
@@ -62,11 +64,7 @@ final class MainView: UIView {
 			]
 		}
 	}
-}
 
-// MARK: - UI setup
-
-private extension MainView {
 	func makeCollectionView() -> UICollectionView {
 		let layout = createLayout()
 		let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
@@ -134,9 +132,9 @@ private extension MainView {
 
 		let layoutSection = NSCollectionLayoutSection(group: layoutGroup)
 		layoutSection.contentInsets = NSDirectionalEdgeInsets(
-			top: 0,
+			top: .zero,
 			leading: Theme.spacing(usage: .standard),
-			bottom: 0,
+			bottom: .zero,
 			trailing: Theme.spacing(usage: .standard)
 		)
 
