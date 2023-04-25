@@ -36,9 +36,30 @@ final class File {
 		self.creationDate = creationDate
 		self.modificationDate = modificationDate
 	}
+
+	/// Возвращает форматированный размер файла
+	/// - Returns: отформатированный строковый размер файла
+	func getFormattedSize() -> String {
+		getFormattedSize(with: size)
+	}
+
+	/// Возвращает форматированные атрибуты файла: расширение, дата изменения, размер
+	/// - Returns: строковые атрибуты файла
+	func getFormattedAttributes() -> String {
+		let formattedSize = getFormattedSize()
+		let dateFormatter = DateFormatter()
+		dateFormatter.dateFormat = "yyyy.MM.dd HH:mm:ss"
+
+		switch filetype {
+		case .directory:
+			return "\(dateFormatter.string(from: modificationDate)) | <dir>"
+		case .file:
+			return "\"\(ext)\" – \(dateFormatter.string(from: modificationDate)) | \(formattedSize)"
+		}
+	}
 }
 
-extension File {
+private extension File {
 	enum FileType {
 		case directory
 		case file
@@ -53,36 +74,5 @@ extension File {
 			multiplyFactor += 1
 		}
 		return String(format: "%4.2f %@", convertedValue, tokens[multiplyFactor])
-	}
-
-	func getFormattedSize() -> String {
-		getFormattedSize(with: size)
-	}
-
-	func getFormattedAttributes() -> String {
-		let formattedSize = getFormattedSize()
-		let dateFormatter = DateFormatter()
-		dateFormatter.dateFormat = "yyyy.MM.dd HH:mm:ss"
-
-		switch filetype {
-		case .directory:
-			return "\(dateFormatter.string(from: modificationDate)) | <dir>"
-		case .file:
-			return "\"\(ext)\" – \(dateFormatter.string(from: modificationDate)) | \(formattedSize)"
-		}
-	}
-
-	func loadFileBody() -> String {
-		guard let resourcePath = Bundle.main.resourcePath else { return "" }
-
-		var text = ""
-		let fullPath = resourcePath + "/\(path)/\(name)"
-		do {
-			text = try String(contentsOfFile: fullPath, encoding: String.Encoding.utf8)
-		} catch {
-			print("Failed to read text from \(name)")
-		}
-
-		return text
 	}
 }
