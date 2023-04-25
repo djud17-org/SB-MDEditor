@@ -56,7 +56,6 @@
 		6004CE2B29F564520074D9E5 /* EmptyInputData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6004CE2A29F564520074D9E5 /* EmptyInputData.swift */; };
 		6004CE2D29F5646C0074D9E5 /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6004CE2C29F5646C0074D9E5 /* EmptyView.swift */; };
 		60D43BB729F1A61300C5AF4F /* MD_Bandle in Resources */ = {isa = PBXBuildFile; fileRef = 60D43BB629F1A61300C5AF4F /* MD_Bandle */; };
-		ABB3CD9629F6801D00AAD8C2 /* About.md in Resources */ = {isa = PBXBuildFile; fileRef = ABB3CD9529F6801D00AAD8C2 /* About.md */; };
 		ABD1DB6129F7BE4D00C7B471 /* About.md in Resources */ = {isa = PBXBuildFile; fileRef = ABD1DB6029F7BE4D00C7B471 /* About.md */; };
 /* End PBXBuildFile section */
 
@@ -132,7 +131,6 @@
 		6004CE2A29F564520074D9E5 /* EmptyInputData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyInputData.swift; sourceTree = "<group>"; };
 		6004CE2C29F5646C0074D9E5 /* EmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
 		60D43BB629F1A61300C5AF4F /* MD_Bandle */ = {isa = PBXFileReference; lastKnownFileType = folder; path = MD_Bandle; sourceTree = "<group>"; };
-		ABB3CD9529F6801D00AAD8C2 /* About.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = About.md; sourceTree = "<group>"; };
 		ABD1DB6029F7BE4D00C7B471 /* About.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = About.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -359,7 +357,6 @@
 		5ACEB29C29EECCA6008E80A2 /* About */ = {
 			isa = PBXGroup;
 			children = (
-				ABB3CD9529F6801D00AAD8C2 /* About.md */,
 				5ACEB29A29EECC91008E80A2 /* AboutViewController.swift */,
 			);
 			path = About;
@@ -516,7 +513,6 @@
 				ABD1DB6129F7BE4D00C7B471 /* About.md in Resources */,
 				60D43BB729F1A61300C5AF4F /* MD_Bandle in Resources */,
 				5A48063729DBAC450096B7D8 /* .gitignore in Resources */,
-				ABB3CD9629F6801D00AAD8C2 /* About.md in Resources */,
 				2545566229F072F500B9CFD0 /* Localizable.strings in Resources */,
 				5A48063529DBAC2C0096B7D8 /* .swiftlint.yml in Resources */,
 				5A48063329DBABAA0096B7D8 /* README.md in Resources */,
