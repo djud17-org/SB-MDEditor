@@ -17,105 +17,79 @@ protocol MainDisplayLogic: AnyObject {
 }
 
 final class MainViewController: UIViewController, MainDisplayLogic {
-	// MARK: - Parameters
+	var interactor: MainBusinessLogic?
+	var router: (NSObjectProtocol & MainRoutingLogic & MainDataPassing)?
 
-	private let interactor: MainBusinessLogic
-	private let router: (NSObjectProtocol & MainRoutingLogic & MainDataPassing)
-	private let sectionManager: ISectionManager
-
-	// MARK: - Inits
+	private lazy var errorView = ErrorView()
 
 	init(
 		interactor: MainBusinessLogic,
-		router: (NSObjectProtocol & MainRoutingLogic & MainDataPassing),
-		sectionManager: ISectionManager
+		router: (NSObjectProtocol & MainRoutingLogic & MainDataPassing)
 	) {
 		self.interactor = interactor
 		self.router = router
-		self.sectionManager = sectionManager
 		super.init(nibName: nil, bundle: nil)
 	}
 
 	required init?(coder aDecoder: NSCoder) {
-		fatalError("init(coder:) has not been implemented")
+		super.init(coder: aDecoder)
 	}
 
-	// MARK: ViewController lifecycle
-
-	override func loadView() {
-		let sections = sectionManager.getSections()
-		let mainView = MainView(layoutSections: sections)
-		self.view = mainView
-
-		mainView.setupCollectionViewDelegate(delegate: self)
-		mainView.setupCollectionViewDataSource(dataSource: self)
-	}
+	// MARK: View lifecycle
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
-		setupView()
+		setup()
+		applyStyle()
+		setupConstraints()
+
+		doSomething()
 	}
 
 	// MARK: Do something
 	func doSomething() {
 		let request = Main.Something.Request()
-		interactor.doSomething(request: request)
+		interactor?.doSomething(request: request)
 	}
 
 	func displaySomething(viewModel: Main.Something.ViewModel) {}
 }
 
-// MARK: - UI setup
+// MARK: - UI
 private extension MainViewController {
-	func setupView() {
-		title = L10n.Main.title
+	func setup() {
+		let testMessage = ErrorInputData(
+			emoji: "🙈",
+			message: "Переход к экрану: О приложении"
+		) { [weak self] in
+			self?.router?.navigate(.toAbout)
+		}
+		errorView.update(with: testMessage)
+		errorView.show()
+	}
+	func applyStyle() {
+		title = Appearance.title
 		view.backgroundColor = Theme.color(usage: .background)
 	}
-}
-
-// MARK: - CollectionView dataSource extension
-
-extension MainViewController: UICollectionViewDataSource {
-	func numberOfSections(in collectionView: UICollectionView) -> Int {
-		sectionManager.getSections().count
-	}
-
-	func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-		let sections = sectionManager.getSections()
-
-		switch sections[section] {
-		case .recentFiles:
-			return 10 // заменить данные
-		case .menu:
-			return 5 // заменить данные
-		}
-	}
-
-	func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-		let sections = sectionManager.getSections()
-
-		let model: CellViewAnyModel
-		switch sections[indexPath.section] {
-		case .recentFiles:
-			// заменить данные
-			model = RecentFileCell.RecentFileCellModel(fileCoverColor: .brown, fileName: "Test")
-		case .menu:
-			// заменить данные
-			model = MenuItemCell.MenuItemCellModel(itemIcon: .init(systemName: "menucard"), itemName: "Открыть")
+	func setupConstraints() {
+		[
+			errorView
+		].forEach { item in
+			item.translatesAutoresizingMaskIntoConstraints = false
+			view.addSubview(item)
 		}
 
-		return collectionView.dequeueReusableCell(withModel: model, for: indexPath)
+		errorView.makeEqualToSuperview()
 	}
 }
 
-// MARK: - CollectionView delegate extension
-
-extension MainViewController: UICollectionViewDelegate {
-	func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) { }
+// MARK: - Appearance
+private extension MainViewController {
+	enum Appearance {
+		static let title = "MD Editor"
+	}
 }
-
-// MARK: - SwiftUI preview
 
 #if canImport(SwiftUI) && DEBUG
 import SwiftUI

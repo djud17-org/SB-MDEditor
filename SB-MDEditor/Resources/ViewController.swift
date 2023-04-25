@@ -64,15 +64,15 @@ import SwiftUI
 struct ViewProvider: PreviewProvider {
 	static var previews: some View {
 		let viewController = ViewController()
-		let labelView = UIImageView(image: Theme.image(kind: .aboutMenuIcon)) as UIView
-		let labelView2 = UIImageView(image: Theme.image(kind: .emptyPlaceholder)) as UIView
+		let labelView = viewController.makeWelcomeLabel() as UIView
+		let labelView2 = viewController.makeWelcomeLabel() as UIView
 		Group {
 			viewController.preview()
 			VStack(spacing: 0) {
 				labelView.preview().frame(height: 100).padding(.bottom, 20)
 				labelView2.preview().frame(height: 100).padding(.bottom, 20)
 			}
-			.preferredColorScheme(.light)
+			.preferredColorScheme(.dark)
 		}
 	}
 }
