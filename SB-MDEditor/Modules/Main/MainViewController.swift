@@ -17,102 +17,105 @@ protocol MainDisplayLogic: AnyObject {
 }
 
 final class MainViewController: UIViewController, MainDisplayLogic {
-	var interactor: MainBusinessLogic?
-	var router: (NSObjectProtocol & MainRoutingLogic & MainDataPassing)?
-	var storage: IFilesStorageProvider
+	// MARK: - Parameters
 
-	private lazy var errorView = ErrorView()
+	private let interactor: MainBusinessLogic
+	private let router: (NSObjectProtocol & MainRoutingLogic & MainDataPassing)
+	private let sectionManager: ISectionManager
+
+	// MARK: - Inits
 
 	init(
 		interactor: MainBusinessLogic,
 		router: (NSObjectProtocol & MainRoutingLogic & MainDataPassing),
-		dep: IMainModuleDepencency
+		sectionManager: ISectionManager
 	) {
 		self.interactor = interactor
 		self.router = router
-		self.storage = dep.storage
+		self.sectionManager = sectionManager
 		super.init(nibName: nil, bundle: nil)
 	}
 
-	required init?(coder: NSCoder) {
+	required init?(coder aDecoder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
 	}
 
-	// MARK: View lifecycle
+	// MARK: ViewController lifecycle
+
+	override func loadView() {
+		let sections = sectionManager.getSections()
+		let mainView = MainView(layoutSections: sections)
+		self.view = mainView
+
+		mainView.setupCollectionViewDelegate(delegate: self)
+		mainView.setupCollectionViewDataSource(dataSource: self)
+	}
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
-		setup()
-		applyStyle()
-		setupConstraints()
-
-		doSomething()
+		setupView()
 	}
 
 	// MARK: Do something
 	func doSomething() {
 		let request = Main.Something.Request()
-		interactor?.doSomething(request: request)
-
-		storage.add(fileName: "FileName")
-		storage.add(fileName: "FileName2")
-		storage.add(fileName: "FileName")
-		storage.add(fileName: "FileName3")
-		storage.add(fileName: "FileName")
-		storage.add(fileName: "FileName4")
-		storage.add(fileName: "FileName")
-		storage.add(fileName: "FileName5")
-		storage.add(fileName: "FileName")
-		storage.add(fileName: "FileName6")
-		print(storage.getRecentFiles())
-
-		print("================")
-
-		storage.currentPath = "123/456"
-		print(storage.currentPath ?? "данных нет")
-
-		storage.removeCurrentPath()
-		print(storage.currentPath ?? "данных нет")
+		interactor.doSomething(request: request)
 	}
 
 	func displaySomething(viewModel: Main.Something.ViewModel) {}
 }
 
-// MARK: - UI
+// MARK: - UI setup
 private extension MainViewController {
-	func setup() {
-		let testMessage = ErrorInputData(
-			emoji: "🙈",
-			message: "Переход к экрану: О приложении"
-		) { [weak self] in
-			self?.router?.navigate(.toAbout)
-		}
-		errorView.update(with: testMessage)
-		errorView.show()
-	}
-	func applyStyle() {
-		title = Appearance.title
+	func setupView() {
+		title = L10n.Main.title
 		view.backgroundColor = Theme.color(usage: .background)
 	}
-	func setupConstraints() {
-		[
-			errorView
-		].forEach { item in
-			item.translatesAutoresizingMaskIntoConstraints = false
-			view.addSubview(item)
+}
+
+// MARK: - CollectionView dataSource extension
+
+extension MainViewController: UICollectionViewDataSource {
+	func numberOfSections(in collectionView: UICollectionView) -> Int {
+		sectionManager.getSections().count
+	}
+
+	func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+		let sections = sectionManager.getSections()
+
+		switch sections[section] {
+		case .recentFiles:
+			return 10 // заменить данные
+		case .menu:
+			return 5 // заменить данные
+		}
+	}
+
+	func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+		let sections = sectionManager.getSections()
+
+		let model: CellViewAnyModel
+		switch sections[indexPath.section] {
+		case .recentFiles:
+			// заменить данные
+			model = RecentFileCell.RecentFileCellModel(fileCoverColor: .brown, fileName: "Test")
+		case .menu:
+			// заменить данные
+			model = MenuItemCell.MenuItemCellModel(itemIcon: .init(systemName: "menucard"), itemName: "Открыть")
 		}
 
-		errorView.makeEqualToSuperview()
+		return collectionView.dequeueReusableCell(withModel: model, for: indexPath)
 	}
 }
 
-// MARK: - Appearance
-private extension MainViewController {
-	enum Appearance {
-		static let title = "MD Editor"
-	}
+// MARK: - CollectionView delegate extension
+
+extension MainViewController: UICollectionViewDelegate {
+	func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) { }
 }
+
+// MARK: - SwiftUI preview
 
 #if canImport(SwiftUI) && DEBUG
 import SwiftUI
