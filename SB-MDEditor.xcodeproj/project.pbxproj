@@ -61,6 +61,7 @@
 		6004CE2B29F564520074D9E5 /* EmptyInputData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6004CE2A29F564520074D9E5 /* EmptyInputData.swift */; };
 		60D43BB729F1A61300C5AF4F /* MD_Bandle in Resources */ = {isa = PBXBuildFile; fileRef = 60D43BB629F1A61300C5AF4F /* MD_Bandle */; };
 		ABBCB5D329F92910007D6AE9 /* AboutInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABBCB5D229F92910007D6AE9 /* AboutInteractor.swift */; };
+		ABBCB5D529F9310D007D6AE9 /* AboutPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABBCB5D429F9310D007D6AE9 /* AboutPresenter.swift */; };
 		ABD1DB6129F7BE4D00C7B471 /* About.md in Resources */ = {isa = PBXBuildFile; fileRef = ABD1DB6029F7BE4D00C7B471 /* About.md */; };
 /* End PBXBuildFile section */
 
@@ -142,6 +143,7 @@
 		6004CE2C29F5646C0074D9E5 /* EmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
 		60D43BB629F1A61300C5AF4F /* MD_Bandle */ = {isa = PBXFileReference; lastKnownFileType = folder; path = MD_Bandle; sourceTree = "<group>"; };
 		ABBCB5D229F92910007D6AE9 /* AboutInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutInteractor.swift; sourceTree = "<group>"; };
+		ABBCB5D429F9310D007D6AE9 /* AboutPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutPresenter.swift; sourceTree = "<group>"; };
 		ABD1DB6029F7BE4D00C7B471 /* About.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = About.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -399,6 +401,7 @@
 			children = (
 				5ACEB29A29EECC91008E80A2 /* AboutViewController.swift */,
 				ABBCB5D229F92910007D6AE9 /* AboutInteractor.swift */,
+				ABBCB5D429F9310D007D6AE9 /* AboutPresenter.swift */,
 			);
 			path = About;
 			sourceTree = "<group>";
@@ -629,6 +632,7 @@
 				5ACEB29229EEA64D008E80A2 /* ErrorView.swift in Sources */,
 				25FC42F129F1CCB0001895ED /* MainView.swift in Sources */,
 				5ACEB27929EE64D9008E80A2 /* Di.swift in Sources */,
+				ABBCB5D529F9310D007D6AE9 /* AboutPresenter.swift in Sources */,
 				5ACEB28E29EE7AB5008E80A2 /* MainViewController.swift in Sources */,
 				5ACEB29E29EED6CA008E80A2 /* OpenDocViewController.swift in Sources */,
 				5ACEB28129EE6EC7008E80A2 /* RootViewController.swift in Sources */,
