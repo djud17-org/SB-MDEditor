@@ -14,18 +14,13 @@ protocol AboutBusinessLogic {
 final class AboutInteractor: AboutBusinessLogic, MainDataStore {
 
 	// MARK: Parameters
-	private let presenter: AboutPresentationLogic
-
-	// MARK: Init
-	init(presenter: AboutPresentationLogic) {
-		self.presenter = presenter
-	}
+	private var presenter: AboutPresentationLogic?
 
 	// MARK: Functions
 	func readFileContents() {
 		let fileManager = FileManager.default
 		if let aboutFileData = fileManager.contents(atPath: Appearance.aboutFilePath) {
-			presenter.present(data: aboutFileData)
+			presenter?.present(data: aboutFileData)
 		}
 	}
 }
@@ -33,6 +28,6 @@ final class AboutInteractor: AboutBusinessLogic, MainDataStore {
 // MARK: - Appearance
 private extension AboutInteractor {
 	enum Appearance {
-		static let aboutFilePath = Bundle.main.resourcePath! + "/About.md"
+		static let aboutFilePath = Bundle.main.resourcePath! + "/About.md" // swiftlint:disable:this force_unwrapping
 	}
 }
