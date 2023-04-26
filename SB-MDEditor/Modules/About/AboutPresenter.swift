@@ -8,16 +8,17 @@
 import UIKit
 
 protocol AboutPresentationLogic {
-	func presentSomething(response: Main.Something.Response)
+	func present(data: Data)
 }
 
 final class AboutPresenter: AboutPresentationLogic {
+
+	// MARK: Parameters
 	weak var viewController: AboutDisplayLogic?
 
-	// MARK: Do something
-
-	func presentSomething(response: Main.Something.Response) {
-		let viewModel = Main.Something.ViewModel()
-		viewController?.displaySomething(viewModel: viewModel)
+	// MARK: Functions
+	func present(data: Data) {
+		guard let textString = String(data: data, encoding: .utf8) else { return }
+		viewController?.render(text: textString)
 	}
 }
