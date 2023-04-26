@@ -2,8 +2,10 @@ import UIKit
 
 final class AboutViewController: UIViewController {
 
+	// MARK: - Parameters
 	private lazy var welcomeLabel = makeWelcomeLabel()
 	private lazy var errorView = ErrorView()
+	private lazy var aboutTextView = UITextView()
 
 	// MARK: - Init
 	init() {
@@ -38,7 +40,8 @@ private extension AboutViewController {
 	func setupConstraints() {
 		[
 			welcomeLabel,
-			errorView
+			errorView,
+			aboutTextView
 		].forEach { item in
 			item.translatesAutoresizingMaskIntoConstraints = false
 			view.addSubview(item)
@@ -46,6 +49,7 @@ private extension AboutViewController {
 
 		welcomeLabel.makeEqualToSuperviewCenter()
 		errorView.makeEqualToSuperview()
+		aboutTextView.makeEqualToSuperviewToSafeArea()
 	}
 }
 
