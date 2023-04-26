@@ -1,7 +1,7 @@
 import UIKit
 
 protocol AboutDisplayLogic: AnyObject {
-	func displaySomething(viewModel: Main.Something.ViewModel)
+	func render(text: String)
 }
 
 final class AboutViewController: UIViewController, AboutDisplayLogic {
@@ -30,8 +30,8 @@ final class AboutViewController: UIViewController, AboutDisplayLogic {
 	}
 
 	// MARK: - DO something
-	func displaySomething(viewModel: Main.Something.ViewModel) {
-		<#code#>
+	func render(text: String) {
+		aboutTextView.text = text
 	}
 }
 
