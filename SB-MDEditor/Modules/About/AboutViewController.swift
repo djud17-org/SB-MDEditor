@@ -7,7 +7,7 @@ protocol AboutDisplayLogic: AnyObject {
 final class AboutViewController: UIViewController, AboutDisplayLogic {
 
 	// MARK: - Parameters
-	private var interactor: AboutInteractor?
+	private var interactor: AboutBusinessLogic?
 	private lazy var welcomeLabel = makeWelcomeLabel()
 	private lazy var errorView = ErrorView()
 	private lazy var aboutTextView = UITextView()
