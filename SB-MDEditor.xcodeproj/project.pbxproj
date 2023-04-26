@@ -59,8 +59,8 @@
 		5AFA77CE29F4B36A0010478E /* Di+ServiceFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFA77CD29F4B36A0010478E /* Di+ServiceFactory.swift */; };
 		5AFA77D129F4B3D10010478E /* FilesStorageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFA77D029F4B3D10010478E /* FilesStorageProvider.swift */; };
 		6004CE2B29F564520074D9E5 /* EmptyInputData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6004CE2A29F564520074D9E5 /* EmptyInputData.swift */; };
-		6004CE2D29F5646C0074D9E5 /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6004CE2C29F5646C0074D9E5 /* EmptyView.swift */; };
 		60D43BB729F1A61300C5AF4F /* MD_Bandle in Resources */ = {isa = PBXBuildFile; fileRef = 60D43BB629F1A61300C5AF4F /* MD_Bandle */; };
+		ABBCB5D329F92910007D6AE9 /* AboutInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABBCB5D229F92910007D6AE9 /* AboutInteractor.swift */; };
 		ABD1DB6129F7BE4D00C7B471 /* About.md in Resources */ = {isa = PBXBuildFile; fileRef = ABD1DB6029F7BE4D00C7B471 /* About.md */; };
 /* End PBXBuildFile section */
 
@@ -141,6 +141,7 @@
 		6004CE2A29F564520074D9E5 /* EmptyInputData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyInputData.swift; sourceTree = "<group>"; };
 		6004CE2C29F5646C0074D9E5 /* EmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
 		60D43BB629F1A61300C5AF4F /* MD_Bandle */ = {isa = PBXFileReference; lastKnownFileType = folder; path = MD_Bandle; sourceTree = "<group>"; };
+		ABBCB5D229F92910007D6AE9 /* AboutInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutInteractor.swift; sourceTree = "<group>"; };
 		ABD1DB6029F7BE4D00C7B471 /* About.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = About.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -397,6 +398,7 @@
 			isa = PBXGroup;
 			children = (
 				5ACEB29A29EECC91008E80A2 /* AboutViewController.swift */,
+				ABBCB5D229F92910007D6AE9 /* AboutInteractor.swift */,
 			);
 			path = About;
 			sourceTree = "<group>";
@@ -646,6 +648,7 @@
 				25FC42F529F1CD89001895ED /* RecentFileCell.swift in Sources */,
 				5ACEB28A29EE7AB5008E80A2 /* MainPresenter.swift in Sources */,
 				5A91DEDA29E12F82001A23C3 /* UIViewController+Preview.swift in Sources */,
+				ABBCB5D329F92910007D6AE9 /* AboutInteractor.swift in Sources */,
 				5A61DD3D29E13FF9001E8665 /* UIView+Preview.swift in Sources */,
 				5ACEB26C29EE0D6B008E80A2 /* Theme+Images.swift in Sources */,
 				5ACEB27E29EE65A8008E80A2 /* UIColor+Hex.swift in Sources */,
