@@ -8,28 +8,31 @@
 import UIKit
 
 protocol AboutBusinessLogic {
-	func doSomething(request: Main.Something.Request)
+	func readFileContents()
 }
 
 final class AboutInteractor: AboutBusinessLogic, MainDataStore {
-	//	private let presenter: AboutPresentationLogic
+	private let presenter: AboutPresentationLogic
 
-	init(presenter: MainPresentationLogic, worker: MainWorker) {
-		//		self.presenter = presenter
+	init(presenter: AboutPresentationLogic) {
+		self.presenter = presenter
 	}
 
 	// MARK: Do something
 
-	func doSomething(request: Main.Something.Request) {
-		//		worker.doSomeWork()
+	func readFileContents() {
+		let fileManager = FileManager.default
+		if let aboutFileData = fileManager.contents(atPath: Appearance.aboutFilePath) {
+			//		worker.doSomeWork()
 
-		//		let response = Main.Something.Response()
-		//		presenter.presentSomething(response: response)
+			//		let response = Main.Something.Response()
+			//		presenter.presentSomething(response: response)
+		}
 	}
 }
 
 // MARK: - Appearance
-private extension AboutViewController {
+private extension AboutInteractor {
 	enum Appearance {
 		static let aboutFilePath = Bundle.main.resourcePath! + "/About.md"
 	}
