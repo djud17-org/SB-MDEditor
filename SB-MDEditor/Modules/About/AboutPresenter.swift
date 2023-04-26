@@ -12,12 +12,12 @@ protocol AboutPresentationLogic {
 }
 
 final class AboutPresenter: AboutPresentationLogic {
-//	weak var viewController: MainDisplayLogic?
+	weak var viewController: AboutDisplayLogic?
 
 	// MARK: Do something
 
 	func presentSomething(response: Main.Something.Response) {
 		let viewModel = Main.Something.ViewModel()
-//		viewController?.displaySomething(viewModel: viewModel)
+		viewController?.displaySomething(viewModel: viewModel)
 	}
 }

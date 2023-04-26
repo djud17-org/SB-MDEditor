@@ -1,6 +1,10 @@
 import UIKit
 
-final class AboutViewController: UIViewController {
+protocol AboutDisplayLogic: AnyObject {
+	func displaySomething(viewModel: Main.Something.ViewModel)
+}
+
+final class AboutViewController: UIViewController, AboutDisplayLogic {
 
 	// MARK: - Parameters
 	private lazy var welcomeLabel = makeWelcomeLabel()
@@ -23,6 +27,11 @@ final class AboutViewController: UIViewController {
 		setup()
 		applyStyle()
 		setupConstraints()
+	}
+
+	// MARK: - DO something
+	func displaySomething(viewModel: Main.Something.ViewModel) {
+		<#code#>
 	}
 }
 

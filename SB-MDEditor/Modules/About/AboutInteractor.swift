@@ -23,7 +23,7 @@ final class AboutInteractor: AboutBusinessLogic, MainDataStore {
 	func doSomething(request: Main.Something.Request) {
 //		worker.doSomeWork()
 
-		let response = Main.Something.Response()
+//		let response = Main.Something.Response()
 //		presenter.presentSomething(response: response)
 	}
 }
