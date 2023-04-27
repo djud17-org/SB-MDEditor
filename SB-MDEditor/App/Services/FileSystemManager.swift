@@ -11,12 +11,12 @@ protocol IFileSystemManager {
 	/// Возвращает список файлов по переданному url
 	/// - Parameter fileUrl: url для отображения списка
 	/// - Returns: Список файлов
-	func getFileList(for fileUrl: URL) -> [String]
+	func getFileList(for fileUrl: String) -> [String]
 
 	/// Возвращает содержимое файла по переданному url
 	/// - Parameter fileUrl: url файла
 	/// - Returns: Содержимое файла
-	func getFileContent(for fileUrl: URL) -> String?
+	func getFileContent(for fileUrl: String) -> String?
 
 	/// Возвращает файл
 	/// - Parameters:
@@ -34,11 +34,11 @@ final class FileSystemManager: IFileSystemManager {
 		self.fileStorage = fileStorage
 	}
 
-	func getFileList(for fileUrl: URL) -> [String] {
-		guard fileManager.fileExists(atPath: fileUrl.path) else { return [] }
+	func getFileList(for fileUrl: String) -> [String] {
+		guard fileManager.fileExists(atPath: fileUrl) else { return [] }
 
 		do {
-			let files = try fileManager.contentsOfDirectory(atPath: fileUrl.path)
+			let files = try fileManager.contentsOfDirectory(atPath: fileUrl)
 			return files
 		} catch {
 			print("Невозможно найти файлы")
@@ -47,8 +47,9 @@ final class FileSystemManager: IFileSystemManager {
 		return []
 	}
 
-	func getFileContent(for fileUrl: URL) -> String? {
-		guard fileManager.fileExists(atPath: fileUrl.path) else { return nil }
+	func getFileContent(for fileUrl: String) -> String? {
+		guard fileManager.fileExists(atPath: fileUrl),
+			  let fileUrl = URL(string: fileUrl) else { return nil }
 
 		do {
 			let data = try Data(contentsOf: fileUrl)
@@ -93,6 +94,8 @@ final class FileSystemManager: IFileSystemManager {
 				creationDate: creationDate,
 				modificationDate: modificationDate
 			)
+
+			return file
 		} catch {
 			print("Невозможно найти файл")
 		}
