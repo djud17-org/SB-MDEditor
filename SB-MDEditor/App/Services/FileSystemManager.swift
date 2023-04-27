@@ -33,7 +33,7 @@ final class FileSystemManager: IFileSystemManager {
 		didSet {
 			var newList: [File] = []
 
-			let fileList = getFileList(for: currentPath)
+			let fileList = getFileList()
 			fileList.forEach { fileName in
 				guard let newFile = getFile(for: fileName, atPath: currentPath) else { return }
 
