@@ -9,9 +9,8 @@ import Foundation
 
 protocol IFileSystemManager {
 	/// Возвращает список файлов по переданному url
-	/// - Parameter fileUrl: url для отображения списка
-	/// - Returns: Список файлов
-	func getFileList(for fileUrl: String) -> [String]
+	/// - Returns: Список файлов по текущему пути
+	func getFileList() -> [String]
 
 	/// Возвращает содержимое файла по переданному url
 	/// - Parameter fileUrl: url файла
@@ -27,6 +26,9 @@ protocol IFileSystemManager {
 }
 
 final class FileSystemManager: IFileSystemManager {
+
+	// MARK: - Parameters
+
 	var currentPath = "" {
 		didSet {
 			var newList: [File] = []
@@ -56,16 +58,20 @@ final class FileSystemManager: IFileSystemManager {
 
 	private let fileManager = FileManager.default
 
+	// MARK: - Init
+
 	init(fileStorage: IFilesStorageProvider, resourcePath: String) {
 		self.fileStorage = fileStorage
 		self.resourcePath = resourcePath
 	}
 
-	func getFileList(for fileUrl: String) -> [String] {
-		guard fileManager.fileExists(atPath: fileUrl) else { return [] }
+	// MARK: - Public methods
+
+	func getFileList() -> [String] {
+		guard fileManager.fileExists(atPath: currentPath) else { return [] }
 
 		do {
-			let files = try fileManager.contentsOfDirectory(atPath: fileUrl)
+			let files = try fileManager.contentsOfDirectory(atPath: currentPath)
 			return files
 		} catch {
 			print("Невозможно найти файлы")
