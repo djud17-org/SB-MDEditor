@@ -16,7 +16,11 @@ final class File {
 	let creationDate: Date
 	var modificationDate: Date
 	var fullname: String {
-		"\(path)/\(name)"
+		if name.hasPrefix("** ") && name.hasSuffix(" **") {
+			return "\(path)"
+		} else {
+			return "\(path)/\(name)"
+		}
 	}
 
 	init(
@@ -59,13 +63,13 @@ final class File {
 	}
 }
 
-private extension File {
+extension File {
 	enum FileType {
 		case directory
 		case file
 	}
 
-	func getFormattedSize(with size: UInt64) -> String {
+	private func getFormattedSize(with size: UInt64) -> String {
 		var convertedValue = Double(size)
 		var multiplyFactor = 0
 		let tokens = ["bytes", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB"]
