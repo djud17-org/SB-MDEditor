@@ -27,11 +27,38 @@ protocol IFileSystemManager {
 }
 
 final class FileSystemManager: IFileSystemManager {
-	private let fileStorage: IFilesStorageProvider
+	var currentPath = "" {
+		didSet {
+			var newList: [File] = []
+
+			let fileList = getFileList(for: currentPath)
+			fileList.forEach { fileName in
+				guard let newFile = getFile(for: fileName, atPath: currentPath) else { return }
+
+				newList.append(newFile)
+			}
+
+			files = newList
+		}
+	}
+	var currentFile: File? {
+		didSet {
+			guard let fileName = currentFile?.name else { return }
+
+			fileStorage.add(fileName: fileName)
+		}
+	}
+
+	private var files = [File]()
+
+	private var fileStorage: IFilesStorageProvider
+	private let resourcePath: String
+
 	private let fileManager = FileManager.default
 
-	init(fileStorage: IFilesStorageProvider) {
+	init(fileStorage: IFilesStorageProvider, resourcePath: String) {
 		self.fileStorage = fileStorage
+		self.resourcePath = resourcePath
 	}
 
 	func getFileList(for fileUrl: String) -> [String] {
@@ -49,10 +76,14 @@ final class FileSystemManager: IFileSystemManager {
 
 	func getFileContent(for fileUrl: String) -> String? {
 		guard fileManager.fileExists(atPath: fileUrl),
-			  let fileUrl = URL(string: fileUrl) else { return nil }
+			  let url = URL(string: fileUrl) else { return nil }
+
+		if let fileName = fileUrl.components(separatedBy: "/").last {
+			currentFile = getFile(for: fileName, atPath: fileUrl)
+		}
 
 		do {
-			let data = try Data(contentsOf: fileUrl)
+			let data = try Data(contentsOf: url)
 			let content = String(data: data, encoding: .utf8)
 
 			return content
@@ -64,8 +95,6 @@ final class FileSystemManager: IFileSystemManager {
 	}
 
 	func getFile(for fileName: String, atPath: String) -> File? {
-		guard let resourcePath = Bundle.main.resourcePath else { return nil }
-
 		let fullPath = resourcePath + "/\(atPath)"
 		do {
 			let attributes = try fileManager.attributesOfItem(atPath: fullPath + "/" + fileName)
