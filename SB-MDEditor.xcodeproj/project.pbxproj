@@ -28,6 +28,7 @@
 		5A48064F29DBCBFB0096B7D8 /* Swift_BaseUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A48064E29DBCBFB0096B7D8 /* Swift_BaseUITests.swift */; };
 		5A48065129DBCBFB0096B7D8 /* Swift_BaseUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A48065029DBCBFB0096B7D8 /* Swift_BaseUITestsLaunchTests.swift */; };
 		5A61DD3D29E13FF9001E8665 /* UIView+Preview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A61DD3C29E13FF9001E8665 /* UIView+Preview.swift */; };
+		5A8F68D729FAA3E400749CDF /* AboutRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8F68D629FAA3E400749CDF /* AboutRouter.swift */; };
 		5A91DED829E0DF58001A23C3 /* UIView+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A91DED729E0DF58001A23C3 /* UIView+Constraints.swift */; };
 		5A91DEDA29E12F82001A23C3 /* UIViewController+Preview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A91DED929E12F82001A23C3 /* UIViewController+Preview.swift */; };
 		5ACEB26A29EE0D00008E80A2 /* Theme+Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ACEB26929EE0D00008E80A2 /* Theme+Colors.swift */; };
@@ -109,6 +110,7 @@
 		5A48064E29DBCBFB0096B7D8 /* Swift_BaseUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Swift_BaseUITests.swift; sourceTree = "<group>"; };
 		5A48065029DBCBFB0096B7D8 /* Swift_BaseUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Swift_BaseUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		5A61DD3C29E13FF9001E8665 /* UIView+Preview.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Preview.swift"; sourceTree = "<group>"; };
+		5A8F68D629FAA3E400749CDF /* AboutRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutRouter.swift; sourceTree = "<group>"; };
 		5A91DED729E0DF58001A23C3 /* UIView+Constraints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Constraints.swift"; sourceTree = "<group>"; };
 		5A91DED929E12F82001A23C3 /* UIViewController+Preview.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Preview.swift"; sourceTree = "<group>"; };
 		5ACEB26929EE0D00008E80A2 /* Theme+Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Theme+Colors.swift"; sourceTree = "<group>"; };
@@ -399,9 +401,10 @@
 		5ACEB29C29EECCA6008E80A2 /* About */ = {
 			isa = PBXGroup;
 			children = (
+				ABBCB5D429F9310D007D6AE9 /* AboutPresenter.swift */,
+				5A8F68D629FAA3E400749CDF /* AboutRouter.swift */,
 				5ACEB29A29EECC91008E80A2 /* AboutViewController.swift */,
 				ABBCB5D229F92910007D6AE9 /* AboutInteractor.swift */,
-				ABBCB5D429F9310D007D6AE9 /* AboutPresenter.swift */,
 			);
 			path = About;
 			sourceTree = "<group>";
@@ -649,6 +652,7 @@
 				6004CE2B29F564520074D9E5 /* EmptyInputData.swift in Sources */,
 				2545566829F0733200B9CFD0 /* Strings.swift in Sources */,
 				5ACEB28C29EE7AB5008E80A2 /* MainRouter.swift in Sources */,
+				5A8F68D729FAA3E400749CDF /* AboutRouter.swift in Sources */,
 				25FC42F529F1CD89001895ED /* RecentFileCell.swift in Sources */,
 				5ACEB28A29EE7AB5008E80A2 /* MainPresenter.swift in Sources */,
 				5A91DEDA29E12F82001A23C3 /* UIViewController+Preview.swift in Sources */,

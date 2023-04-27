@@ -11,12 +11,15 @@ protocol AboutBusinessLogic {
 	func readFileContents()
 }
 
-final class AboutInteractor: AboutBusinessLogic, MainDataStore {
+final class AboutInteractor: AboutBusinessLogic {
 
 	// MARK: Parameters
 	private var presenter: AboutPresentationLogic?
 
-	// MARK: Functions
+	init(presenter: AboutPresentationLogic) {
+		self.presenter = presenter
+	}
+
 	func readFileContents() {
 		let fileManager = FileManager.default
 		if let aboutFileData = fileManager.contents(atPath: Appearance.aboutFilePath) {

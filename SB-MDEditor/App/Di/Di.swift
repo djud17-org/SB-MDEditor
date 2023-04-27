@@ -49,11 +49,20 @@ typealias AllDependencies = (
 
 extension Di: ModuleFactory {
 	func makeStartModule() -> Module {
-		makeMainModule()
+		makeAboutModule()
 	}
 
 	func makeAboutModule() -> Module {
-		let viewController = AboutViewController()
+		let presenter = AboutPresenter()
+		let interactor = AboutInteractor(presenter: presenter)
+		let router = AboutRouter()
+		let viewController = AboutViewController(
+			interactor: interactor,
+			router: router
+		)
+
+		presenter.viewController = viewController
+
 		let navigationVC = UINavigationController(rootViewController: viewController)
 		navigationVC.navigationBar.prefersLargeTitles = true
 		return .init(viewController: navigationVC, animatedType: .fade)

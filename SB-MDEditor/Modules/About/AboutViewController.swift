@@ -5,15 +5,21 @@ protocol AboutDisplayLogic: AnyObject {
 }
 
 final class AboutViewController: UIViewController, AboutDisplayLogic {
-
 	// MARK: - Parameters
-	private var interactor: AboutBusinessLogic?
-	private lazy var welcomeLabel = makeWelcomeLabel()
-	private lazy var errorView = ErrorView()
+
+	private let interactor: AboutBusinessLogic?
+	private let router: (NSObjectProtocol & AboutRoutingLogic)
+
 	private lazy var aboutTextView = UITextView()
 
-	// MARK: - Init
-	init() {
+	// MARK: - Inits
+
+	init(
+		interactor: AboutBusinessLogic,
+		router: (NSObjectProtocol & AboutRoutingLogic)
+	) {
+		self.interactor = interactor
+		self.router = router
 		super.init(nibName: nil, bundle: nil)
 	}
 
@@ -39,56 +45,37 @@ final class AboutViewController: UIViewController, AboutDisplayLogic {
 
 // MARK: - UI
 private extension AboutViewController {
-	func setup() {
-		let testMessage = Appearance.errorMessage
-		errorView.update(with: testMessage)
-		errorView.show()
-	}
+	func setup() { }
 	func applyStyle() {
 		title = Appearance.title
 		view.backgroundColor = Theme.color(usage: .background)
 	}
 	func setupConstraints() {
 		[
-			welcomeLabel,
-			errorView,
 			aboutTextView
 		].forEach { item in
 			item.translatesAutoresizingMaskIntoConstraints = false
 			view.addSubview(item)
 		}
 
-		welcomeLabel.makeEqualToSuperviewCenter()
-		errorView.makeEqualToSuperview()
 		aboutTextView.makeEqualToSuperviewToSafeArea()
 	}
 }
 
 // MARK: - UI make
 private extension AboutViewController {
-	func makeWelcomeLabel() -> UILabel {
-		let label = UILabel()
-		label.text = Appearance.welcomeText
-		label.textColor = Theme.color(usage: .main)
-		label.font = Theme.font(style: .preferred(style: .title1))
-		return label
+	func makeAboutTextView() -> UITextView {
+		let textView = UITextView()
+		textView.backgroundColor = Theme.color(usage: .background)
+		textView.font = Theme.font(style: .title)
+		textView.textColor = Theme.color(usage: .main)
+		return textView
 	}
 }
 
 // MARK: - Appearance
 private extension AboutViewController {
 	enum Appearance {
-		static let welcomeText = "Welcome to About"
 		static let title = "About"
-		static let errorMessage = ErrorInputData(
-			emoji: "🙈",
-			message: "Переход к экрану: Открыть документ"
-		) {
-			if
-				let rootVC = UIApplication.shared.windows.first?.rootViewController as? IRootViewController,
-				let newModule = rootVC.factory?.makeOpenDocModule() {
-				rootVC.navigate(to: newModule)
-			}
-		}
 	}
 }
