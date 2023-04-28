@@ -15,13 +15,17 @@ final class Di {
 		self.rootVC = rootVC
 		self.storage = storage
 
+		let filesStorageProvider = makeFilesStorageProvider(storage)
+
 		dependencies = Dependency(
-			storage: makeFilesStorageProvider(storage)
+			storage: filesStorageProvider,
+			localFiles: makeLocalFilesProvider(filesStorageProvider)
 		)
 	}
 
 	struct Dependency: AllDependencies {
 		let storage: IFilesStorageProvider
+		let localFiles: ILocalFilesProvider
 	}
 }
 
@@ -32,6 +36,7 @@ protocol IMainModuleDepencency {
 }
 protocol IOpenModuleDocDepencency {
 	var storage: IFilesStorageProvider { get }
+	var localFiles: ILocalFilesProvider { get }
 }
 protocol ICreateModuleDocDepencency {
 	var storage: IFilesStorageProvider { get }
