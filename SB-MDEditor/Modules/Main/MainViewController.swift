@@ -26,7 +26,7 @@ final class MainViewController: UIViewController, MainDisplayLogic {
 	init(
 		interactor: MainBusinessLogic,
 		router: (NSObjectProtocol & MainRoutingLogic & MainDataPassing),
-		dep: IMainModuleDepencency
+		dep: IMainModuleDependency
 	) {
 		self.interactor = interactor
 		self.router = router
