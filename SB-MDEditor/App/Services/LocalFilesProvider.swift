@@ -108,23 +108,21 @@ private extension LocalFilesProvider {
 	func getFilesAtCurrentPath() -> [File] {
 		guard let list = try? fileManager.contentsOfDirectory(atPath: currentPath) else { return [] }
 
-		let newList = list
 		var file: [File] = []
 		var directory: [File] = []
 
-		for item in newList {
-			if item.hasPrefix(".") {
-				continue
-			}
+		for item in list where !item.hasPrefix(".") {
 
-			if let fileItem = getFile(withName: item, atPath: currentPath) {
-				if fileItem.filetype == .file,
-				   exts.contains(where: { $0 == fileItem.ext }),
-				   !exceptionFiles.contains(where: { $0 == fileItem.fullname }) {
-					file.append(fileItem)
-				} else {
-					directory.append(fileItem)
-				}
+			guard let fileItem = getFile(withName: item, atPath: currentPath) else { continue }
+
+			switch fileItem.filetype {
+			case .file:
+				guard exts.contains(where: { $0 == fileItem.ext }) else { continue }
+				guard !exceptionFiles.contains(where: { $0 == fileItem.fullname }) else { continue }
+
+				file.append(fileItem)
+			case .directory:
+				directory.append(fileItem)
 			}
 		}
 
