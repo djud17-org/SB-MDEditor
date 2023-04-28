@@ -8,6 +8,11 @@
 import Foundation
 
 final class File {
+	enum FileType {
+		case directory
+		case file
+	}
+
 	var name: String
 	var path: String
 	var ext: String
@@ -40,15 +45,14 @@ final class File {
 		self.creationDate = creationDate
 		self.modificationDate = modificationDate
 	}
+}
 
-	/// Возвращает форматированный размер файла
-	/// - Returns: отформатированный строковый размер файла
+// MARK: - Private methods
+private extension File {
 	func getFormattedSize() -> String {
 		getFormattedSize(with: size)
 	}
 
-	/// Возвращает форматированные атрибуты файла: расширение, дата изменения, размер
-	/// - Returns: строковые атрибуты файла
 	func getFormattedAttributes() -> String {
 		let formattedSize = getFormattedSize()
 		let dateFormatter = DateFormatter()
@@ -61,15 +65,8 @@ final class File {
 			return "\"\(ext)\" – \(dateFormatter.string(from: modificationDate)) | \(formattedSize)"
 		}
 	}
-}
 
-extension File {
-	enum FileType {
-		case directory
-		case file
-	}
-
-	private func getFormattedSize(with size: UInt64) -> String {
+	func getFormattedSize(with size: UInt64) -> String {
 		var convertedValue = Double(size)
 		var multiplyFactor = 0
 		let tokens = ["bytes", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB"]
