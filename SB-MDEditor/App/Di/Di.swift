@@ -4,18 +4,13 @@ final class Di {
 	weak var rootVC: IRootViewController?
 	// MARK: - глобальные сервисы-зависимости
 
-	private let storage: UserDefaults
 	private var dependencies: AllDependencies! // swiftlint:disable:this implicitly_unwrapped_optional
 
 	// MARK: - инициализация глобальных сервисов
-	init(
-		rootVC: IRootViewController,
-		storage: UserDefaults = .standard
-	) {
+	init(rootVC: IRootViewController) {
 		self.rootVC = rootVC
-		self.storage = storage
 
-		let filesStorageProvider = makeFilesStorageProvider(storage)
+		let filesStorageProvider = makeFilesStorageProvider()
 
 		dependencies = Dependency(
 			storage: filesStorageProvider,
@@ -31,23 +26,23 @@ final class Di {
 
 // MARK: - Module Dependency
 
-protocol IMainModuleDepencency {
+protocol IMainModuleDependency {
 	var storage: IFilesStorageProvider { get }
 }
-protocol IOpenModuleDocDepencency {
+protocol IOpenModuleDocDependency {
 	var storage: IFilesStorageProvider { get }
 	var localFiles: ILocalFilesProvider { get }
 }
-protocol ICreateModuleDocDepencency {
+protocol ICreateModuleDocDependency {
 	var storage: IFilesStorageProvider { get }
 }
-protocol IAboutModuleDepencency {}
+protocol IAboutModuleDependency {}
 
 typealias AllDependencies = (
-	IMainModuleDepencency &
-	IOpenModuleDocDepencency &
-	ICreateModuleDocDepencency &
-	IAboutModuleDepencency
+	IMainModuleDependency &
+	IOpenModuleDocDependency &
+	ICreateModuleDocDependency &
+	IAboutModuleDependency
 )
 
 // MARK: - ModuleFactory
