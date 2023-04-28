@@ -49,11 +49,8 @@ extension Theme {
 		}()
 
 		static let aboutFilePath: String = {
-			if let bundle = Bundle.main.resourcePath {
-				let path = bundle + "/About.md"
-				return path
-			}
-			return ""
+			guard let bundle = Bundle.main.resourcePath else { return "" }
+			return bundle + "/About.md"
 		}()
 
 		static let exts = ["md"]
