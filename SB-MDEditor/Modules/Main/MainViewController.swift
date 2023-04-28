@@ -28,11 +28,11 @@ final class MainViewController: UIViewController, MainDisplayLogic {
 	init(
 		interactor: MainBusinessLogic,
 		router: (NSObjectProtocol & MainRoutingLogic & MainDataPassing),
-		sectionManager: ISectionManager
+		dep: IMainModuleDependency
 	) {
 		self.interactor = interactor
 		self.router = router
-		self.sectionManager = sectionManager
+		self.storage = dep.storage
 		super.init(nibName: nil, bundle: nil)
 	}
 
@@ -60,7 +60,7 @@ final class MainViewController: UIViewController, MainDisplayLogic {
 	// MARK: Do something
 	func doSomething() {
 		let request = Main.Something.Request()
-		interactor.doSomething(request: request)
+		interactor?.doSomething(request: request)
 	}
 
 	func displaySomething(viewModel: Main.Something.ViewModel) {}
