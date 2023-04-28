@@ -14,13 +14,15 @@ final class Di {
 
 		dependencies = Dependency(
 			storage: filesStorageProvider,
-			localFiles: makeLocalFilesProvider(filesStorageProvider)
+			localFiles: makeLocalFilesProvider(filesStorageProvider),
+			sectionManager: SectionManager()
 		)
 	}
 
 	struct Dependency: AllDependencies {
 		let storage: IFilesStorageProvider
 		let localFiles: ILocalFilesProvider
+		let sectionManager: ISectionManager
 	}
 }
 
@@ -28,6 +30,7 @@ final class Di {
 
 protocol IMainModuleDependency {
 	var storage: IFilesStorageProvider { get }
+	var sectionManager: ISectionManager { get }
 }
 protocol IOpenModuleDocDependency {
 	var storage: IFilesStorageProvider { get }
@@ -49,7 +52,7 @@ typealias AllDependencies = (
 
 extension Di: ModuleFactory {
 	func makeStartModule() -> Module {
-		makeMainModule()
+		makeAboutModule()
 	}
 
 	func makeAboutModule() -> Module {
@@ -64,11 +67,12 @@ extension Di: ModuleFactory {
 		let worker = MainWorker()
 		let interactor = MainInteractor(presenter: presenter, worker: worker)
 		let router = MainRouter()
-		let sectionManager = SectionManager()
+
+		// TODO: - зависимости переданы в VC для тестовых целей, можно оставить так, но не забыть передать нужное interactor
 		let viewController = MainViewController(
 			interactor: interactor,
 			router: router,
-			sectionManager: sectionManager
+			dep: dependencies
 		)
 
 		presenter.viewController = viewController

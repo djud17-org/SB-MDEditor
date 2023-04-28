@@ -32,7 +32,7 @@ final class MainViewController: UIViewController, MainDisplayLogic {
 	) {
 		self.interactor = interactor
 		self.router = router
-		self.storage = dep.storage
+		self.sectionManager = dep.sectionManager
 		super.init(nibName: nil, bundle: nil)
 	}
 
@@ -60,7 +60,7 @@ final class MainViewController: UIViewController, MainDisplayLogic {
 	// MARK: Do something
 	func doSomething() {
 		let request = Main.Something.Request()
-		interactor?.doSomething(request: request)
+		interactor.doSomething(request: request)
 	}
 
 	func displaySomething(viewModel: Main.Something.ViewModel) {}
