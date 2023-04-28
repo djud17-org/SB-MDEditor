@@ -54,26 +54,6 @@ final class MainViewController: UIViewController, MainDisplayLogic {
 	func doSomething() {
 		let request = Main.Something.Request()
 		interactor?.doSomething(request: request)
-
-		storage.add(fileName: "FileName")
-		storage.add(fileName: "FileName2")
-		storage.add(fileName: "FileName")
-		storage.add(fileName: "FileName3")
-		storage.add(fileName: "FileName")
-		storage.add(fileName: "FileName4")
-		storage.add(fileName: "FileName")
-		storage.add(fileName: "FileName5")
-		storage.add(fileName: "FileName")
-		storage.add(fileName: "FileName6")
-		print(storage.getRecentFiles())
-
-		print("================")
-
-		storage.currentPath = "123/456"
-		print(storage.currentPath ?? "данных нет")
-
-		storage.removeCurrentPath()
-		print(storage.currentPath ?? "данных нет")
 	}
 
 	func displaySomething(viewModel: Main.Something.ViewModel) {}
