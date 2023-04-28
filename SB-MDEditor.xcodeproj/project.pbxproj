@@ -25,6 +25,7 @@
 		5A48064F29DBCBFB0096B7D8 /* Swift_BaseUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A48064E29DBCBFB0096B7D8 /* Swift_BaseUITests.swift */; };
 		5A48065129DBCBFB0096B7D8 /* Swift_BaseUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A48065029DBCBFB0096B7D8 /* Swift_BaseUITestsLaunchTests.swift */; };
 		5A61DD3D29E13FF9001E8665 /* UIView+Preview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A61DD3C29E13FF9001E8665 /* UIView+Preview.swift */; };
+		5A8F68D929FB06FD00749CDF /* Theme+Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8F68D829FB06FD00749CDF /* Theme+Constants.swift */; };
 		5A91DED829E0DF58001A23C3 /* UIView+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A91DED729E0DF58001A23C3 /* UIView+Constraints.swift */; };
 		5A91DEDA29E12F82001A23C3 /* UIViewController+Preview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A91DED929E12F82001A23C3 /* UIViewController+Preview.swift */; };
 		5ACEB26A29EE0D00008E80A2 /* Theme+Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ACEB26929EE0D00008E80A2 /* Theme+Colors.swift */; };
@@ -101,6 +102,7 @@
 		5A48064E29DBCBFB0096B7D8 /* Swift_BaseUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Swift_BaseUITests.swift; sourceTree = "<group>"; };
 		5A48065029DBCBFB0096B7D8 /* Swift_BaseUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Swift_BaseUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		5A61DD3C29E13FF9001E8665 /* UIView+Preview.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Preview.swift"; sourceTree = "<group>"; };
+		5A8F68D829FB06FD00749CDF /* Theme+Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Theme+Constants.swift"; sourceTree = "<group>"; };
 		5A91DED729E0DF58001A23C3 /* UIView+Constraints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Constraints.swift"; sourceTree = "<group>"; };
 		5A91DED929E12F82001A23C3 /* UIViewController+Preview.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Preview.swift"; sourceTree = "<group>"; };
 		5ACEB26929EE0D00008E80A2 /* Theme+Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Theme+Colors.swift"; sourceTree = "<group>"; };
@@ -307,6 +309,7 @@
 				5ACEB26B29EE0D6B008E80A2 /* Theme+Images.swift */,
 				5ACEB26D29EE0E37008E80A2 /* Theme+Sizes+Spacing.swift */,
 				5ACEB26F29EE0E96008E80A2 /* Theme+DateFormatter.swift */,
+				5A8F68D829FB06FD00749CDF /* Theme+Constants.swift */,
 			);
 			path = Theme;
 			sourceTree = "<group>";
@@ -612,6 +615,7 @@
 				5A61DD3D29E13FF9001E8665 /* UIView+Preview.swift in Sources */,
 				5ACEB26C29EE0D6B008E80A2 /* Theme+Images.swift in Sources */,
 				5ACEB27E29EE65A8008E80A2 /* UIColor+Hex.swift in Sources */,
+				5A8F68D929FB06FD00749CDF /* Theme+Constants.swift in Sources */,
 				5ACEB2AB29EFE90F008E80A2 /* UITableView+Extensions.swift in Sources */,
 				5ACEB26A29EE0D00008E80A2 /* Theme+Colors.swift in Sources */,
 				5A48061D29DBA73B0096B7D8 /* AppDelegate.swift in Sources */,
