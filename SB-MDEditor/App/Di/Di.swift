@@ -62,6 +62,7 @@ extension Di: ModuleFactory {
 		)
 
 		presenter.viewController = viewController
+		router.view = rootVC
 
 		let navigationVC = UINavigationController(rootViewController: viewController)
 		navigationVC.navigationBar.prefersLargeTitles = true
