@@ -7,23 +7,23 @@
 
 import UIKit
 
-protocol AboutBusinessLogic {
+protocol IBusinessLogic {
 	func readFileContents()
 }
 
-final class AboutInteractor: AboutBusinessLogic {
+final class AboutInteractor: IBusinessLogic {
 
 	// MARK: Parameters
-	private var presenter: AboutPresentationLogic?
+	private var presenter: IPresentationLogic
 
-	init(presenter: AboutPresentationLogic) {
+	init(presenter: IPresentationLogic) {
 		self.presenter = presenter
 	}
 
 	func readFileContents() {
 		let fileManager = FileManager.default
 		if let aboutFileData = fileManager.contents(atPath: Appearance.aboutFilePath) {
-			presenter?.present(data: aboutFileData)
+			presenter.present(data: aboutFileData)
 		}
 	}
 }

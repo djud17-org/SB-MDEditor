@@ -7,14 +7,14 @@
 
 import UIKit
 
-protocol AboutPresentationLogic {
+protocol IPresentationLogic {
 	func present(data: Data)
 }
 
-final class AboutPresenter: AboutPresentationLogic {
+final class AboutPresenter: IPresentationLogic {
 
 	// MARK: Parameters
-	weak var viewController: AboutDisplayLogic?
+	weak var viewController: IDisplayLogic?
 
 	// MARK: Functions
 	func present(data: Data) {

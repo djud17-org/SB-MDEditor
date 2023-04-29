@@ -1,22 +1,25 @@
 import UIKit
 
-protocol AboutDisplayLogic: AnyObject {
+protocol IDisplayLogic: AnyObject {
+
+	/// Функция  реализует представление данных на экране контроллера.
+	/// - Parameter text: Текстовое представление данных.
 	func render(text: String)
 }
 
-final class AboutViewController: UIViewController, AboutDisplayLogic {
+final class AboutViewController: UIViewController, IDisplayLogic {
 	// MARK: - Parameters
 
-	private let interactor: AboutBusinessLogic?
-	private let router: (NSObjectProtocol & AboutRoutingLogic)
+	private let interactor: IBusinessLogic
+	private let router: (NSObjectProtocol & IRoutingLogic)
 
 	private lazy var aboutTextView: UITextView = makeAboutTextView()
 
 	// MARK: - Inits
 
 	init(
-		interactor: AboutBusinessLogic,
-		router: (NSObjectProtocol & AboutRoutingLogic)
+		interactor: IBusinessLogic,
+		router: (NSObjectProtocol & IRoutingLogic)
 	) {
 		self.interactor = interactor
 		self.router = router
@@ -34,7 +37,7 @@ final class AboutViewController: UIViewController, AboutDisplayLogic {
 		setup()
 		applyStyle()
 		setupConstraints()
-		interactor?.readFileContents()
+		interactor.readFileContents()
 	}
 
 	// MARK: - DO something

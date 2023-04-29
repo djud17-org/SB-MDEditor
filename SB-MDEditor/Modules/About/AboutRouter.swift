@@ -7,8 +7,8 @@
 
 import UIKit
 
-protocol AboutRoutingLogic: MainRouting {}
+protocol IRoutingLogic: MainRouting {}
 
-final class AboutRouter: NSObject, AboutRoutingLogic {
+final class AboutRouter: NSObject, IRoutingLogic {
 	weak var view: IRootViewController?
 }
