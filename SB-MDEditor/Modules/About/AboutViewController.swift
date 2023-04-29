@@ -3,7 +3,7 @@ import UIKit
 protocol IDisplayLogic: AnyObject {
 	/// Рендрит представление данных на экран контроллера.
 	/// - Parameter text: Текстовое представление данных.
-	func render(text: ViewData)
+	func render(text: AboutModels.ViewData)
 }
 
 final class AboutViewController: UIViewController {
@@ -44,7 +44,7 @@ final class AboutViewController: UIViewController {
 // MARK: - IDisplayLogic
 
 extension AboutViewController: IDisplayLogic {
-	func render(text: ViewData) {
+	func render(text: AboutModels.ViewData) {
 		aboutTextView.text = text.textView
 	}
 }

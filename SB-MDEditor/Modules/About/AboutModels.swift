@@ -7,6 +7,8 @@
 
 import Foundation
 
-struct ViewData {
-	let textView: String
+enum AboutModels {
+	struct ViewData {
+		let textView: String
+	}
 }

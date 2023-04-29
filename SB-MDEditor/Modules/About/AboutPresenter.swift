@@ -21,7 +21,7 @@ final class AboutPresenter: IPresentationLogic {
 	// MARK: Functions
 	func present(data: Data) {
 		guard let textString = String(data: data, encoding: .utf8) else { return }
-		let viewData = ViewData(textView: textString)
+		let viewData = AboutModels.ViewData(textView: textString)
 		viewController?.render(text: viewData)
 	}
 }
