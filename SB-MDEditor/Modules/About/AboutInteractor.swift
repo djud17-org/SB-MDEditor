@@ -8,13 +8,15 @@
 import UIKit
 
 protocol IBusinessLogic {
+
+	/// Функция осуществляет чтение данных для отображения на экране контроллера.
 	func readFileContents()
 }
 
 final class AboutInteractor: IBusinessLogic {
 
 	// MARK: Parameters
-	private var presenter: IPresentationLogic
+	private let presenter: IPresentationLogic
 
 	init(presenter: IPresentationLogic) {
 		self.presenter = presenter

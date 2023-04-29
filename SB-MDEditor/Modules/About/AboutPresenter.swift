@@ -8,6 +8,8 @@
 import UIKit
 
 protocol IPresentationLogic {
+
+	/// Функция осуществляет передачу данных контроллеру для отображения.
 	func present(data: Data)
 }
 
