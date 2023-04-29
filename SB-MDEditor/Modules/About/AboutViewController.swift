@@ -1,13 +1,12 @@
 import UIKit
 
 protocol IDisplayLogic: AnyObject {
-
-	/// Функция  реализует представление данных на экране контроллера.
+	/// Рендрит представление данных на экран контроллера.
 	/// - Parameter text: Текстовое представление данных.
 	func render(text: ViewData)
 }
 
-final class AboutViewController: UIViewController, IDisplayLogic {
+final class AboutViewController: UIViewController {
 	// MARK: - Parameters
 
 	private let interactor: IBusinessLogic
@@ -37,14 +36,21 @@ final class AboutViewController: UIViewController, IDisplayLogic {
 		setup()
 		applyStyle()
 		setupConstraints()
+
 		interactor.readFileContents()
 	}
+}
 
-	// MARK: - DO something
+// MARK: - IDisplayLogic
+
+extension AboutViewController: IDisplayLogic {
 	func render(text: ViewData) {
 		aboutTextView.text = text.textView
 	}
+}
 
+// MARK: - Action
+private extension AboutViewController {
 	@objc func returnToMainScreen() {
 		router.navigate(.toMainModule)
 	}
@@ -54,8 +60,7 @@ final class AboutViewController: UIViewController, IDisplayLogic {
 private extension AboutViewController {
 	func setup() {
 		navigationItem.leftBarButtonItem = UIBarButtonItem(
-			title: "Back",
-			style: .plain,
+			barButtonSystemItem: .close,
 			target: self,
 			action: #selector(returnToMainScreen)
 		)
@@ -70,7 +75,6 @@ private extension AboutViewController {
 		[
 			aboutTextView
 		].forEach { item in
-			item.translatesAutoresizingMaskIntoConstraints = false
 			view.addSubview(item)
 		}
 
@@ -83,7 +87,7 @@ private extension AboutViewController {
 	func makeAboutTextView() -> UITextView {
 		let textView = UITextView()
 		textView.backgroundColor = Theme.color(usage: .background)
-		textView.font = Theme.font(style: .title)
+		textView.font = Theme.font(style: .caption)
 		textView.textColor = Theme.color(usage: .main)
 		return textView
 	}
