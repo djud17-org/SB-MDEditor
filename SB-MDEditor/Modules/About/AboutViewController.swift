@@ -45,7 +45,7 @@ final class AboutViewController: UIViewController {
 
 extension AboutViewController: IDisplayLogic {
 	func render(text: AboutModels.ViewData) {
-		aboutTextView.text = text.textView
+		aboutTextView.text = text.fileContents
 	}
 }
 

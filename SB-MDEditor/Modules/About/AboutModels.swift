@@ -9,6 +9,6 @@ import Foundation
 
 enum AboutModels {
 	struct ViewData {
-		let textView: String
+		let fileContents: String
 	}
 }
