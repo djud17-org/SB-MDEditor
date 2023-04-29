@@ -48,7 +48,7 @@ final class File {
 }
 
 // MARK: - Private methods
-private extension File {
+extension File {
 	func getFormattedSize() -> String {
 		getFormattedSize(with: size)
 	}

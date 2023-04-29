@@ -52,7 +52,7 @@ typealias AllDependencies = (
 
 extension Di: ModuleFactory {
 	func makeStartModule() -> Module {
-		makeAboutModule()
+		makeOpenDocModule()
 	}
 
 	func makeAboutModule() -> Module {
@@ -87,9 +87,16 @@ extension Di: ModuleFactory {
 	}
 
 	func makeOpenDocModule() -> Module {
-		let viewController = OpenDocViewController()
+		let presenter = OpenDocPresenter()
+		let interactor = OpenDocInteractor(presenter: presenter, dep: dependencies)
+		let router = OpenDocRouter()
+
+		let viewController = OpenDocViewController(interactor: interactor, router: router)
+
+		presenter.viewController = viewController
+
 		let navigationVC = UINavigationController(rootViewController: viewController)
-		navigationVC.navigationBar.isHidden = true
+		navigationVC.navigationBar.isHidden = false
 		return .init(viewController: navigationVC, animatedType: .dismiss)
 	}
 

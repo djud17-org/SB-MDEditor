@@ -55,13 +55,19 @@
 		5ACEB29729EEA7AF008E80A2 /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ACEB29629EEA7AF008E80A2 /* Types.swift */; };
 		5ACEB29929EEAAB0008E80A2 /* UIView+hide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ACEB29829EEAAB0008E80A2 /* UIView+hide.swift */; };
 		5ACEB29B29EECC91008E80A2 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ACEB29A29EECC91008E80A2 /* AboutViewController.swift */; };
-		5ACEB29E29EED6CA008E80A2 /* OpenDocViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ACEB29D29EED6CA008E80A2 /* OpenDocViewController.swift */; };
 		5ACEB2A129EED8A7008E80A2 /* CreateDocViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ACEB2A029EED8A7008E80A2 /* CreateDocViewController.swift */; };
 		5ACEB2A929EEED86008E80A2 /* CellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ACEB2A629EEED86008E80A2 /* CellViewModel.swift */; };
 		5ACEB2AB29EFE90F008E80A2 /* UITableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ACEB2AA29EFE90F008E80A2 /* UITableView+Extensions.swift */; };
 		5AFA77CE29F4B36A0010478E /* Di+ServiceFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFA77CD29F4B36A0010478E /* Di+ServiceFactory.swift */; };
 		5AFA77D129F4B3D10010478E /* FilesStorageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFA77D029F4B3D10010478E /* FilesStorageProvider.swift */; };
 		6004CE2B29F564520074D9E5 /* EmptyInputData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6004CE2A29F564520074D9E5 /* EmptyInputData.swift */; };
+		6064CC0E29FD852D00B8B74D /* OpenDocRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6064CC0D29FD852D00B8B74D /* OpenDocRouter.swift */; };
+		609CAFF729FD466100834937 /* OpenDocInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 609CAFF229FD466100834937 /* OpenDocInteractor.swift */; };
+		609CAFF829FD466100834937 /* OpenDocPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 609CAFF329FD466100834937 /* OpenDocPresenter.swift */; };
+		609CAFF929FD466100834937 /* OpenDocViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 609CAFF429FD466100834937 /* OpenDocViewController.swift */; };
+		609CAFFA29FD466100834937 /* OpenDocModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 609CAFF529FD466100834937 /* OpenDocModels.swift */; };
+		609CAFFF29FD46ED00834937 /* OpenDocCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 609CAFFE29FD46ED00834937 /* OpenDocCellModel.swift */; };
+		609CB00129FD470700834937 /* OpenDocCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 609CB00029FD470700834937 /* OpenDocCell.swift */; };
 		60D43BB729F1A61300C5AF4F /* MD_Bandle in Resources */ = {isa = PBXBuildFile; fileRef = 60D43BB629F1A61300C5AF4F /* MD_Bandle */; };
 		ABD1DB6129F7BE4D00C7B471 /* About.md in Resources */ = {isa = PBXBuildFile; fileRef = ABD1DB6029F7BE4D00C7B471 /* About.md */; };
 /* End PBXBuildFile section */
@@ -137,7 +143,6 @@
 		5ACEB29629EEA7AF008E80A2 /* Types.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Types.swift; sourceTree = "<group>"; };
 		5ACEB29829EEAAB0008E80A2 /* UIView+hide.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+hide.swift"; sourceTree = "<group>"; };
 		5ACEB29A29EECC91008E80A2 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
-		5ACEB29D29EED6CA008E80A2 /* OpenDocViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenDocViewController.swift; sourceTree = "<group>"; };
 		5ACEB2A029EED8A7008E80A2 /* CreateDocViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateDocViewController.swift; sourceTree = "<group>"; };
 		5ACEB2A629EEED86008E80A2 /* CellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellViewModel.swift; sourceTree = "<group>"; };
 		5ACEB2AA29EFE90F008E80A2 /* UITableView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+Extensions.swift"; sourceTree = "<group>"; };
@@ -145,6 +150,13 @@
 		5AFA77D029F4B3D10010478E /* FilesStorageProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilesStorageProvider.swift; sourceTree = "<group>"; };
 		6004CE2A29F564520074D9E5 /* EmptyInputData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyInputData.swift; sourceTree = "<group>"; };
 		6004CE2C29F5646C0074D9E5 /* EmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
+		6064CC0D29FD852D00B8B74D /* OpenDocRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenDocRouter.swift; sourceTree = "<group>"; };
+		609CAFF229FD466100834937 /* OpenDocInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenDocInteractor.swift; sourceTree = "<group>"; };
+		609CAFF329FD466100834937 /* OpenDocPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenDocPresenter.swift; sourceTree = "<group>"; };
+		609CAFF429FD466100834937 /* OpenDocViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenDocViewController.swift; sourceTree = "<group>"; };
+		609CAFF529FD466100834937 /* OpenDocModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenDocModels.swift; sourceTree = "<group>"; };
+		609CAFFE29FD46ED00834937 /* OpenDocCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenDocCellModel.swift; sourceTree = "<group>"; };
+		609CB00029FD470700834937 /* OpenDocCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OpenDocCell.swift; path = ../../../../../../../../../.Trash/OpenDocCell/OpenDocCell.swift; sourceTree = "<group>"; };
 		60D43BB629F1A61300C5AF4F /* MD_Bandle */ = {isa = PBXFileReference; lastKnownFileType = folder; path = MD_Bandle; sourceTree = "<group>"; };
 		ABD1DB6029F7BE4D00C7B471 /* About.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = About.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -411,7 +423,12 @@
 		5ACEB29F29EED863008E80A2 /* OpenDoc */ = {
 			isa = PBXGroup;
 			children = (
-				5ACEB29D29EED6CA008E80A2 /* OpenDocViewController.swift */,
+				609CAFFB29FD46D600834937 /* OpenDocCell */,
+				609CAFF529FD466100834937 /* OpenDocModels.swift */,
+				609CAFF229FD466100834937 /* OpenDocInteractor.swift */,
+				609CAFF329FD466100834937 /* OpenDocPresenter.swift */,
+				609CAFF429FD466100834937 /* OpenDocViewController.swift */,
+				6064CC0D29FD852D00B8B74D /* OpenDocRouter.swift */,
 			);
 			path = OpenDoc;
 			sourceTree = "<group>";
@@ -439,6 +456,15 @@
 				25AEE10029F7075800E177AE /* LocalFilesProvider.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		609CAFFB29FD46D600834937 /* OpenDocCell */ = {
+			isa = PBXGroup;
+			children = (
+				609CB00029FD470700834937 /* OpenDocCell.swift */,
+				609CAFFE29FD46ED00834937 /* OpenDocCellModel.swift */,
+			);
+			path = OpenDocCell;
 			sourceTree = "<group>";
 		};
 		60D43BB329F1A56900C5AF4F /* Assets */ = {
@@ -636,10 +662,10 @@
 				25FC42F129F1CCB0001895ED /* MainView.swift in Sources */,
 				5ACEB27929EE64D9008E80A2 /* Di.swift in Sources */,
 				5ACEB28E29EE7AB5008E80A2 /* MainViewController.swift in Sources */,
-				5ACEB29E29EED6CA008E80A2 /* OpenDocViewController.swift in Sources */,
 				5ACEB28129EE6EC7008E80A2 /* RootViewController.swift in Sources */,
 				5ACEB26E29EE0E37008E80A2 /* Theme+Sizes+Spacing.swift in Sources */,
 				5ACEB27029EE0E96008E80A2 /* Theme+DateFormatter.swift in Sources */,
+				609CAFF929FD466100834937 /* OpenDocViewController.swift in Sources */,
 				5AFA77CE29F4B36A0010478E /* Di+ServiceFactory.swift in Sources */,
 				5A48062129DBA73B0096B7D8 /* ViewController.swift in Sources */,
 				2566241F29F8530700FF09EE /* File.swift in Sources */,
@@ -648,10 +674,14 @@
 				5A91DED829E0DF58001A23C3 /* UIView+Constraints.swift in Sources */,
 				25FC42FE29F1F255001895ED /* UICollectionView+Extensions.swift in Sources */,
 				5ACEB2A929EEED86008E80A2 /* CellViewModel.swift in Sources */,
+				609CAFFF29FD46ED00834937 /* OpenDocCellModel.swift in Sources */,
 				5ACEB28329EE7829008E80A2 /* MainRouting.swift in Sources */,
+				609CAFF829FD466100834937 /* OpenDocPresenter.swift in Sources */,
 				25AEE10129F7075800E177AE /* LocalFilesProvider.swift in Sources */,
 				6004CE2B29F564520074D9E5 /* EmptyInputData.swift in Sources */,
 				2545566829F0733200B9CFD0 /* Strings.swift in Sources */,
+				609CB00129FD470700834937 /* OpenDocCell.swift in Sources */,
+				6064CC0E29FD852D00B8B74D /* OpenDocRouter.swift in Sources */,
 				5ACEB28C29EE7AB5008E80A2 /* MainRouter.swift in Sources */,
 				25FC42F529F1CD89001895ED /* RecentFileCell.swift in Sources */,
 				5ACEB28A29EE7AB5008E80A2 /* MainPresenter.swift in Sources */,
@@ -672,10 +702,12 @@
 				5AFA77D129F4B3D10010478E /* FilesStorageProvider.swift in Sources */,
 				5ACEB28B29EE7AB5008E80A2 /* MainWorker.swift in Sources */,
 				5ACEB29429EEA690008E80A2 /* ErrorInputData.swift in Sources */,
+				609CAFFA29FD466100834937 /* OpenDocModels.swift in Sources */,
 				25FC42FC29F1D9E1001895ED /* MenuItemCell.swift in Sources */,
 				5ACEB28D29EE7AB5008E80A2 /* MainModels.swift in Sources */,
 				5ACEB29729EEA7AF008E80A2 /* Types.swift in Sources */,
 				5ACEB29B29EECC91008E80A2 /* AboutViewController.swift in Sources */,
+				609CAFF729FD466100834937 /* OpenDocInteractor.swift in Sources */,
 				5ACEB27829EE64D9008E80A2 /* Di+ModuleFactory.swift in Sources */,
 				5ACEB28F29EE7AB5008E80A2 /* MainInteractor.swift in Sources */,
 			);
