@@ -10,7 +10,7 @@ final class AboutViewController: UIViewController, AboutDisplayLogic {
 	private let interactor: AboutBusinessLogic?
 	private let router: (NSObjectProtocol & AboutRoutingLogic)
 
-	private lazy var aboutTextView = UITextView()
+	private lazy var aboutTextView: UITextView = makeAboutTextView()
 
 	// MARK: - Inits
 
@@ -41,15 +41,28 @@ final class AboutViewController: UIViewController, AboutDisplayLogic {
 	func render(text: String) {
 		aboutTextView.text = text
 	}
+
+	@objc func returnToMainScreen() {
+		router.navigate(.toMainModule)
+	}
 }
 
 // MARK: - UI
 private extension AboutViewController {
-	func setup() { }
+	func setup() {
+		navigationItem.leftBarButtonItem = UIBarButtonItem(
+			title: "Back",
+			style: .plain,
+			target: self,
+			action: #selector(returnToMainScreen)
+		)
+	}
+
 	func applyStyle() {
 		title = Appearance.title
 		view.backgroundColor = Theme.color(usage: .background)
 	}
+
 	func setupConstraints() {
 		[
 			aboutTextView
