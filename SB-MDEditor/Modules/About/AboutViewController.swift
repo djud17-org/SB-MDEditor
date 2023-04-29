@@ -4,7 +4,7 @@ protocol IDisplayLogic: AnyObject {
 
 	/// Функция  реализует представление данных на экране контроллера.
 	/// - Parameter text: Текстовое представление данных.
-	func render(text: String)
+	func render(text: ViewData)
 }
 
 final class AboutViewController: UIViewController, IDisplayLogic {
@@ -41,8 +41,8 @@ final class AboutViewController: UIViewController, IDisplayLogic {
 	}
 
 	// MARK: - DO something
-	func render(text: String) {
-		aboutTextView.text = text
+	func render(text: ViewData) {
+		aboutTextView.text = text.textView
 	}
 
 	@objc func returnToMainScreen() {
