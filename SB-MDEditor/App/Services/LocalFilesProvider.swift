@@ -148,7 +148,7 @@ private extension LocalFilesProvider {
 
 			let ext = fileType == .directory
 			? ""
-			: String(describing: fileName.split(separator: ".").last)
+			: String(describing: fileName.split(separator: ".").last ?? "")
 
 			let file = File(
 				name: fileName,

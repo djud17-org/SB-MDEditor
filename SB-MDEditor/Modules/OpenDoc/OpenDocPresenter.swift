@@ -8,36 +8,58 @@
 import UIKit
 
 protocol IOpenDocPresenter {
-	func present(response: OpenDocModel.Something.Response)
-
-	func presentNewOpenDocView()
+	func present(response: OpenDocModel.Response)
+	func transit(with file: OpenDocModel.ViewModel)
 }
 
 final class OpenDocPresenter: IOpenDocPresenter {
 	weak var viewController: IOpenDocViewController?
 
-	func present(response: OpenDocModel.Something.Response) {
-
+	func present(response: OpenDocModel.Response) {
 		let viewModel = mapViewModel(data: response)
 		viewController?.render(viewModel: viewModel)
 	}
 
-	func presentNewOpenDocView() {
+	func transit(with file: OpenDocModel.ViewModel) {
+		viewController?.render(viewModel: file)
 	}
+}
 
-	private func mapViewModel(data: OpenDocModel.Something.Response) -> OpenDocModel.Something.ViewModel {
-		var result = [OpenDocModel.Something.ViewModel.FileViewModel]()
+// MARK: - Private methods
+private extension OpenDocPresenter {
+	func mapViewModel(data: OpenDocModel.Response) -> OpenDocModel.ViewModel {
+		var files: [OpenDocModel.ViewData.FileViewModel] = []
 
-		for element in data.files {
-			let fileData = OpenDocModel.Something.ViewModel.FileViewModel(
-				name: element.name,
-				fileAttributes: element.getFormattedAttributes(),
-				fileImage: element.filetype == File.FileType.directory ? Asset.icFolder.image : Asset.icFile.image
+		for file in data.files {
+			let fileData = OpenDocModel.ViewData.FileViewModel(
+				name: file.name,
+				fileAttributes: file.getFormattedAttributes(),
+				fileImage: getImage(typeFile: file.filetype)
 			)
 
-			result.append(fileData)
+			files.append(fileData)
 		}
 
-		return OpenDocModel.Something.ViewModel(files: result)
+		var title = data.file.name
+		if title.isEmpty {
+			title = "/"
+		}
+
+		return .showDir(
+			.init(
+				title: title,
+				hasPreviousPath: !data.file.path.isEmpty,
+				files: files
+			)
+		)
+	}
+
+	func getImage(typeFile: File.FileType) -> UIImage {
+		switch typeFile {
+		case .directory:
+			return Asset.icFolder.image
+		case .file:
+			return Asset.icFile.image
+		}
 	}
 }

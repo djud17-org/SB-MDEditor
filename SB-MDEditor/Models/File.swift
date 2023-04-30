@@ -45,13 +45,6 @@ final class File {
 		self.creationDate = creationDate
 		self.modificationDate = modificationDate
 	}
-}
-
-// MARK: - Private methods
-extension File {
-	func getFormattedSize() -> String {
-		getFormattedSize(with: size)
-	}
 
 	func getFormattedAttributes() -> String {
 		let formattedSize = getFormattedSize()
@@ -64,6 +57,25 @@ extension File {
 		case .file:
 			return "\"\(ext)\" – \(dateFormatter.string(from: modificationDate)) | \(formattedSize)"
 		}
+	}
+
+	static func makePrototypeDir() -> File {
+		File(
+			name: "",
+			path: "",
+			ext: "",
+			size: .zero,
+			filetype: .directory,
+			creationDate: Date(),
+			modificationDate: Date()
+		)
+	}
+}
+
+// MARK: - Private methods
+private extension File {
+	func getFormattedSize() -> String {
+		getFormattedSize(with: size)
 	}
 
 	func getFormattedSize(with size: UInt64) -> String {

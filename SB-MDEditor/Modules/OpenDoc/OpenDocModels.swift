@@ -8,23 +8,27 @@
 import UIKit
 
 enum OpenDocModel {
-	// MARK: Use cases
+	struct Response {
+		let file: File
+		let files: [File]
+	}
 
-	enum Something {
-		struct Request {}
-
-		struct Response {
-			let files: [File]
+	struct ViewData {
+		struct FileViewModel {
+			let name: String
+			let fileAttributes: String
+			let fileImage: UIImage
 		}
 
-		struct ViewModel {
-			struct FileViewModel {
-				let name: String
-				let fileAttributes: String
-				let fileImage: UIImage
-			}
+		let title: String
+		let hasPreviousPath: Bool
+		let files: [FileViewModel]
+	}
 
-			let files: [FileViewModel]
-		}
+	enum ViewModel {
+		case openFile(File)
+		case showDir(ViewData)
+		case openDir(File)
+		case backDir(File)
 	}
 }

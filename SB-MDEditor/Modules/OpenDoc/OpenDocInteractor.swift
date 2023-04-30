@@ -10,41 +10,60 @@ import Foundation
 protocol IOpenDocInteractor {
 	func viewIsReady()
 	func didFileSelected(at indexPath: IndexPath)
-}
-
-protocol IOpenDocDataStore {
-	// var name: String { get set }
+	func backToPreviousPath()
 }
 
 final class OpenDocInteractor: IOpenDocInteractor {
 	private let presenter: IOpenDocPresenter?
 	private let localFiles: ILocalFilesProvider
+	private var initialFile: File
 
-	init(presenter: IOpenDocPresenter, dep: IOpenModuleDocDependency) {
+	init(
+		presenter: IOpenDocPresenter,
+		dep: IOpenModuleDocDependency,
+		initialFile: File
+	) {
 		self.presenter = presenter
 		self.localFiles = dep.localFiles
+		self.initialFile = initialFile
 	}
 
 	func viewIsReady() {
-		let response = OpenDocModel.Something.Response(files: localFiles.getFiles())
+		let currentPath = localFiles.setPath(initialFile.fullname)
+		if currentPath.isEmpty {
+			initialFile = File.makePrototypeDir()
+		}
+
+		let response = OpenDocModel.Response(
+			file: initialFile,
+			files: localFiles.getFiles()
+		)
 		presenter?.present(response: response)
-		print(localFiles.getPath())
 	}
 
 	func didFileSelected(at indexPath: IndexPath) {
+		// TODO: - здесь надо делать проверку - файла может уже не быть
 		let files = localFiles.getFiles()
 		let file = files[indexPath.row]
 
-		setPath(with: file.path)
-
-		if file.filetype == File.FileType.file {
-			print("Select \(file.fullname)")
-		} else {
-			viewIsReady()
+		switch file.filetype {
+		case .directory:
+			presenter?.transit(with: .openDir(file))
+		case .file:
+			presenter?.transit(with: .openFile(file))
 		}
 	}
 
-	private func setPath(with path: String) {
-		_ = localFiles.setPath(path)
+	func backToPreviousPath() {
+		let path = initialFile.path
+		let isRoot = initialFile.fullname == path
+
+		let file = File.makePrototypeDir()
+		if !isRoot {
+			file.name = (path as NSString).lastPathComponent
+			file.path = (path as NSString).deletingLastPathComponent
+		}
+
+		presenter?.transit(with: .openDir(file))
 	}
 }

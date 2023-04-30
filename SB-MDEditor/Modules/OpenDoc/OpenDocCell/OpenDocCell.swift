@@ -43,16 +43,16 @@ class OpenDocCell: UITableViewCell {
 				make.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: Theme.spacing(usage: .standard))
 			]
 		}
-			fieldFileName.makeConstraints { make in
-				[
-					make.topAnchor.constraint(equalTo: contentView.topAnchor, constant: Theme.spacing(usage: .standard)),
-					make.leadingAnchor.constraint(equalTo: fieldImage.trailingAnchor, constant: Theme.spacing(usage: .standard))
-				]
-			}
+		fieldFileName.makeConstraints { make in
+			[
+				make.topAnchor.constraint(equalTo: contentView.topAnchor, constant: Theme.spacing(usage: .standard)),
+				make.leadingAnchor.constraint(equalTo: fieldImage.trailingAnchor, constant: Theme.spacing(usage: .standard))
+			]
+		}
 
 		fieldFileAttributes.makeConstraints { make in
 			[
-				make.topAnchor.constraint(equalTo: contentView.topAnchor, constant: Theme.spacing(usage: .standard2)),
+				make.topAnchor.constraint(equalTo: fieldFileName.bottomAnchor, constant: Theme.spacing(usage: .standard)),
 				make.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -Theme.spacing(usage: .standard))
 			]
 		}

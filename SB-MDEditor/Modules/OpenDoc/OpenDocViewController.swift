@@ -1,19 +1,31 @@
 import UIKit
 
 protocol IOpenDocViewController: AnyObject {
-	func render(viewModel: OpenDocModel.Something.ViewModel)
+	func render(viewModel: OpenDocModel.ViewModel)
 }
 
 final class OpenDocViewController: UITableViewController {
 	private let interactor: IOpenDocInteractor
-	private let router: (NSObjectProtocol & IOpenDocRoutingLogic & IOpenDocDataPassing)
-	private var viewModel: OpenDocModel.Something.ViewModel = .init(files: [])
+	private let router: (NSObjectProtocol & IOpenDocRoutingLogic)
 
-	var path = ""
+	private var viewModel: OpenDocModel.ViewData {
+		didSet {
+			updateView()
+		}
+	}
 
-	init(interactor: IOpenDocInteractor, router: NSObjectProtocol & IOpenDocRoutingLogic & IOpenDocDataPassing) {
+	init(
+		interactor: IOpenDocInteractor,
+		router: NSObjectProtocol & IOpenDocRoutingLogic
+	) {
 		self.interactor = interactor
 		self.router = router
+		viewModel = .init(
+			title: "/",
+			hasPreviousPath: false,
+			files: []
+		)
+
 		super.init(nibName: nil, bundle: nil)
 	}
 
@@ -22,31 +34,29 @@ final class OpenDocViewController: UITableViewController {
 	}
 
 	// MARK: - Lifecycle
-	override	func viewWillAppear(_ animated: Bool) {
-		super.viewWillAppear(animated)
-		interactor.viewIsReady()
-	}
-
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
-		setupView()
 		setupTableView()
 		interactor.viewIsReady()
 	}
-	private func setupView() {
-		navigationItem.backBarButtonItem = UIBarButtonItem(
-			title: "",
-			style: .plain,
-			target: nil,
-			action: nil
-		)
-		navigationController?.navigationBar.barTintColor = Theme.color(usage: .lightGray)
-	}
+}
 
-	private func setupTableView() {
-		tableView.separatorStyle = .singleLine
-		tableView.register(OpenDocCell.self, forCellReuseIdentifier: OpenDocCell.identifier)
+// MARK: - IOpenDocViewController
+
+extension OpenDocViewController: IOpenDocViewController {
+	func render(viewModel: OpenDocModel.ViewModel) {
+		switch viewModel {
+		case let .openFile(file):
+			print("надо октрыть файл по пути \(file.fullname)")
+		case let .showDir(viewData):
+			self.viewModel = viewData
+			tableView.reloadData()
+		case let .openDir(file):
+			router.navigate(.toOpenDoc(file))
+		case let .backDir(file):
+			router.navigate(.toOpenDoc(file))
+		}
 	}
 }
 
@@ -70,33 +80,34 @@ extension OpenDocViewController {
 
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		tableView.deselectRow(at: indexPath, animated: true)
-		let file = viewModel.files[indexPath.row]
-
 		interactor.didFileSelected(at: indexPath)
-
-		// Здесь попытка реализовать переходы, пока работает очень криво
-		let viewController = OpenDocViewController(interactor: interactor, router: router)
-		viewController.title = file.name
-		self.navigationController?.pushViewController(viewController, animated: true)
 	}
 }
 
-extension OpenDocViewController: IOpenDocViewController {
-	func render(viewModel: OpenDocModel.Something.ViewModel) {
-		self.viewModel = viewModel
+// MARK: - Actions
+private extension OpenDocViewController {
+	@objc func returnToPreviousPath() {
+		interactor.backToPreviousPath()
 	}
 }
 
-#if canImport(SwiftUI) && DEBUG
-import SwiftUI
-struct OpenDocViewProvider: PreviewProvider {
-	static var previews: some View {
-		let rootViewController = RootViewController()
-		let di = Di(rootVC: rootViewController)
-		rootViewController.factory = di
-		// swiftlint:disable:next force_unwrapping
-		let viewController = rootViewController.factory!.makeOpenDocModule().viewController
-		return viewController.preview()
+// MARK: - UI
+private extension OpenDocViewController {
+	func setupTableView() {
+		tableView.separatorStyle = .singleLine
+		tableView.register(OpenDocCell.self, forCellReuseIdentifier: OpenDocCell.identifier)
+		tableView.rowHeight = 64
+	}
+
+	func updateView() {
+		title = viewModel.title
+		if viewModel.hasPreviousPath {
+			navigationItem.leftBarButtonItem = UIBarButtonItem(
+				title: "<<",
+				style: .plain,
+				target: self,
+				action: #selector(returnToPreviousPath)
+			)
+		}
 	}
 }
-#endif

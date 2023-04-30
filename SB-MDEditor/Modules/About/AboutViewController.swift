@@ -26,11 +26,7 @@ final class AboutViewController: UIViewController {
 
 // MARK: - UI
 private extension AboutViewController {
-	func setup() {
-		let testMessage = Appearance.errorMessage
-		errorView.update(with: testMessage)
-		errorView.show()
-	}
+	func setup() {}
 	func applyStyle() {
 		title = Appearance.title
 		view.backgroundColor = Theme.color(usage: .background)
@@ -65,15 +61,5 @@ private extension AboutViewController {
 	enum Appearance {
 		static let welcomeText = "Welcome to About"
 		static let title = "About"
-		static let errorMessage = ErrorInputData(
-			emoji: "🙈",
-			message: "Переход к экрану: Открыть документ"
-		) {
-			if
-				let rootVC = UIApplication.shared.windows.first?.rootViewController as? IRootViewController,
-				let newModule = rootVC.factory?.makeOpenDocModule() {
-				rootVC.navigate(to: newModule)
-			}
-		}
 	}
 }
