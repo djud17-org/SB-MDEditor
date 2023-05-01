@@ -39,7 +39,9 @@ protocol IOpenModuleDocDependency {
 protocol ICreateModuleDocDependency {
 	var storage: IFilesStorageProvider { get }
 }
-protocol IAboutModuleDependency {}
+protocol IAboutModuleDependency {
+	var localFiles: ILocalFilesProvider { get }
+}
 
 typealias AllDependencies = (
 	IMainModuleDependency &

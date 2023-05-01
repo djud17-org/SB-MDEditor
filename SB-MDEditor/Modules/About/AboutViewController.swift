@@ -1,12 +1,26 @@
 import UIKit
 
+protocol IAboutViewController: AnyObject {
+	/// Рендрит вьюмодель
+	func render(viewModel: AboutModel.ViewData)
+}
+
 final class AboutViewController: UIViewController {
+	// MARK: - Parameters
 
-	private lazy var welcomeLabel = makeWelcomeLabel()
-	private lazy var errorView = ErrorView()
+	private let interactor: IAboutInteractor
+	private let router: IAboutRouter
 
-	// MARK: - Init
-	init() {
+	private lazy var aboutTextView: UITextView = makeAboutTextView()
+
+	// MARK: - Inits
+
+	init(
+		interactor: IAboutInteractor,
+		router: IAboutRouter
+	) {
+		self.interactor = interactor
+		self.router = router
 		super.init(nibName: nil, bundle: nil)
 	}
 
@@ -21,45 +35,65 @@ final class AboutViewController: UIViewController {
 		setup()
 		applyStyle()
 		setupConstraints()
+
+		interactor.viewIsReady()
+	}
+}
+
+// MARK: - IAboutViewController
+
+extension AboutViewController: IAboutViewController {
+	func render(viewModel: AboutModel.ViewData) {
+		aboutTextView.text = viewModel.fileContents
+	}
+}
+
+// MARK: - Action
+private extension AboutViewController {
+	@objc func returnToMainScreen() {
+		router.navigate(.toSimpleMainModule)
 	}
 }
 
 // MARK: - UI
 private extension AboutViewController {
-	func setup() {}
+	func setup() {
+		navigationItem.rightBarButtonItem = UIBarButtonItem(
+			barButtonSystemItem: .close,
+			target: self,
+			action: #selector(returnToMainScreen)
+		)
+	}
+
 	func applyStyle() {
 		title = Appearance.title
-		view.backgroundColor = Theme.color(usage: .background)
+		view.backgroundColor = Theme.color(usage: .white)
 	}
+
 	func setupConstraints() {
 		[
-			welcomeLabel,
-			errorView
-		].forEach { item in
-			item.translatesAutoresizingMaskIntoConstraints = false
-			view.addSubview(item)
-		}
+			aboutTextView
+		].forEach { view.addSubview($0) }
 
-		welcomeLabel.makeEqualToSuperviewCenter()
-		errorView.makeEqualToSuperview()
+		aboutTextView.makeEqualToSuperviewToSafeArea()
 	}
 }
 
 // MARK: - UI make
 private extension AboutViewController {
-	func makeWelcomeLabel() -> UILabel {
-		let label = UILabel()
-		label.text = Appearance.welcomeText
-		label.textColor = Theme.color(usage: .main)
-		label.font = Theme.font(style: .preferred(style: .title1))
-		return label
+	func makeAboutTextView() -> UITextView {
+		let textView = UITextView()
+		textView.backgroundColor = Theme.color(usage: .background)
+		textView.font = Theme.font(style: .caption)
+		textView.textColor = Theme.color(usage: .main)
+		textView.isEditable = false
+		return textView
 	}
 }
 
 // MARK: - Appearance
 private extension AboutViewController {
 	enum Appearance {
-		static let welcomeText = "Welcome to About"
 		static let title = "About"
 	}
 }
