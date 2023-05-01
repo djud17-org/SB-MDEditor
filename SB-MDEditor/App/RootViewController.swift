@@ -4,9 +4,13 @@ protocol IRootViewController: AnyObject {
 	typealias Factory = ModuleFactory
 	var factory: Factory? { get set }
 
+	/// Перейти к модулю.
 	func navigate(to module: Module)
+	/// Добавить модуль в стек навигации.
 	func push(to module: Module)
+	/// Представить модуль.
 	func present(to module: Module)
+	/// Запустить стартовый модуль.
 	func start()
 }
 

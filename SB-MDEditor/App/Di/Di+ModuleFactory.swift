@@ -24,11 +24,22 @@ protocol ModuleFactory: AnyObject {
 	func makeMainModule() -> Module
 	func makeOpenDocModule(file: File) -> Module
 	func makeCreateDocModule() -> Module
+	func makeMainSimpleModule() -> Module
 }
 
 extension Di {
 	func makeAboutModule(dep: AllDependencies) -> Module {
-		let viewController = AboutViewController()
+		let presenter = AboutPresenter()
+		let interactor = AboutInteractor(presenter: presenter, dep: dep)
+		let router = AboutRouter()
+		let viewController = AboutViewController(
+			interactor: interactor,
+			router: router
+		)
+
+		presenter.viewController = viewController
+		router.view = rootVC
+
 		let navigationVC = UINavigationController(rootViewController: viewController)
 		navigationVC.navigationBar.prefersLargeTitles = true
 		return .init(viewController: navigationVC, animatedType: .fade)
@@ -76,5 +87,16 @@ extension Di {
 	func makeCreateDocModule(dep: AllDependencies) -> Module {
 		let viewController = CreateDocViewController()
 		return .init(viewController: viewController, animatedType: .fade)
+	}
+
+	func makeMainSimpleModule(dep: AllDependencies) -> Module {
+		let router = MainSimpleRouter()
+		let viewController = MainSimpleViewController(router: router)
+		router.view = rootVC
+
+		let navigationVC = UINavigationController(rootViewController: viewController)
+		navigationVC.navigationBar.prefersLargeTitles = true
+
+		return .init(viewController: navigationVC, animatedType: .fade)
 	}
 }

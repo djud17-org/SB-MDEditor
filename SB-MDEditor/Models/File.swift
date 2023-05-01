@@ -46,6 +46,8 @@ final class File {
 		self.modificationDate = modificationDate
 	}
 
+	/// Возвращает строку с атрибутами файла.
+	/// - Returns: отформатированная строка атрибутов файла
 	func getFormattedAttributes() -> String {
 		let formattedSize = getFormattedSize()
 		let dateFormatter = DateFormatter()
@@ -59,6 +61,8 @@ final class File {
 		}
 	}
 
+	/// Готовит пустое описание для файла-каталога.
+	/// - Returns: пустое описание файла-каталога
 	static func makePrototypeDir() -> File {
 		File(
 			name: "",

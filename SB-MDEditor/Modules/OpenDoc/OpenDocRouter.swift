@@ -9,6 +9,6 @@ import UIKit
 
 protocol IOpenDocRoutingLogic: MainRouting {}
 
-final class OpenDocRouter: NSObject, IOpenDocRoutingLogic {
+final class OpenDocRouter: IOpenDocRoutingLogic {
 	weak var view: IRootViewController?
 }

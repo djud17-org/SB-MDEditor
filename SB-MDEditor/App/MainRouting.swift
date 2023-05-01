@@ -3,8 +3,11 @@ import UIKit
 protocol MainRouting: AnyObject {
 	var view: IRootViewController? { get set }
 
+	/// Подготовить модуль к переходу.
 	func navigate(_ route: ModuleRoute)
+	/// Подготовить модуль к добавлению в стек навигации.
 	func push(_ route: ModuleRoute)
+	/// Подготовить модуль к представлению.
 	func present(_ route: ModuleRoute)
 }
 
@@ -44,6 +47,7 @@ enum ModuleRoute {
 	case toStart
 	case toAbout
 	case toMainModule
+	case toSimpleMainModule
 	case toOpenDoc(File)
 	case toCreateDoc
 
@@ -59,6 +63,8 @@ enum ModuleRoute {
 			return factory.makeOpenDocModule(file: file)
 		case .toCreateDoc:
 			return factory.makeCreateDocModule()
+		case .toSimpleMainModule:
+			return factory.makeMainSimpleModule()
 		}
 	}
 }
