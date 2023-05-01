@@ -24,6 +24,7 @@ protocol ModuleFactory: AnyObject {
 	func makeMainModule() -> Module
 	func makeOpenDocModule(file: File) -> Module
 	func makeCreateDocModule() -> Module
+	func makeMainSimpleModule() -> Module
 }
 
 extension Di {
@@ -76,5 +77,16 @@ extension Di {
 	func makeCreateDocModule(dep: AllDependencies) -> Module {
 		let viewController = CreateDocViewController()
 		return .init(viewController: viewController, animatedType: .fade)
+	}
+
+	func makeMainSimpleModule(dep: AllDependencies) -> Module {
+		let router = MainSimpleRouter()
+		let viewController = MainSimpleViewController(router: router)
+		router.view = rootVC
+
+		let navigationVC = UINavigationController(rootViewController: viewController)
+		navigationVC.navigationBar.prefersLargeTitles = true
+
+		return .init(viewController: navigationVC, animatedType: .fade)
 	}
 }
