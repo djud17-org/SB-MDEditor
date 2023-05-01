@@ -37,6 +37,7 @@ final class OpenDocViewController: UITableViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
+		setup()
 		setupTableView()
 		interactor.viewIsReady()
 	}
@@ -59,6 +60,8 @@ extension OpenDocViewController: IOpenDocViewController {
 		}
 	}
 }
+
+// MARK: - UITableViewController
 
 extension OpenDocViewController {
 	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -89,10 +92,21 @@ private extension OpenDocViewController {
 	@objc func returnToPreviousPath() {
 		interactor.backToPreviousPath()
 	}
+	@objc func returnToMainScreen() {
+		router.navigate(.toSimpleMainModule)
+	}
 }
 
 // MARK: - UI
 private extension OpenDocViewController {
+	func setup() {
+		navigationItem.rightBarButtonItem = UIBarButtonItem(
+			barButtonSystemItem: .close,
+			target: self,
+			action: #selector(returnToMainScreen)
+		)
+	}
+
 	func setupTableView() {
 		tableView.separatorStyle = .singleLine
 		tableView.register(OpenDocCell.self, forCellReuseIdentifier: OpenDocCell.identifier)

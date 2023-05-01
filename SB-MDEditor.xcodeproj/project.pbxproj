@@ -31,6 +31,8 @@
 		5A48065129DBCBFB0096B7D8 /* Swift_BaseUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A48065029DBCBFB0096B7D8 /* Swift_BaseUITestsLaunchTests.swift */; };
 		5A61DD3D29E13FF9001E8665 /* UIView+Preview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A61DD3C29E13FF9001E8665 /* UIView+Preview.swift */; };
 		5A8F68D929FB06FD00749CDF /* Theme+Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8F68D829FB06FD00749CDF /* Theme+Constants.swift */; };
+		5A8F69002A00496D00749CDF /* MainSimpleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8F68FE2A00496D00749CDF /* MainSimpleViewController.swift */; };
+		5A8F69012A00496D00749CDF /* MainSimpleRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8F68FF2A00496D00749CDF /* MainSimpleRouter.swift */; };
 		5A91DED829E0DF58001A23C3 /* UIView+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A91DED729E0DF58001A23C3 /* UIView+Constraints.swift */; };
 		5A91DEDA29E12F82001A23C3 /* UIViewController+Preview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A91DED929E12F82001A23C3 /* UIViewController+Preview.swift */; };
 		5ACEB26A29EE0D00008E80A2 /* Theme+Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ACEB26929EE0D00008E80A2 /* Theme+Colors.swift */; };
@@ -119,6 +121,8 @@
 		5A48065029DBCBFB0096B7D8 /* Swift_BaseUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Swift_BaseUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		5A61DD3C29E13FF9001E8665 /* UIView+Preview.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Preview.swift"; sourceTree = "<group>"; };
 		5A8F68D829FB06FD00749CDF /* Theme+Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Theme+Constants.swift"; sourceTree = "<group>"; };
+		5A8F68FE2A00496D00749CDF /* MainSimpleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainSimpleViewController.swift; sourceTree = "<group>"; };
+		5A8F68FF2A00496D00749CDF /* MainSimpleRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainSimpleRouter.swift; sourceTree = "<group>"; };
 		5A91DED729E0DF58001A23C3 /* UIView+Constraints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Constraints.swift"; sourceTree = "<group>"; };
 		5A91DED929E12F82001A23C3 /* UIViewController+Preview.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Preview.swift"; sourceTree = "<group>"; };
 		5ACEB26929EE0D00008E80A2 /* Theme+Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Theme+Colors.swift"; sourceTree = "<group>"; };
@@ -315,6 +319,7 @@
 			children = (
 				5ACEB29C29EECCA6008E80A2 /* About */,
 				5ACEB29029EE7B7D008E80A2 /* Main */,
+				5A8F68FD2A00496D00749CDF /* MainSimple */,
 				5ACEB29F29EED863008E80A2 /* OpenDoc */,
 				5ACEB2A229EED962008E80A2 /* CreateDoc */,
 			);
@@ -331,6 +336,15 @@
 				5A91DED629E0DF0A001A23C3 /* Utils */,
 			);
 			path = Library;
+			sourceTree = "<group>";
+		};
+		5A8F68FD2A00496D00749CDF /* MainSimple */ = {
+			isa = PBXGroup;
+			children = (
+				5A8F68FE2A00496D00749CDF /* MainSimpleViewController.swift */,
+				5A8F68FF2A00496D00749CDF /* MainSimpleRouter.swift */,
+			);
+			path = MainSimple;
 			sourceTree = "<group>";
 		};
 		5A91DED529E0A88A001A23C3 /* Fonts */ = {
@@ -681,6 +695,7 @@
 				25AEE10129F7075800E177AE /* LocalFilesProvider.swift in Sources */,
 				6004CE2B29F564520074D9E5 /* EmptyInputData.swift in Sources */,
 				2545566829F0733200B9CFD0 /* Strings.swift in Sources */,
+				5A8F69012A00496D00749CDF /* MainSimpleRouter.swift in Sources */,
 				6064CC0E29FD852D00B8B74D /* OpenDocRouter.swift in Sources */,
 				5ACEB28C29EE7AB5008E80A2 /* MainRouter.swift in Sources */,
 				25FC42F529F1CD89001895ED /* RecentFileCell.swift in Sources */,
@@ -700,6 +715,7 @@
 				5ACEB27F29EE65A8008E80A2 /* UIColor+Dynamic.swift in Sources */,
 				5ACEB27A29EE64D9008E80A2 /* Di+AppFactory.swift in Sources */,
 				5AFA77D129F4B3D10010478E /* FilesStorageProvider.swift in Sources */,
+				5A8F69002A00496D00749CDF /* MainSimpleViewController.swift in Sources */,
 				5ACEB28B29EE7AB5008E80A2 /* MainWorker.swift in Sources */,
 				5ACEB29429EEA690008E80A2 /* ErrorInputData.swift in Sources */,
 				609CAFFA29FD466100834937 /* OpenDocModels.swift in Sources */,

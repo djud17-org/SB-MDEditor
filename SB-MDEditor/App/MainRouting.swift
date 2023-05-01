@@ -44,6 +44,7 @@ enum ModuleRoute {
 	case toStart
 	case toAbout
 	case toMainModule
+	case toSimpleMainModule
 	case toOpenDoc(File)
 	case toCreateDoc
 
@@ -59,6 +60,8 @@ enum ModuleRoute {
 			return factory.makeOpenDocModule(file: file)
 		case .toCreateDoc:
 			return factory.makeCreateDocModule()
+		case .toSimpleMainModule:
+			return factory.makeMainSimpleModule()
 		}
 	}
 }
