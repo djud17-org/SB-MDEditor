@@ -8,8 +8,12 @@
 import Foundation
 
 protocol IOpenDocInteractor {
+
+	/// Подготовить данные для вью.
 	func viewIsReady()
+	/// Обработать выбранный файл.
 	func didFileSelected(at indexPath: IndexPath)
+	/// Вернуться на уровень выше.
 	func backToPreviousPath()
 }
 

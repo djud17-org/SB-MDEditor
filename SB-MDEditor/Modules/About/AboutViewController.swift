@@ -75,7 +75,13 @@ private extension AboutViewController {
 			aboutTextView
 		].forEach { view.addSubview($0) }
 
-		aboutTextView.makeEqualToSuperviewToSafeArea()
+		let insets: UIEdgeInsets = .init(
+			top: .zero,
+			left: Theme.spacing(usage: .standard),
+			bottom: .zero,
+			right: Theme.spacing(usage: .standard)
+		)
+		aboutTextView.makeEqualToSuperviewToSafeArea(insets: insets)
 	}
 }
 

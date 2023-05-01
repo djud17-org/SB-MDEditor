@@ -38,7 +38,7 @@ enum Event {
 }
 
 final class MainSimpleViewController: UIViewController {
-	let router: (NSObjectProtocol & IMainSimpleRoutingLogic)
+	let router: IMainSimpleRoutingLogic
 
 	// MARK: - UI
 	private lazy var openDocButton: UIButton = makeButtonByEvent(.openDoc)
@@ -47,7 +47,7 @@ final class MainSimpleViewController: UIViewController {
 
 	// MARK: - Init
 
-	init(router: NSObjectProtocol & IMainSimpleRoutingLogic) {
+	init(router: IMainSimpleRoutingLogic) {
 		self.router = router
 		super.init(nibName: nil, bundle: nil)
 	}
@@ -82,7 +82,7 @@ private extension MainSimpleViewController {
 private extension MainSimpleViewController {
 	func applyStyle() {
 		title = Appearance.title
-		view.backgroundColor = Theme.color(usage: .background)
+		view.backgroundColor = Theme.color(usage: .white)
 	}
 	func setupConstraints() {
 		let stack = UIStackView()
@@ -94,11 +94,9 @@ private extension MainSimpleViewController {
 			openDocButton,
 			createDocButton,
 			aboutButton
-		].forEach { item in
-			stack.addArrangedSubview(item)
-		}
-		view.addSubview(stack)
+		].forEach { stack.addArrangedSubview($0) }
 
+		view.addSubview(stack)
 		stack.makeEqualToSuperviewCenter()
 	}
 }

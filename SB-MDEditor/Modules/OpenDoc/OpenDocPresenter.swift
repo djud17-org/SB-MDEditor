@@ -8,7 +8,9 @@
 import UIKit
 
 protocol IOpenDocPresenter {
+	/// Подготовить данные к показу на вью.
 	func present(response: OpenDocModel.Response)
+	/// Передать уже готовые данные вью.
 	func transit(with file: OpenDocModel.ViewModel)
 }
 

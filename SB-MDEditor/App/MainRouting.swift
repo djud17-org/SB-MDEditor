@@ -3,8 +3,11 @@ import UIKit
 protocol MainRouting: AnyObject {
 	var view: IRootViewController? { get set }
 
+	/// Подготовить модуль к переходу.
 	func navigate(_ route: ModuleRoute)
+	/// Подготовить модуль к добавлению в стек навигации.
 	func push(_ route: ModuleRoute)
+	/// Подготовить модуль к представлению.
 	func present(_ route: ModuleRoute)
 }
 

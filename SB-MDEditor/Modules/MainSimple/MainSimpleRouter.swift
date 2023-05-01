@@ -9,6 +9,6 @@ import UIKit
 
 protocol IMainSimpleRoutingLogic: MainRouting {}
 
-final class MainSimpleRouter: NSObject, IMainSimpleRoutingLogic {
+final class MainSimpleRouter: IMainSimpleRoutingLogic {
 	weak var view: IRootViewController?
 }

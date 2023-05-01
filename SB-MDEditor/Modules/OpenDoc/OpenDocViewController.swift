@@ -1,12 +1,13 @@
 import UIKit
 
 protocol IOpenDocViewController: AnyObject {
+	/// Рендрит вьюмодель
 	func render(viewModel: OpenDocModel.ViewModel)
 }
 
 final class OpenDocViewController: UITableViewController {
 	private let interactor: IOpenDocInteractor
-	private let router: (NSObjectProtocol & IOpenDocRoutingLogic)
+	private let router: IOpenDocRoutingLogic
 
 	private var viewModel: OpenDocModel.ViewData {
 		didSet {
@@ -16,7 +17,7 @@ final class OpenDocViewController: UITableViewController {
 
 	init(
 		interactor: IOpenDocInteractor,
-		router: NSObjectProtocol & IOpenDocRoutingLogic
+		router: IOpenDocRoutingLogic
 	) {
 		self.interactor = interactor
 		self.router = router
