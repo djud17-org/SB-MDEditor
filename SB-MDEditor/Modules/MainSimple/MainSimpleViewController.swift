@@ -119,7 +119,7 @@ private extension MainSimpleViewController {
 // MARK: - Appearance
 private extension MainSimpleViewController {
 	enum Appearance {
-		static let title = "MD redactor"
+		static let title = "MD editor"
 	}
 }
 
