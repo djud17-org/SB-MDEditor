@@ -33,6 +33,7 @@
         - сохранить в папку документов
     - Открыть документ - реализована навигация по файловой системе. Источником папок должны быть: подшитые к bandle документы и содержимое папки Documents.
     - О приложении: выводить содержимое подключенного файла about.md с описанием приложения и участников команды
+* Для навигации используется шаблон Coordinator
 
 [In progress]
 
@@ -194,4 +195,7 @@ struct ViewProvider: PreviewProvider {
 
 # Team
 
-[In progress]
+1. [Anton Zarichny](https://github.com/zzzarya)
+2. [David Tonoyan](https://github.com/djud17)
+3. [Dmitriy Churilov](https://github.com/chuRealOff)
+4. [Sergei Shliakhin (team lead)](https://github.com/SShliakhin)
