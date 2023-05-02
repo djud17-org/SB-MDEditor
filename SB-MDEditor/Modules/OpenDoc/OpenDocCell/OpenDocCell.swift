@@ -25,8 +25,12 @@ class OpenDocCell: UITableViewCell {
 	// MARK: - Lifecycle
 	override func layoutSubviews() {
 		super.layoutSubviews()
-
+		applyStyle()
 		setupLayout()
+	}
+
+	private func applyStyle() {
+		contentView.backgroundColor = Theme.color(usage: .background)
 	}
 
 	// MARK: - SetupLayout

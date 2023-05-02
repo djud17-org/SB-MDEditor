@@ -80,7 +80,6 @@ extension Di {
 		router.view = rootVC
 
 		let navigationVC = UINavigationController(rootViewController: viewController)
-		navigationVC.navigationBar.isHidden = false
 		return .init(viewController: navigationVC, animatedType: .dismiss)
 	}
 

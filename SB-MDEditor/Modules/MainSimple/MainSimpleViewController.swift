@@ -38,7 +38,7 @@ enum Event {
 }
 
 final class MainSimpleViewController: UIViewController {
-	let router: IMainSimpleRoutingLogic
+	let router: IMainSimpleRoute
 
 	// MARK: - UI
 	private lazy var openDocButton: UIButton = makeButtonByEvent(.openDoc)
@@ -47,7 +47,7 @@ final class MainSimpleViewController: UIViewController {
 
 	// MARK: - Init
 
-	init(router: IMainSimpleRoutingLogic) {
+	init(router: IMainSimpleRoute) {
 		self.router = router
 		super.init(nibName: nil, bundle: nil)
 	}
