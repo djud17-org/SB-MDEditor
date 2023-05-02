@@ -32,11 +32,11 @@ protocol IMainModuleDependency {
 	var storage: IFilesStorageProvider { get }
 	var sectionManager: ISectionManager { get }
 }
-protocol IOpenModuleDocDependency {
+protocol IOpenDocModuleDependency {
 	var storage: IFilesStorageProvider { get }
 	var localFiles: ILocalFilesProvider { get }
 }
-protocol ICreateModuleDocDependency {
+protocol ICreateDocModuleDependency {
 	var storage: IFilesStorageProvider { get }
 }
 protocol IAboutModuleDependency {
@@ -45,8 +45,8 @@ protocol IAboutModuleDependency {
 
 typealias AllDependencies = (
 	IMainModuleDependency &
-	IOpenModuleDocDependency &
-	ICreateModuleDocDependency &
+	IOpenDocModuleDependency &
+	ICreateDocModuleDependency &
 	IAboutModuleDependency
 )
 
