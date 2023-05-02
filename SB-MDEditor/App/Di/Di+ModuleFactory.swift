@@ -23,7 +23,7 @@ protocol ModuleFactory: AnyObject {
 	func makeAboutModule() -> Module
 	func makeMainModule() -> Module
 	func makeOpenDocModule(file: File) -> Module
-	func makeCreateDocModule() -> Module
+	func makeCreateDocModule(file: File) -> Module
 	func makeMainSimpleModule() -> Module
 }
 
@@ -80,13 +80,21 @@ extension Di {
 		router.view = rootVC
 
 		let navigationVC = UINavigationController(rootViewController: viewController)
-		navigationVC.navigationBar.isHidden = false
 		return .init(viewController: navigationVC, animatedType: .dismiss)
 	}
 
-	func makeCreateDocModule(dep: AllDependencies) -> Module {
-		let viewController = CreateDocViewController()
-		return .init(viewController: viewController, animatedType: .fade)
+	func makeCreateDocModule(file: File, dep: AllDependencies) -> Module {
+		let presenter = CreateDocPresenter()
+		let interactor = CreateDocInteractor(presenter: presenter, dep: dep, initialFile: file)
+		let router = CreateDocRouter()
+
+		let viewController = CreateDocViewController(interactor: interactor, router: router)
+
+		presenter.viewController = viewController
+		router.view = rootVC
+
+		let navigationVC = UINavigationController(rootViewController: viewController)
+		return .init(viewController: navigationVC, animatedType: .fade)
 	}
 
 	func makeMainSimpleModule(dep: AllDependencies) -> Module {

@@ -49,7 +49,7 @@ enum ModuleRoute {
 	case toMainModule
 	case toSimpleMainModule
 	case toOpenDoc(File)
-	case toCreateDoc
+	case toCreateDoc(File)
 
 	func getModule(factory: ModuleFactory) -> Module {
 		switch self {
@@ -61,8 +61,8 @@ enum ModuleRoute {
 			return factory.makeMainModule()
 		case let .toOpenDoc(file):
 			return factory.makeOpenDocModule(file: file)
-		case .toCreateDoc:
-			return factory.makeCreateDocModule()
+		case let .toCreateDoc(file):
+			return factory.makeCreateDocModule(file: file)
 		case .toSimpleMainModule:
 			return factory.makeMainSimpleModule()
 		}

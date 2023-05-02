@@ -38,7 +38,7 @@ enum Event {
 }
 
 final class MainSimpleViewController: UIViewController {
-	let router: IMainSimpleRoutingLogic
+	let router: IMainSimpleRoute
 
 	// MARK: - UI
 	private lazy var openDocButton: UIButton = makeButtonByEvent(.openDoc)
@@ -47,7 +47,7 @@ final class MainSimpleViewController: UIViewController {
 
 	// MARK: - Init
 
-	init(router: IMainSimpleRoutingLogic) {
+	init(router: IMainSimpleRoute) {
 		self.router = router
 		super.init(nibName: nil, bundle: nil)
 	}
@@ -71,7 +71,9 @@ private extension MainSimpleViewController {
 		case .openDoc:
 			return { self.router.navigate(.toOpenDoc(File.makePrototypeDir())) }
 		case .createDoc:
-			return { print("Создать документ") }
+			return {
+				self.router.navigate(.toCreateDoc(File.makePrototypeDir()))
+			}
 		case .about:
 			return { self.router.navigate(.toAbout) }
 		}
@@ -119,7 +121,7 @@ private extension MainSimpleViewController {
 // MARK: - Appearance
 private extension MainSimpleViewController {
 	enum Appearance {
-		static let title = "MD redactor"
+		static let title = "MD editor"
 	}
 }
 

@@ -24,7 +24,7 @@ final class OpenDocInteractor: IOpenDocInteractor {
 
 	init(
 		presenter: IOpenDocPresenter,
-		dep: IOpenModuleDocDependency,
+		dep: IOpenDocModuleDependency,
 		initialFile: File
 	) {
 		self.presenter = presenter

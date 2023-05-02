@@ -7,8 +7,8 @@
 
 import UIKit
 
-protocol IMainSimpleRoutingLogic: MainRouting {}
+protocol IMainSimpleRoute: MainRouting {}
 
-final class MainSimpleRouter: IMainSimpleRoutingLogic {
+final class MainSimpleRouter: IMainSimpleRoute {
 	weak var view: IRootViewController?
 }

@@ -32,12 +32,12 @@ protocol IMainModuleDependency {
 	var storage: IFilesStorageProvider { get }
 	var sectionManager: ISectionManager { get }
 }
-protocol IOpenModuleDocDependency {
+protocol IOpenDocModuleDependency {
 	var storage: IFilesStorageProvider { get }
 	var localFiles: ILocalFilesProvider { get }
 }
-protocol ICreateModuleDocDependency {
-	var storage: IFilesStorageProvider { get }
+protocol ICreateDocModuleDependency {
+	var localFiles: ILocalFilesProvider { get }
 }
 protocol IAboutModuleDependency {
 	var localFiles: ILocalFilesProvider { get }
@@ -45,8 +45,8 @@ protocol IAboutModuleDependency {
 
 typealias AllDependencies = (
 	IMainModuleDependency &
-	IOpenModuleDocDependency &
-	ICreateModuleDocDependency &
+	IOpenDocModuleDependency &
+	ICreateDocModuleDependency &
 	IAboutModuleDependency
 )
 
@@ -69,8 +69,8 @@ extension Di: ModuleFactory {
 		makeOpenDocModule(file: file, dep: dependencies)
 	}
 
-	func makeCreateDocModule() -> Module {
-		makeCreateDocModule(dep: dependencies)
+	func makeCreateDocModule(file: File) -> Module {
+		makeCreateDocModule(file: file, dep: dependencies)
 	}
 
 	func makeMainSimpleModule() -> Module {

@@ -7,8 +7,8 @@
 
 import UIKit
 
-protocol IOpenDocRoutingLogic: MainRouting {}
+protocol IOpenDocRouter: MainRouting {}
 
-final class OpenDocRouter: IOpenDocRoutingLogic {
+final class OpenDocRouter: IOpenDocRouter {
 	weak var view: IRootViewController?
 }
