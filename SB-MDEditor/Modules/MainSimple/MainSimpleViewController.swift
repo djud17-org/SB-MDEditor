@@ -71,7 +71,9 @@ private extension MainSimpleViewController {
 		case .openDoc:
 			return { self.router.navigate(.toOpenDoc(File.makePrototypeDir())) }
 		case .createDoc:
-			return { print("Создать документ") }
+			return {
+				self.router.navigate(.toCreateDoc(File.makePrototypeDir()))
+			}
 		case .about:
 			return { self.router.navigate(.toAbout) }
 		}

@@ -37,7 +37,7 @@ protocol IOpenDocModuleDependency {
 	var localFiles: ILocalFilesProvider { get }
 }
 protocol ICreateDocModuleDependency {
-	var storage: IFilesStorageProvider { get }
+	var localFiles: ILocalFilesProvider { get }
 }
 protocol IAboutModuleDependency {
 	var localFiles: ILocalFilesProvider { get }
@@ -69,8 +69,8 @@ extension Di: ModuleFactory {
 		makeOpenDocModule(file: file, dep: dependencies)
 	}
 
-	func makeCreateDocModule() -> Module {
-		makeCreateDocModule(dep: dependencies)
+	func makeCreateDocModule(file: File) -> Module {
+		makeCreateDocModule(file: file, dep: dependencies)
 	}
 
 	func makeMainSimpleModule() -> Module {

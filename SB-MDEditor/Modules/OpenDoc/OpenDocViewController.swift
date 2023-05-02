@@ -7,7 +7,7 @@ protocol IOpenDocViewController: AnyObject {
 
 final class OpenDocViewController: UITableViewController {
 	private let interactor: IOpenDocInteractor
-	private let router: IOpenDocRoutingLogic
+	private let router: IOpenDocRouter
 
 	private var viewModel: OpenDocModel.ViewData {
 		didSet {
@@ -17,7 +17,7 @@ final class OpenDocViewController: UITableViewController {
 
 	init(
 		interactor: IOpenDocInteractor,
-		router: IOpenDocRoutingLogic
+		router: IOpenDocRouter
 	) {
 		self.interactor = interactor
 		self.router = router
@@ -50,7 +50,7 @@ extension OpenDocViewController: IOpenDocViewController {
 	func render(viewModel: OpenDocModel.ViewModel) {
 		switch viewModel {
 		case let .openFile(file):
-			print("надо октрыть файл по пути \(file.fullname)")
+			router.navigate(.toCreateDoc(file))
 		case let .showDir(viewData):
 			self.viewModel = viewData
 			tableView.reloadData()
