@@ -42,6 +42,7 @@
 		5A8F69112A00C01300749CDF /* CreateDocRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8F69102A00C01300749CDF /* CreateDocRouter.swift */; };
 		5A91DED829E0DF58001A23C3 /* UIView+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A91DED729E0DF58001A23C3 /* UIView+Constraints.swift */; };
 		5A91DEDA29E12F82001A23C3 /* UIViewController+Preview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A91DED929E12F82001A23C3 /* UIViewController+Preview.swift */; };
+		5AC2724B2A0478FB00E49D54 /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6004CE2C29F5646C0074D9E5 /* EmptyView.swift */; };
 		5ACEB26A29EE0D00008E80A2 /* Theme+Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ACEB26929EE0D00008E80A2 /* Theme+Colors.swift */; };
 		5ACEB26C29EE0D6B008E80A2 /* Theme+Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ACEB26B29EE0D6B008E80A2 /* Theme+Images.swift */; };
 		5ACEB26E29EE0E37008E80A2 /* Theme+Sizes+Spacing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ACEB26D29EE0E37008E80A2 /* Theme+Sizes+Spacing.swift */; };
@@ -721,6 +722,7 @@
 				2545566829F0733200B9CFD0 /* Strings.swift in Sources */,
 				5A8F69012A00496D00749CDF /* MainSimpleRouter.swift in Sources */,
 				5A8F69112A00C01300749CDF /* CreateDocRouter.swift in Sources */,
+				5AC2724B2A0478FB00E49D54 /* EmptyView.swift in Sources */,
 				6064CC0E29FD852D00B8B74D /* OpenDocRouter.swift in Sources */,
 				5ACEB28C29EE7AB5008E80A2 /* MainRouter.swift in Sources */,
 				5A8F69072A005A2A00749CDF /* AboutPresenter.swift in Sources */,
