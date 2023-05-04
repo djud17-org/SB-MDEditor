@@ -9,6 +9,8 @@ final class OpenDocViewController: UITableViewController {
 	private let interactor: IOpenDocInteractor
 	private let router: IOpenDocRouter
 
+	private lazy var emptyView = EmptyView()
+
 	private var viewModel: OpenDocModel.ViewData {
 		didSet {
 			updateView()
@@ -42,8 +44,17 @@ final class OpenDocViewController: UITableViewController {
 		setupTableView()
 		interactor.viewIsReady()
 	}
-}
 
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+
+		if viewModel.files.isEmpty { // Пока тут оставил, хз где лучше проверять
+			emptyView.show()
+		} else {
+			emptyView.hide()
+		}
+	}
+}
 // MARK: - IOpenDocViewController
 
 extension OpenDocViewController: IOpenDocViewController {
@@ -112,6 +123,8 @@ private extension OpenDocViewController {
 		tableView.separatorStyle = .singleLine
 		tableView.register(OpenDocCell.self, forCellReuseIdentifier: OpenDocCell.identifier)
 		tableView.rowHeight = 64
+
+		setupEmptyView()
 	}
 
 	func updateView() {
@@ -124,5 +137,16 @@ private extension OpenDocViewController {
 				action: #selector(returnToPreviousPath)
 			)
 		}
+	}
+
+	func setupEmptyView() {
+		emptyView.update(with: EmptyInputData.emptyFolder)
+		setupConstraints()
+		emptyView.hide()
+	}
+
+	func setupConstraints() {
+		view.addSubview(emptyView)
+		emptyView.makeEqualToSuperviewCenter()
 	}
 }
