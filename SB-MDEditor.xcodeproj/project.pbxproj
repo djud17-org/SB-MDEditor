@@ -77,6 +77,7 @@
 		609CAFF929FD466100834937 /* OpenDocViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 609CAFF429FD466100834937 /* OpenDocViewController.swift */; };
 		609CAFFA29FD466100834937 /* OpenDocModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 609CAFF529FD466100834937 /* OpenDocModels.swift */; };
 		609CAFFF29FD46ED00834937 /* OpenDocCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 609CAFFE29FD46ED00834937 /* OpenDocCellModel.swift */; };
+		60D227092A04480D005928BE /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6004CE2C29F5646C0074D9E5 /* EmptyView.swift */; };
 		60D43BB729F1A61300C5AF4F /* MD_Bandle in Resources */ = {isa = PBXBuildFile; fileRef = 60D43BB629F1A61300C5AF4F /* MD_Bandle */; };
 		ABD1DB6129F7BE4D00C7B471 /* About.md in Resources */ = {isa = PBXBuildFile; fileRef = ABD1DB6029F7BE4D00C7B471 /* About.md */; };
 /* End PBXBuildFile section */
@@ -721,6 +722,7 @@
 				2545566829F0733200B9CFD0 /* Strings.swift in Sources */,
 				5A8F69012A00496D00749CDF /* MainSimpleRouter.swift in Sources */,
 				5A8F69112A00C01300749CDF /* CreateDocRouter.swift in Sources */,
+				60D227092A04480D005928BE /* EmptyView.swift in Sources */,
 				6064CC0E29FD852D00B8B74D /* OpenDocRouter.swift in Sources */,
 				5ACEB28C29EE7AB5008E80A2 /* MainRouter.swift in Sources */,
 				5A8F69072A005A2A00749CDF /* AboutPresenter.swift in Sources */,

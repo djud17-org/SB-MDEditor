@@ -5,11 +5,12 @@ protocol IOpenDocViewController: AnyObject {
 	func render(viewModel: OpenDocModel.ViewModel)
 }
 
-final class OpenDocViewController: UITableViewController {
+final class OpenDocViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 	private let interactor: IOpenDocInteractor
 	private let router: IOpenDocRouter
 
 	private lazy var emptyView = EmptyView()
+	private lazy var tableView = UITableView()
 
 	private var viewModel: OpenDocModel.ViewData {
 		didSet {
@@ -44,16 +45,6 @@ final class OpenDocViewController: UITableViewController {
 		setupTableView()
 		interactor.viewIsReady()
 	}
-
-	override func viewWillAppear(_ animated: Bool) {
-		super.viewWillAppear(animated)
-
-		if viewModel.files.isEmpty { // Пока тут оставил, хз где лучше проверять
-			emptyView.show()
-		} else {
-			emptyView.hide()
-		}
-	}
 }
 // MARK: - IOpenDocViewController
 
@@ -76,11 +67,11 @@ extension OpenDocViewController: IOpenDocViewController {
 // MARK: - UITableViewController
 
 extension OpenDocViewController {
-	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		viewModel.files.count
 	}
 
-	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let model: CellViewAnyModel
 		let file = viewModel.files[indexPath.row]
 
@@ -93,9 +84,13 @@ extension OpenDocViewController {
 		return tableView.dequeueReusableCell(withModel: model, for: indexPath)
 	}
 
-	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		tableView.deselectRow(at: indexPath, animated: true)
 		interactor.didFileSelected(at: indexPath)
+	}
+
+	func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+		UITableView.automaticDimension
 	}
 }
 
@@ -107,23 +102,46 @@ private extension OpenDocViewController {
 	@objc func returnToMainScreen() {
 		router.navigate(.toSimpleMainModule)
 	}
+
+	@objc func transitionOnSelectedName() {
+		print("Переход на SelectName модуль")
+	}
 }
 
 // MARK: - UI
 private extension OpenDocViewController {
 	func setup() {
-		navigationItem.rightBarButtonItem = UIBarButtonItem(
-			barButtonSystemItem: .close,
-			target: self,
-			action: #selector(returnToMainScreen)
-		)
+		navigationItem.rightBarButtonItems = [
+			UIBarButtonItem(
+				barButtonSystemItem: .close,
+				target: self,
+				action: #selector(returnToMainScreen)
+			),
+			UIBarButtonItem(
+				image: Asset.Menu.newFileMenuIcon.image,
+				style: .plain,
+				target: self,
+				action: #selector(transitionOnSelectedName)
+			),
+			UIBarButtonItem(
+				image: Asset.Menu.openMenuIcon.image,
+				style: .plain,
+				target: self,
+				action: #selector(transitionOnSelectedName)
+			)
+		]
 	}
 
 	func setupTableView() {
-		tableView.separatorStyle = .singleLine
-		tableView.register(OpenDocCell.self, forCellReuseIdentifier: OpenDocCell.identifier)
-		tableView.rowHeight = 64
+		tableView.register(models: [OpenDocCellModel.self])
 
+		tableView.separatorStyle = .singleLine
+		tableView.estimatedRowHeight = 100
+
+		tableView.delegate = self
+		tableView.dataSource = self
+
+		setupConstraints()
 		setupEmptyView()
 	}
 
@@ -131,22 +149,30 @@ private extension OpenDocViewController {
 		title = viewModel.title
 		if viewModel.hasPreviousPath {
 			navigationItem.leftBarButtonItem = UIBarButtonItem(
-				title: "<<",
+				image: Asset.icBack.image,
 				style: .plain,
 				target: self,
 				action: #selector(returnToPreviousPath)
 			)
 		}
+
+		if viewModel.files.isEmpty {
+			emptyView.show()
+		} else {
+			emptyView.hide()
+		}
 	}
 
 	func setupEmptyView() {
 		emptyView.update(with: EmptyInputData.emptyFolder)
-		setupConstraints()
 		emptyView.hide()
 	}
 
 	func setupConstraints() {
-		view.addSubview(emptyView)
+		view.addSubview(tableView)
+		tableView.makeEqualToSuperview()
+
+		tableView.backgroundView = emptyView
 		emptyView.makeEqualToSuperviewCenter()
 	}
 }

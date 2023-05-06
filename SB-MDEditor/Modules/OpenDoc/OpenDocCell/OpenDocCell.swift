@@ -8,7 +8,7 @@
 import UIKit
 
 /// Класс ячейки файлa/папки
-class OpenDocCell: UITableViewCell {
+final class OpenDocCell: UITableViewCell {
 	static let identifier = "OpenDocCell"
 
 	// MARK: - UI Elements
@@ -50,14 +50,17 @@ class OpenDocCell: UITableViewCell {
 		fieldFileName.makeConstraints { make in
 			[
 				make.topAnchor.constraint(equalTo: contentView.topAnchor, constant: Theme.spacing(usage: .standard)),
-				make.leadingAnchor.constraint(equalTo: fieldImage.trailingAnchor, constant: Theme.spacing(usage: .standard))
+				make.leadingAnchor.constraint(equalTo: fieldImage.trailingAnchor, constant: Theme.spacing(usage: .standard)),
+				make.heightAnchor.constraint(equalToConstant: Theme.spacing(usage: .standard2))
 			]
 		}
 
 		fieldFileAttributes.makeConstraints { make in
 			[
 				make.topAnchor.constraint(equalTo: fieldFileName.bottomAnchor, constant: Theme.spacing(usage: .standard)),
-				make.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -Theme.spacing(usage: .standard))
+				make.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -Theme.spacing(usage: .standard)),
+				make.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -Theme.spacing(usage: .standardHalf)),
+				make.heightAnchor.constraint(equalToConstant: Theme.spacing(usage: .standard2))
 			]
 		}
 	}

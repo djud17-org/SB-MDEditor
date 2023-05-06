@@ -23,7 +23,6 @@ final class CreateDocPresenter: ICreateDocPresenter {
 	}
 
 	func transit(with file: CreateDocModel.ViewModel) {
-		
 		viewController?.render(viewModel: file)
 	}
 }
