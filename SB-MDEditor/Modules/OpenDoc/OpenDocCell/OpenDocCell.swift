@@ -9,24 +9,39 @@ import UIKit
 
 /// Класс ячейки файлa/папки
 final class OpenDocCell: UITableViewCell {
-	static let identifier = "OpenDocCell"
 
 	// MARK: - UI Elements
-	lazy var fieldImage = UIImageView()
-	lazy var fieldFileName = UILabel()
-
-	lazy var fieldFileAttributes: UILabel = {
-		let label = UILabel()
-		label.font = Theme.font(style: .footnote)
-
-		return label
-	}()
+	lazy var fieldImage = makeFieldImage()
+	lazy var fieldFileName = makeFieldFileName()
+	lazy var fieldFileAttributes = makeFieldFileAttributes()
 
 	// MARK: - Lifecycle
 	override func layoutSubviews() {
 		super.layoutSubviews()
 		applyStyle()
 		setupLayout()
+	}
+
+	private func makeFieldImage() -> UIImageView {
+		let image = UIImageView()
+		image.contentMode = .scaleAspectFit
+
+		return image
+	}
+
+	private func makeFieldFileName() -> UILabel {
+		let label = UILabel()
+		label.numberOfLines = .zero
+
+		return label
+	}
+
+	private func makeFieldFileAttributes() -> UILabel {
+		let label = UILabel()
+		label.font = Theme.font(style: .footnote)
+		label.numberOfLines = .zero
+
+		return label
 	}
 
 	private func applyStyle() {

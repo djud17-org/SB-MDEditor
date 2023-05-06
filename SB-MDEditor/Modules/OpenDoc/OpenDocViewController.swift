@@ -5,12 +5,12 @@ protocol IOpenDocViewController: AnyObject {
 	func render(viewModel: OpenDocModel.ViewModel)
 }
 
-final class OpenDocViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+final class OpenDocViewController: UIViewController {
 	private let interactor: IOpenDocInteractor
 	private let router: IOpenDocRouter
 
-	private lazy var emptyView = EmptyView()
-	private lazy var tableView = UITableView()
+	private lazy var emptyView = makeEmptyView()
+	private lazy var tableView = makeTableView()
 
 	private var viewModel: OpenDocModel.ViewData {
 		didSet {
@@ -42,7 +42,7 @@ final class OpenDocViewController: UIViewController, UITableViewDataSource, UITa
 		super.viewDidLoad()
 
 		setup()
-		setupTableView()
+		setupConstraints()
 		interactor.viewIsReady()
 	}
 }
@@ -64,9 +64,9 @@ extension OpenDocViewController: IOpenDocViewController {
 	}
 }
 
-// MARK: - UITableViewController
+// MARK: - UITableViewDataSource
 
-extension OpenDocViewController {
+extension OpenDocViewController: UITableViewDataSource {
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		viewModel.files.count
 	}
@@ -83,7 +83,11 @@ extension OpenDocViewController {
 
 		return tableView.dequeueReusableCell(withModel: model, for: indexPath)
 	}
+}
 
+// MARK: - UITableViewDelegate
+
+extension OpenDocViewController: UITableViewDelegate {
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		tableView.deselectRow(at: indexPath, animated: true)
 		interactor.didFileSelected(at: indexPath)
@@ -132,17 +136,25 @@ private extension OpenDocViewController {
 		]
 	}
 
-	func setupTableView() {
-		tableView.register(models: [OpenDocCellModel.self])
+	func makeTableView() -> UITableView {
+		let table = UITableView()
+		table.register(models: [OpenDocCellModel.self])
 
-		tableView.separatorStyle = .singleLine
-		tableView.estimatedRowHeight = 100
+		table.dataSource = self
+		table.delegate = self
 
-		tableView.delegate = self
-		tableView.dataSource = self
+		table.backgroundView = emptyView
+		table.separatorStyle = .singleLine
+		table.estimatedRowHeight = 64
 
-		setupConstraints()
-		setupEmptyView()
+		return table
+	}
+
+	func makeEmptyView() -> UIView {
+		let view = EmptyView()
+		view.update(with: EmptyInputData.emptyFolder)
+
+		return view
 	}
 
 	func updateView() {
@@ -163,16 +175,9 @@ private extension OpenDocViewController {
 		}
 	}
 
-	func setupEmptyView() {
-		emptyView.update(with: EmptyInputData.emptyFolder)
-		emptyView.hide()
-	}
-
 	func setupConstraints() {
 		view.addSubview(tableView)
 		tableView.makeEqualToSuperview()
-
-		tableView.backgroundView = emptyView
 		emptyView.makeEqualToSuperviewCenter()
 	}
 }
