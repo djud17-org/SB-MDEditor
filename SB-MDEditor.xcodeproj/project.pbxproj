@@ -79,6 +79,7 @@
 		609CAFFA29FD466100834937 /* OpenDocModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 609CAFF529FD466100834937 /* OpenDocModels.swift */; };
 		609CAFFF29FD46ED00834937 /* OpenDocCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 609CAFFE29FD46ED00834937 /* OpenDocCellModel.swift */; };
 		60D43BB729F1A61300C5AF4F /* MD_Bandle in Resources */ = {isa = PBXBuildFile; fileRef = 60D43BB629F1A61300C5AF4F /* MD_Bandle */; };
+		ABB8A5092A0829D300757B4B /* MarkdownToHtmlConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB8A5082A0829D300757B4B /* MarkdownToHtmlConverter.swift */; };
 		ABD1DB6129F7BE4D00C7B471 /* About.md in Resources */ = {isa = PBXBuildFile; fileRef = ABD1DB6029F7BE4D00C7B471 /* About.md */; };
 /* End PBXBuildFile section */
 
@@ -177,6 +178,7 @@
 		609CAFF529FD466100834937 /* OpenDocModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenDocModels.swift; sourceTree = "<group>"; };
 		609CAFFE29FD46ED00834937 /* OpenDocCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenDocCellModel.swift; sourceTree = "<group>"; };
 		60D43BB629F1A61300C5AF4F /* MD_Bandle */ = {isa = PBXFileReference; lastKnownFileType = folder; path = MD_Bandle; sourceTree = "<group>"; };
+		ABB8A5082A0829D300757B4B /* MarkdownToHtmlConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownToHtmlConverter.swift; sourceTree = "<group>"; };
 		ABD1DB6029F7BE4D00C7B471 /* About.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = About.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -448,6 +450,7 @@
 				5A8F69062A005A2A00749CDF /* AboutPresenter.swift */,
 				5ACEB29A29EECC91008E80A2 /* AboutViewController.swift */,
 				5A8F69082A00650D00749CDF /* AboutRouter.swift */,
+				ABB8A5082A0829D300757B4B /* MarkdownToHtmlConverter.swift */,
 			);
 			path = About;
 			sourceTree = "<group>";
@@ -749,6 +752,7 @@
 				609CAFFA29FD466100834937 /* OpenDocModels.swift in Sources */,
 				25FC42FC29F1D9E1001895ED /* MenuItemCell.swift in Sources */,
 				5ACEB28D29EE7AB5008E80A2 /* MainModels.swift in Sources */,
+				ABB8A5092A0829D300757B4B /* MarkdownToHtmlConverter.swift in Sources */,
 				5ACEB29729EEA7AF008E80A2 /* Types.swift in Sources */,
 				5A8F69032A00551D00749CDF /* AboutModel.swift in Sources */,
 				5ACEB29B29EECC91008E80A2 /* AboutViewController.swift in Sources */,
