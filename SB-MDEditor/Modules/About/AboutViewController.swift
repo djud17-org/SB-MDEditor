@@ -9,23 +9,23 @@ final class AboutViewController: UIViewController {
 	// MARK: - Parameters
 
 	private let interactor: IAboutInteractor
-	private let router: IAboutRouter
+	var didSendEventClosure: ((AboutViewController.Event) -> Void)?
 
 	private lazy var aboutTextView: UITextView = makeAboutTextView()
 
 	// MARK: - Inits
 
-	init(
-		interactor: IAboutInteractor,
-		router: IAboutRouter
-	) {
+	init(interactor: IAboutInteractor) {
 		self.interactor = interactor
-		self.router = router
 		super.init(nibName: nil, bundle: nil)
 	}
 
 	required init?(coder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
+	}
+
+	deinit {
+		print("AboutViewController deinit")
 	}
 
 	// MARK: - Lifecycle
@@ -40,6 +40,13 @@ final class AboutViewController: UIViewController {
 	}
 }
 
+// MARK: - Event
+extension AboutViewController {
+	enum Event {
+		case finish
+	}
+}
+
 // MARK: - IAboutViewController
 
 extension AboutViewController: IAboutViewController {
@@ -51,13 +58,14 @@ extension AboutViewController: IAboutViewController {
 // MARK: - Action
 private extension AboutViewController {
 	@objc func returnToMainScreen() {
-		router.navigate(.toSimpleMainModule)
+		didSendEventClosure?(.finish)
 	}
 }
 
 // MARK: - UI
 private extension AboutViewController {
 	func setup() {
+		navigationController?.navigationBar.prefersLargeTitles = true
 		navigationItem.rightBarButtonItem = UIBarButtonItem(
 			barButtonSystemItem: .close,
 			target: self,

@@ -6,10 +6,8 @@ protocol ICreateDocViewController: AnyObject {
 }
 
 final class CreateDocViewController: UIViewController {
-	// MARK: - Parameters
-
 	private let interactor: ICreateDocInteractor
-	private let router: ICreateDocRouter
+	var didSendFileEventClosure: ((CreateDocModel.ViewModel) -> Void)?
 
 	private lazy var createTextView: UITextView = makeCreateTextView()
 
@@ -21,12 +19,8 @@ final class CreateDocViewController: UIViewController {
 
 	// MARK: - Inits
 
-	init(
-		interactor: ICreateDocInteractor,
-		router: ICreateDocRouter
-	) {
+	init(interactor: ICreateDocInteractor) {
 		self.interactor = interactor
-		self.router = router
 		viewModel = .init(
 			title: "Untitle",
 			fileContents: "",
@@ -38,6 +32,10 @@ final class CreateDocViewController: UIViewController {
 
 	required init?(coder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
+	}
+
+	deinit {
+		print("CreateDocViewController deinit")
 	}
 
 	// MARK: - Lifecycle
@@ -59,10 +57,10 @@ extension CreateDocViewController: ICreateDocViewController {
 		switch viewModel {
 		case let .showFile(viewData):
 			self.viewModel = viewData
-		case let .backDir(file):
-			router.navigate(.toOpenDoc(file))
+		case .backDir:
+			didSendFileEventClosure?(viewModel)
 		case let .saveFile(file):
-			print("Нужно сохранить файл")
+			print("Нужно сохранить файл", file.name)
 		}
 	}
 }
@@ -72,18 +70,19 @@ private extension CreateDocViewController {
 	@objc func returnToPreviousPath() {
 		interactor.backToPreviousPath()
 	}
-	@objc func returnToMainScreen() {
-		router.navigate(.toSimpleMainModule)
+	@objc func returnToBackScreen() {
+		interactor.backToPreviousPath()
 	}
 }
 
 // MARK: - UI
 private extension CreateDocViewController {
 	func setup() {
+		navigationController?.navigationBar.prefersLargeTitles = false
 		navigationItem.rightBarButtonItem = UIBarButtonItem(
 			barButtonSystemItem: .close,
 			target: self,
-			action: #selector(returnToMainScreen)
+			action: #selector(returnToBackScreen)
 		)
 	}
 

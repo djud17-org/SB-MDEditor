@@ -1,44 +1,7 @@
-//
-//  MainSimpleViewController.swift
-//  SB-MDEditor
-//
-//  Created by SERGEY SHLYAKHIN on 30.04.2023.
-//
-
 import UIKit
 
-enum Event {
-	case openDoc
-	case createDoc
-	case about
-
-	func menuTitleValue() -> String {
-		switch self {
-		case .openDoc:
-			return "Open"
-		case .createDoc:
-			return "New"
-		case .about:
-			return "About"
-		}
-	}
-
-	func menuIconValue() -> UIImage {
-		let image: UIImage
-		switch self {
-		case .openDoc:
-			image = Theme.image(kind: .openMenuIcon)
-		case .createDoc:
-			image = Theme.image(kind: .newFileMenuIcon)
-		case .about:
-			image = Theme.image(kind: .aboutMenuIcon)
-		}
-		return image
-	}
-}
-
 final class MainSimpleViewController: UIViewController {
-	let router: IMainSimpleRoute
+	var didSendEventClosure: ((MainSimpleViewController.Event) -> (() -> Void))?
 
 	// MARK: - UI
 	private lazy var openDocButton: UIButton = makeButtonByEvent(.openDoc)
@@ -47,8 +10,7 @@ final class MainSimpleViewController: UIViewController {
 
 	// MARK: - Init
 
-	init(router: IMainSimpleRoute) {
-		self.router = router
+	init() {
 		super.init(nibName: nil, bundle: nil)
 	}
 
@@ -62,20 +24,41 @@ final class MainSimpleViewController: UIViewController {
 		applyStyle()
 		setupConstraints()
 	}
+
+	deinit {
+		print("MainSimpleViewController deinit")
+	}
 }
 
 // MARK: - Action
-private extension MainSimpleViewController {
-	private func acitonByEvent(_ event: Event) -> (() -> Void) {
-		switch event {
-		case .openDoc:
-			return { self.router.navigate(.toOpenDoc(File.makePrototypeDir())) }
-		case .createDoc:
-			return {
-				self.router.navigate(.toCreateDoc(File.makePrototypeDir()))
+extension MainSimpleViewController {
+	enum Event {
+		case openDoc
+		case createDoc
+		case about
+
+		func menuTitleValue() -> String {
+			switch self {
+			case .openDoc:
+				return "Open"
+			case .createDoc:
+				return "New"
+			case .about:
+				return "About"
 			}
-		case .about:
-			return { self.router.navigate(.toAbout) }
+		}
+
+		func menuIconValue() -> UIImage {
+			let image: UIImage
+			switch self {
+			case .openDoc:
+				image = Theme.image(kind: .openMenuIcon)
+			case .createDoc:
+				image = Theme.image(kind: .newFileMenuIcon)
+			case .about:
+				image = Theme.image(kind: .aboutMenuIcon)
+			}
+			return image
 		}
 	}
 }
@@ -83,6 +66,7 @@ private extension MainSimpleViewController {
 // MARK: - UI
 private extension MainSimpleViewController {
 	func applyStyle() {
+		navigationController?.navigationBar.prefersLargeTitles = true
 		title = Appearance.title
 		view.backgroundColor = Theme.color(usage: .white)
 	}
@@ -112,7 +96,7 @@ private extension MainSimpleViewController {
 		button.setTitle(event.menuTitleValue(), for: .normal)
 		button.setTitleColor(Theme.color(usage: .main), for: .normal)
 
-		button.event = acitonByEvent(event)
+		button.event = didSendEventClosure?(event)
 
 		return button
 	}

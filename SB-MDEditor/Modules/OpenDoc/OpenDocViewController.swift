@@ -7,7 +7,8 @@ protocol IOpenDocViewController: AnyObject {
 
 final class OpenDocViewController: UITableViewController {
 	private let interactor: IOpenDocInteractor
-	private let router: IOpenDocRouter
+	var didSendFileEventClosure: ((OpenDocModel.ViewModel) -> Void)?
+	var didSendEventClosure: ((Event) -> Void)?
 
 	private var viewModel: OpenDocModel.ViewData {
 		didSet {
@@ -15,12 +16,10 @@ final class OpenDocViewController: UITableViewController {
 		}
 	}
 
-	init(
-		interactor: IOpenDocInteractor,
-		router: IOpenDocRouter
-	) {
+	// MARK: - Inits
+
+	init(interactor: IOpenDocInteractor) {
 		self.interactor = interactor
-		self.router = router
 		viewModel = .init(
 			title: "/",
 			hasPreviousPath: false,
@@ -34,12 +33,17 @@ final class OpenDocViewController: UITableViewController {
 		fatalError("init(coder:) has not been implemented")
 	}
 
+	deinit {
+		print("OpenDocViewController deinit")
+	}
+
 	// MARK: - Lifecycle
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
 		setup()
 		setupTableView()
+
 		interactor.viewIsReady()
 	}
 }
@@ -49,16 +53,19 @@ final class OpenDocViewController: UITableViewController {
 extension OpenDocViewController: IOpenDocViewController {
 	func render(viewModel: OpenDocModel.ViewModel) {
 		switch viewModel {
-		case let .openFile(file):
-			router.navigate(.toCreateDoc(file))
+		case .openFile, .openDir:
+			didSendFileEventClosure?(viewModel)
 		case let .showDir(viewData):
 			self.viewModel = viewData
 			tableView.reloadData()
-		case let .openDir(file):
-			router.navigate(.toOpenDoc(file))
-		case let .backDir(file):
-			router.navigate(.toOpenDoc(file))
 		}
+	}
+}
+
+// MARK: - Event
+extension OpenDocViewController {
+	enum Event {
+		case finish
 	}
 }
 
@@ -94,13 +101,14 @@ private extension OpenDocViewController {
 		interactor.backToPreviousPath()
 	}
 	@objc func returnToMainScreen() {
-		router.navigate(.toSimpleMainModule)
+		didSendEventClosure?(.finish)
 	}
 }
 
 // MARK: - UI
 private extension OpenDocViewController {
 	func setup() {
+		navigationController?.navigationBar.prefersLargeTitles = false
 		navigationItem.rightBarButtonItem = UIBarButtonItem(
 			barButtonSystemItem: .close,
 			target: self,
