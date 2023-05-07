@@ -8,7 +8,6 @@
 import Foundation
 
 protocol ICreateDocInteractor {
-
 	/// Подготовить данные для вью.
 	func viewIsReady()
 	/// Вернуться на уровень выше.

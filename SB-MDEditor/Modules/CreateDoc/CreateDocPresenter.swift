@@ -33,7 +33,7 @@ private extension CreateDocPresenter {
 
 		var title = data.file.name
 		if title.isEmpty {
-			title = "Untitle"
+			title = "Untitled"
 		}
 
 		return .showFile(
