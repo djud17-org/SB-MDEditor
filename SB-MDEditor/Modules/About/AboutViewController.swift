@@ -30,10 +30,6 @@ final class AboutViewController: UIViewController {
 	}
 
 	// MARK: - Lifecycle
-	override func loadView() {
-		view = webView
-	}
-
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
@@ -48,6 +44,7 @@ final class AboutViewController: UIViewController {
 
 extension AboutViewController: IAboutViewController {
 	func render(viewModel: AboutModel.ViewData) {
+		view = webView
 		let htmlContent = MarkdownToHtmlConverter().convert(viewModel.fileContents)
 		webView.loadHTMLString(htmlContent, baseURL: nil)
 	}
@@ -79,7 +76,6 @@ private extension AboutViewController {
 // MARK: - UI make
 func makeWebView() -> WKWebView {
 	let webview = WKWebView()
-//	webview.navigationDelegate = self
 	webview.allowsBackForwardNavigationGestures = true
 	return webview
 }
