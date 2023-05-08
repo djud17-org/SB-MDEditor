@@ -21,6 +21,8 @@ final class MarkdownToHtmlConverter: IMarkdownToHtmlConverter {
 				html.append(header)
 			} else if let paragraph = parseParagraph(text: line) {
 				html.append(paragraph)
+			} else if let textLink = parseLink(text: line) {
+				html.append(textLink)
 			}
 		}
 		return makeHtml(html.joined())
@@ -45,5 +47,15 @@ private extension MarkdownToHtmlConverter {
 
 	func parseParagraph(text: String) -> String? {
 		return "<p>\(text)</p>"
+	}
+
+	func parseLink(text: String) -> String? {
+		let pattern = #"^(https?:\/\/).{3,}"#
+
+		if let linkRange = text.range(of: pattern, options: .regularExpression) {
+			let textLink = text[linkRange.lowerBound...]
+			return "<a href=\(textLink)><h1\(textLink)</h1></a>"
+		}
+		return nil
 	}
 }

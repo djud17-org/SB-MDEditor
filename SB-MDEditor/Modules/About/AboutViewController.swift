@@ -12,7 +12,7 @@ final class AboutViewController: UIViewController {
 	private let interactor: IAboutInteractor
 	private let router: IAboutRouter
 
-	private lazy var webView: WKWebView = makeWebView()
+	private var webView: WKWebView! // swiftlint:disable:this implicitly_unwrapped_optional
 
 	// MARK: - Inits
 
@@ -30,6 +30,12 @@ final class AboutViewController: UIViewController {
 	}
 
 	// MARK: - Lifecycle
+	override func loadView() {
+		webView = WKWebView()
+		webView.navigationDelegate = self
+		view = webView
+	}
+
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
@@ -44,7 +50,6 @@ final class AboutViewController: UIViewController {
 
 extension AboutViewController: IAboutViewController {
 	func render(viewModel: AboutModel.ViewData) {
-		view = webView
 		let htmlContent = MarkdownToHtmlConverter().convert(viewModel.fileContents)
 		webView.loadHTMLString(htmlContent, baseURL: nil)
 	}
@@ -73,16 +78,12 @@ private extension AboutViewController {
 	}
 }
 
-// MARK: - UI make
-func makeWebView() -> WKWebView {
-	let webview = WKWebView()
-	webview.allowsBackForwardNavigationGestures = true
-	return webview
-}
-
 // MARK: - Appearance
 private extension AboutViewController {
 	enum Appearance {
 		static let title = "About"
 	}
 }
+
+// MARK: - Navigation Delegate
+extension AboutViewController: WKNavigationDelegate {}
