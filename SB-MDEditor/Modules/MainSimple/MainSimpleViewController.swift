@@ -3,12 +3,11 @@ import UIKit
 final class MainSimpleViewController: UIViewController {
 	var didSendEventClosure: ((MainSimpleViewController.Event) -> (() -> Void))?
 
-	// MARK: - UI
 	private lazy var openDocButton: UIButton = makeButtonByEvent(.openDoc)
 	private lazy var createDocButton: UIButton = makeButtonByEvent(.createDoc)
 	private lazy var aboutButton: UIButton = makeButtonByEvent(.about)
 
-	// MARK: - Init
+	// MARK: - Inits
 
 	init() {
 		super.init(nibName: nil, bundle: nil)
@@ -18,15 +17,17 @@ final class MainSimpleViewController: UIViewController {
 		fatalError("init(coder:) has not been implemented")
 	}
 
+	deinit {
+		print("MainSimpleViewController deinit")
+	}
+
+	// MARK: - Lifecycle
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
+		setup()
 		applyStyle()
 		setupConstraints()
-	}
-
-	deinit {
-		print("MainSimpleViewController deinit")
 	}
 }
 
@@ -65,8 +66,10 @@ extension MainSimpleViewController {
 
 // MARK: - UI
 private extension MainSimpleViewController {
-	func applyStyle() {
+	func setup() {
 		navigationController?.navigationBar.prefersLargeTitles = true
+	}
+	func applyStyle() {
 		title = Appearance.title
 		view.backgroundColor = Theme.color(usage: .white)
 	}

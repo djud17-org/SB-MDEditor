@@ -5,16 +5,19 @@ final class OnboardingViewController: UIViewController {
 
 	private lazy var startButton: UIButton = makeStartButton()
 
+	// MARK: - Inits
+
+	deinit {
+		print("OnboardingViewController deinit")
+	}
+
+	// MARK: - Lifecycle
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
 		setup()
 		applyStyle()
 		setupConstraints()
-	}
-
-	deinit {
-		print("OnboardingViewController deinit")
 	}
 }
 

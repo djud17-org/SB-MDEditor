@@ -87,7 +87,6 @@ private extension CreateDocViewController {
 	}
 
 	func applyStyle() {
-		title = Appearance.title
 		view.backgroundColor = Theme.color(usage: .white)
 	}
 
@@ -110,7 +109,7 @@ private extension CreateDocViewController {
 		createTextView.text = viewModel.fileContents
 		if viewModel.hasPreviousPath {
 			navigationItem.leftBarButtonItem = UIBarButtonItem(
-				title: "<<",
+				image: Theme.image(kind: .backIcon),
 				style: .plain,
 				target: self,
 				action: #selector(returnToPreviousPath)
@@ -128,12 +127,5 @@ private extension CreateDocViewController {
 		textView.textColor = Theme.color(usage: .main)
 		textView.isEditable = false
 		return textView
-	}
-}
-
-// MARK: - Appearance
-private extension CreateDocViewController {
-	enum Appearance {
-		static let title = "Create Doc"
 	}
 }

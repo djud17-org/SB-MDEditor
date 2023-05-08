@@ -6,8 +6,6 @@ protocol IAboutViewController: AnyObject {
 }
 
 final class AboutViewController: UIViewController {
-	// MARK: - Parameters
-
 	private let interactor: IAboutInteractor
 	var didSendEventClosure: ((AboutViewController.Event) -> Void)?
 
@@ -40,13 +38,6 @@ final class AboutViewController: UIViewController {
 	}
 }
 
-// MARK: - Event
-extension AboutViewController {
-	enum Event {
-		case finish
-	}
-}
-
 // MARK: - IAboutViewController
 
 extension AboutViewController: IAboutViewController {
@@ -55,7 +46,14 @@ extension AboutViewController: IAboutViewController {
 	}
 }
 
-// MARK: - Action
+// MARK: - Event
+extension AboutViewController {
+	enum Event {
+		case finish
+	}
+}
+
+// MARK: - Actions
 private extension AboutViewController {
 	@objc func returnToMainScreen() {
 		didSendEventClosure?(.finish)
