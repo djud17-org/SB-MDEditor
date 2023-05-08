@@ -1,5 +1,3 @@
-import UIKit
-
 final class Di {
 
 	// MARK: - глобальные сервисы-зависимости

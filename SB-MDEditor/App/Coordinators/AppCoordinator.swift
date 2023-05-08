@@ -1,5 +1,4 @@
 final class AppCoordinator: BaseCoordinator {
-
 	private let factory: ICoordinatorFactory
 	private let router: IRouter
 

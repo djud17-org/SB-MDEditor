@@ -1,3 +1,9 @@
+import UIKit
+
+protocol Presentable {
+	func toPresent() -> UIViewController?
+}
+
 protocol IRouter: Presentable {
 
 	func present(_ module: Presentable?)

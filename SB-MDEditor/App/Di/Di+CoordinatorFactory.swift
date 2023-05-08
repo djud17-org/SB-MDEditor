@@ -1,5 +1,3 @@
-import UIKit
-
 // MARK: - CoordinatorFactory
 
 protocol ICoordinatorFactory {

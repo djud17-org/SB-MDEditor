@@ -304,6 +304,7 @@
 		5A65415629DE1A470042503D /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				5AE1EFC12A08715200103F08 /* Coordinator+Router */,
 				5ACEB29629EEA7AF008E80A2 /* Types.swift */,
 				5ACEB2A329EEED86008E80A2 /* Protocols */,
 				5ACEB29529EEA71D008E80A2 /* OptionalViews */,
@@ -331,7 +332,6 @@
 		5A91DED629E0DF0A001A23C3 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				5AE1EFC12A08715200103F08 /* Coordinator+Router */,
 				5A91DED929E12F82001A23C3 /* UIViewController+Preview.swift */,
 				5A61DD3C29E13FF9001E8665 /* UIView+Preview.swift */,
 				5A91DED729E0DF58001A23C3 /* UIView+Constraints.swift */,
