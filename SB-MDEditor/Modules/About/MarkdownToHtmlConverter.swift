@@ -46,5 +46,4 @@ private extension MarkdownToHtmlConverter {
 	func parseParagraph(text: String) -> String? {
 		return "<p>\(text)</p>"
 	}
-
 }

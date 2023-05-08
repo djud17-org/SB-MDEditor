@@ -1,4 +1,5 @@
 import UIKit
+import WebKit
 
 protocol IAboutViewController: AnyObject {
 	/// Рендрит вьюмодель
@@ -11,7 +12,7 @@ final class AboutViewController: UIViewController {
 	private let interactor: IAboutInteractor
 	private let router: IAboutRouter
 
-	private lazy var aboutTextView: UITextView = makeAboutTextView()
+	private lazy var webView: WKWebView = makeWebView()
 
 	// MARK: - Inits
 
@@ -29,12 +30,15 @@ final class AboutViewController: UIViewController {
 	}
 
 	// MARK: - Lifecycle
+	override func loadView() {
+		view = webView
+	}
+
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
 		setup()
 		applyStyle()
-		setupConstraints()
 
 		interactor.viewIsReady()
 	}
@@ -44,7 +48,8 @@ final class AboutViewController: UIViewController {
 
 extension AboutViewController: IAboutViewController {
 	func render(viewModel: AboutModel.ViewData) {
-		aboutTextView.text = viewModel.fileContents
+		let htmlContent = MarkdownToHtmlConverter().convert(viewModel.fileContents)
+		webView.loadHTMLString(htmlContent, baseURL: nil)
 	}
 }
 
@@ -69,32 +74,14 @@ private extension AboutViewController {
 		title = Appearance.title
 		view.backgroundColor = Theme.color(usage: .white)
 	}
-
-	func setupConstraints() {
-		[
-			aboutTextView
-		].forEach { view.addSubview($0) }
-
-		let insets: UIEdgeInsets = .init(
-			top: .zero,
-			left: Theme.spacing(usage: .standard),
-			bottom: .zero,
-			right: Theme.spacing(usage: .standard)
-		)
-		aboutTextView.makeEqualToSuperviewToSafeArea(insets: insets)
-	}
 }
 
 // MARK: - UI make
-private extension AboutViewController {
-	func makeAboutTextView() -> UITextView {
-		let textView = UITextView()
-		textView.backgroundColor = Theme.color(usage: .background)
-		textView.font = Theme.font(style: .caption)
-		textView.textColor = Theme.color(usage: .main)
-		textView.isEditable = false
-		return textView
-	}
+func makeWebView() -> WKWebView {
+	let webview = WKWebView()
+//	webview.navigationDelegate = self
+	webview.allowsBackForwardNavigationGestures = true
+	return webview
 }
 
 // MARK: - Appearance
