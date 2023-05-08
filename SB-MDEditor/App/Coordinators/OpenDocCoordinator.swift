@@ -38,10 +38,19 @@ private extension OpenDocCoordinator {
 			switch event {
 			case let .openFile(file):
 				self.showCreateDocModule(file: file)
+			case let .createFile(file):
+				let initialFile = File.makePrototypeFile()
+				initialFile.path = file.fullname
+				self.showCreateDocModule(file: initialFile)
 			case .showDir:
 				break
 			case let .openDir(file):
 				self.showOpenDocModule(file: file)
+			case let .createDir(file):
+				let initialFile = File.makePrototypeDir()
+				initialFile.path = file.fullname
+				print("Создать каталог в текущей директории")
+				// self.showCreateDocModule(file: initialFile)
 			}
 		}
 		moduleVC?.didSendEventClosure = { event in

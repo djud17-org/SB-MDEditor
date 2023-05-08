@@ -71,7 +71,6 @@
 		609CAFF829FD466100834937 /* OpenDocPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 609CAFF329FD466100834937 /* OpenDocPresenter.swift */; };
 		609CAFF929FD466100834937 /* OpenDocViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 609CAFF429FD466100834937 /* OpenDocViewController.swift */; };
 		609CAFFA29FD466100834937 /* OpenDocModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 609CAFF529FD466100834937 /* OpenDocModels.swift */; };
-		609CAFFF29FD46ED00834937 /* OpenDocCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 609CAFFE29FD46ED00834937 /* OpenDocCellModel.swift */; };
 		60D43BB729F1A61300C5AF4F /* MD_Bandle in Resources */ = {isa = PBXBuildFile; fileRef = 60D43BB629F1A61300C5AF4F /* MD_Bandle */; };
 		ABD1DB6129F7BE4D00C7B471 /* About.md in Resources */ = {isa = PBXBuildFile; fileRef = ABD1DB6029F7BE4D00C7B471 /* About.md */; };
 /* End PBXBuildFile section */
@@ -163,7 +162,6 @@
 		609CAFF329FD466100834937 /* OpenDocPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenDocPresenter.swift; sourceTree = "<group>"; };
 		609CAFF429FD466100834937 /* OpenDocViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenDocViewController.swift; sourceTree = "<group>"; };
 		609CAFF529FD466100834937 /* OpenDocModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenDocModels.swift; sourceTree = "<group>"; };
-		609CAFFE29FD46ED00834937 /* OpenDocCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenDocCellModel.swift; sourceTree = "<group>"; };
 		60D43BB629F1A61300C5AF4F /* MD_Bandle */ = {isa = PBXFileReference; lastKnownFileType = folder; path = MD_Bandle; sourceTree = "<group>"; };
 		ABD1DB6029F7BE4D00C7B471 /* About.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = About.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -471,7 +469,6 @@
 		609CAFFB29FD46D600834937 /* OpenDocCell */ = {
 			isa = PBXGroup;
 			children = (
-				609CAFFE29FD46ED00834937 /* OpenDocCellModel.swift */,
 				608C74C629FDC0C100E71D80 /* OpenDocCell.swift */,
 			);
 			path = OpenDocCell;
@@ -683,7 +680,6 @@
 				25FC42FE29F1F255001895ED /* UICollectionView+Extensions.swift in Sources */,
 				5ACEB2A929EEED86008E80A2 /* CellViewModel.swift in Sources */,
 				608C74C729FDC0C100E71D80 /* OpenDocCell.swift in Sources */,
-				609CAFFF29FD46ED00834937 /* OpenDocCellModel.swift in Sources */,
 				5AC2735B2A0563A400E49D54 /* AppCoordinator.swift in Sources */,
 				609CAFF829FD466100834937 /* OpenDocPresenter.swift in Sources */,
 				25AEE10129F7075800E177AE /* LocalFilesProvider.swift in Sources */,

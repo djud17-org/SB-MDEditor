@@ -11,10 +11,14 @@ protocol IOpenDocInteractor {
 
 	/// Подготовить данные для вью.
 	func viewIsReady()
-	/// Обработать выбранный файл.
+	/// Обработать выбранный файл: показать содержимое файла или каталога.
 	func didFileSelected(at indexPath: IndexPath)
-	/// Вернуться на уровень выше.
+	/// Вернуться на каталог выше.
 	func backToPreviousPath()
+	/// Создать новый файл в текущей директории.
+	func didTapCreateFile()
+	/// Создать новый каталог в текущей диерктории.
+	func didTapCreateDir()
 }
 
 final class OpenDocInteractor: IOpenDocInteractor {
@@ -56,6 +60,14 @@ final class OpenDocInteractor: IOpenDocInteractor {
 		case .file:
 			presenter?.transit(with: .openFile(file))
 		}
+	}
+
+	func didTapCreateFile() {
+		presenter?.transit(with: .createFile(initialFile))
+	}
+
+	func didTapCreateDir() {
+		presenter?.transit(with: .createDir(initialFile))
 	}
 
 	func backToPreviousPath() {

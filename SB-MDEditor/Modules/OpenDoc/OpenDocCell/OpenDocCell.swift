@@ -1,64 +1,109 @@
-//
-//  OpenDocCell.swift
-//  SB-MDEditor
-//
-//  Created by Антон Заричный on 23.04.2023.
-//
-
 import UIKit
 
 /// Класс ячейки файлa/папки
-class OpenDocCell: UITableViewCell {
-	static let identifier = "OpenDocCell"
+final class OpenDocCell: UITableViewCell {
 
 	// MARK: - UI Elements
-	lazy var fieldImage = UIImageView()
-	lazy var fieldFileName = UILabel()
+	private lazy var fileImageView = makeFileImageView()
+	private lazy var fileNameLabel = makeFileNameLabel()
+	private lazy var fileAttrLabel = makeFileAttrLabel()
 
-	lazy var fieldFileAttributes: UILabel = {
-		let label = UILabel()
-		label.font = Theme.font(style: .footnote)
-
-		return label
-	}()
-
-	// MARK: - Lifecycle
-	override func layoutSubviews() {
-		super.layoutSubviews()
+	// MARK: - Init
+	override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+		super.init(style: style, reuseIdentifier: reuseIdentifier)
 		applyStyle()
-		setupLayout()
+		setupConstraints()
 	}
 
-	private func applyStyle() {
+	required init?(coder: NSCoder) {
+		fatalError("init(coder:) has not been implemented")
+	}
+
+	// MARK: - Lifecycle
+	override func prepareForReuse() {
+		super.prepareForReuse()
+		fileImageView.image = nil
+		fileNameLabel.text = nil
+		fileAttrLabel.text = nil
+	}
+
+	// MARK: - Model for cell
+	struct OpenDocCellModel {
+		let fileImage: UIImage
+		let fileName: String
+		let fileAttr: String
+	}
+}
+
+// MARK: - CellViewModel
+
+extension OpenDocCell.OpenDocCellModel: CellViewModel {
+	func setup(cell: OpenDocCell) {
+		cell.fileImageView.image = fileImage
+		cell.fileNameLabel.text = fileName
+		cell.fileAttrLabel.text = fileAttr
+	}
+}
+
+// MARK: - UI
+private extension OpenDocCell {
+	func applyStyle() {
 		contentView.backgroundColor = Theme.color(usage: .background)
 	}
 
-	// MARK: - SetupLayout
-	private func setupLayout() {
+	func setupConstraints() {
+		let vStack = UIStackView()
+		vStack.axis = .vertical
+		vStack.spacing = Theme.spacing(usage: .standardHalf)
 		[
-			fieldImage,
-			fieldFileName,
-			fieldFileAttributes
-		].forEach { contentView.addSubview($0) }
+			fileNameLabel,
+			fileAttrLabel
+		].forEach { vStack.addArrangedSubview($0) }
 
-		fieldImage.makeConstraints { make in
-			[
-				make.topAnchor.constraint(equalTo: contentView.topAnchor, constant: Theme.spacing(usage: .standard)),
-				make.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: Theme.spacing(usage: .standard))
-			]
-		}
-		fieldFileName.makeConstraints { make in
-			[
-				make.topAnchor.constraint(equalTo: contentView.topAnchor, constant: Theme.spacing(usage: .standard)),
-				make.leadingAnchor.constraint(equalTo: fieldImage.trailingAnchor, constant: Theme.spacing(usage: .standard))
-			]
-		}
+		let hStack = UIStackView()
+		hStack.spacing = Theme.spacing(usage: .standard)
+		[
+			fileImageView,
+			vStack
+		].forEach { hStack.addArrangedSubview($0) }
+		fileImageView.setContentHuggingPriority(.defaultHigh, for: .horizontal)
 
-		fieldFileAttributes.makeConstraints { make in
-			[
-				make.topAnchor.constraint(equalTo: fieldFileName.bottomAnchor, constant: Theme.spacing(usage: .standard)),
-				make.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -Theme.spacing(usage: .standard))
-			]
-		}
+		contentView.addSubview(hStack)
+
+		let insets: UIEdgeInsets = .init(
+			top: Theme.spacing(usage: .standard),
+			left: Theme.spacing(usage: .standard),
+			bottom: Theme.spacing(usage: .standard),
+			right: Theme.spacing(usage: .standard)
+		)
+
+		hStack.makeEqualToSuperview(insets: insets)
+	}
+}
+
+// MARK: - UI make
+private extension OpenDocCell {
+	func makeFileImageView() -> UIImageView {
+		let image = UIImageView()
+		image.contentMode = .center
+
+		return image
+	}
+
+	func makeFileNameLabel() -> UILabel {
+		let label = UILabel()
+		label.font = Theme.font(style: .preferred(style: .callout))
+		label.numberOfLines = .zero
+
+		return label
+	}
+
+	func makeFileAttrLabel() -> UILabel {
+		let label = UILabel()
+		label.font = Theme.font(style: .caption)
+		label.numberOfLines = .zero
+		label.textAlignment = .right
+
+		return label
 	}
 }
