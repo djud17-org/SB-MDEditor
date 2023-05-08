@@ -1,14 +1,6 @@
-//
-//  CreateDocInteractor.swift
-//  SB-MDEditor
-//
-//  Created by SERGEY SHLYAKHIN on 02.05.2023.
-//
-
 import Foundation
 
 protocol ICreateDocInteractor {
-
 	/// Подготовить данные для вью.
 	func viewIsReady()
 	/// Вернуться на уровень выше.

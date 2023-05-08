@@ -5,9 +5,13 @@ protocol IOpenDocViewController: AnyObject {
 	func render(viewModel: OpenDocModel.ViewModel)
 }
 
-final class OpenDocViewController: UITableViewController {
+final class OpenDocViewController: UIViewController {
 	private let interactor: IOpenDocInteractor
-	private let router: IOpenDocRouter
+	var didSendFileEventClosure: ((OpenDocModel.ViewModel) -> Void)?
+	var didSendEventClosure: ((Event) -> Void)?
+
+	private lazy var emptyView = makeEmptyView()
+	private lazy var tableView = makeTableView()
 
 	private var viewModel: OpenDocModel.ViewData {
 		didSet {
@@ -15,12 +19,10 @@ final class OpenDocViewController: UITableViewController {
 		}
 	}
 
-	init(
-		interactor: IOpenDocInteractor,
-		router: IOpenDocRouter
-	) {
+	// MARK: - Inits
+
+	init(interactor: IOpenDocInteractor) {
 		self.interactor = interactor
-		self.router = router
 		viewModel = .init(
 			title: "/",
 			hasPreviousPath: false,
@@ -34,12 +36,18 @@ final class OpenDocViewController: UITableViewController {
 		fatalError("init(coder:) has not been implemented")
 	}
 
+	deinit {
+		print("OpenDocViewController deinit")
+	}
+
 	// MARK: - Lifecycle
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
 		setup()
-		setupTableView()
+		applyStyle()
+		setupConstraints()
+
 		interactor.viewIsReady()
 	}
 }
@@ -49,42 +57,47 @@ final class OpenDocViewController: UITableViewController {
 extension OpenDocViewController: IOpenDocViewController {
 	func render(viewModel: OpenDocModel.ViewModel) {
 		switch viewModel {
-		case let .openFile(file):
-			router.navigate(.toCreateDoc(file))
+		case .openFile, .openDir, .createFile, .createDir:
+			didSendFileEventClosure?(viewModel)
 		case let .showDir(viewData):
 			self.viewModel = viewData
 			tableView.reloadData()
-		case let .openDir(file):
-			router.navigate(.toOpenDoc(file))
-		case let .backDir(file):
-			router.navigate(.toOpenDoc(file))
 		}
 	}
 }
 
-// MARK: - UITableViewController
+// MARK: - UITableViewDataSource
 
-extension OpenDocViewController {
-	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+extension OpenDocViewController: UITableViewDataSource {
+	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		viewModel.files.count
 	}
 
-	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		let model: CellViewAnyModel
+	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let file = viewModel.files[indexPath.row]
-
-		model = OpenDocCellModel(
-			name: file.name,
-			fieldFileAttributes: file.fileAttributes,
-			fieldImage: file.fileImage
+		let model = OpenDocCell.OpenDocCellModel(
+			fileImage: file.fileImage,
+			fileName: file.name,
+			fileAttr: file.fileAttributes
 		)
 
 		return tableView.dequeueReusableCell(withModel: model, for: indexPath)
 	}
+}
 
-	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+// MARK: - UITableViewDelegate
+
+extension OpenDocViewController: UITableViewDelegate {
+	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		tableView.deselectRow(at: indexPath, animated: true)
 		interactor.didFileSelected(at: indexPath)
+	}
+}
+
+// MARK: - Event
+extension OpenDocViewController {
+	enum Event {
+		case finish
 	}
 }
 
@@ -94,13 +107,20 @@ private extension OpenDocViewController {
 		interactor.backToPreviousPath()
 	}
 	@objc func returnToMainScreen() {
-		router.navigate(.toSimpleMainModule)
+		didSendEventClosure?(.finish)
+	}
+	@objc func didTapCreateFile() {
+		interactor.didTapCreateFile()
+	}
+	@objc func didTapCreateDir() {
+		interactor.didTapCreateDir()
 	}
 }
 
 // MARK: - UI
 private extension OpenDocViewController {
 	func setup() {
+		navigationController?.navigationBar.prefersLargeTitles = false
 		navigationItem.rightBarButtonItem = UIBarButtonItem(
 			barButtonSystemItem: .close,
 			target: self,
@@ -108,21 +128,75 @@ private extension OpenDocViewController {
 		)
 	}
 
-	func setupTableView() {
-		tableView.separatorStyle = .singleLine
-		tableView.register(OpenDocCell.self, forCellReuseIdentifier: OpenDocCell.identifier)
-		tableView.rowHeight = 64
+	func applyStyle() {
+		view.backgroundColor = Theme.color(usage: .white)
+	}
+
+	func setupConstraints() {
+		view.addSubview(tableView)
+		tableView.makeEqualToSuperviewToSafeArea()
 	}
 
 	func updateView() {
 		title = viewModel.title
 		if viewModel.hasPreviousPath {
 			navigationItem.leftBarButtonItem = UIBarButtonItem(
-				title: "<<",
+				image: Theme.image(kind: .backIcon),
 				style: .plain,
 				target: self,
 				action: #selector(returnToPreviousPath)
 			)
+
+			navigationItem.rightBarButtonItems = [
+				UIBarButtonItem(
+					barButtonSystemItem: .close,
+					target: self,
+					action: #selector(returnToMainScreen)
+				),
+				UIBarButtonItem(
+					image: Theme.image(kind: .addDirectoryIcon),
+					style: .plain,
+					target: self,
+					action: #selector(didTapCreateDir)
+				),
+				UIBarButtonItem(
+					image: Theme.image(kind: .addFileIcon),
+					style: .plain,
+					target: self,
+					action: #selector(didTapCreateFile)
+				)
+			]
 		}
+		emptyView.isHidden = !viewModel.files.isEmpty
+	}
+}
+
+// MARK: - UI make
+private extension OpenDocViewController {
+	func makeTableView() -> UITableView {
+		let table = UITableView()
+		table.register(models: [OpenDocCell.OpenDocCellModel.self])
+
+		table.dataSource = self
+		table.delegate = self
+
+		let view = UIView()
+		view.addSubview(emptyView)
+		emptyView.makeEqualToSuperviewCenter()
+
+		table.backgroundView = view
+
+		table.separatorStyle = .singleLine
+		table.estimatedRowHeight = 64
+		table.rowHeight = UITableView.automaticDimension
+
+		return table
+	}
+
+	func makeEmptyView() -> UIView {
+		let view = EmptyView()
+		view.update(with: EmptyInputData.emptyFolder)
+
+		return view
 	}
 }

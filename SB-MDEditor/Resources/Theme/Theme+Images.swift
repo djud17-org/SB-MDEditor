@@ -9,6 +9,10 @@ extension Theme {
 
 		case emptyPlaceholder
 		case recentFilesPlaceholder
+
+		case addDirectoryIcon
+		case addFileIcon
+		case backIcon
 	}
 
 	static func image(kind: ImageAsset) -> UIImage {
