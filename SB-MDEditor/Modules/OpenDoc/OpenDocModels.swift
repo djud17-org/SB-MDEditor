@@ -29,6 +29,7 @@ enum OpenDocModel {
 		case openFile(File)
 		case showDir(ViewData)
 		case openDir(File)
-		case backDir(File)
+		case createDir(File)
+		case createFile(File)
 	}
 }

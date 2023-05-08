@@ -1,6 +1,8 @@
 import UIKit
 
 final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
+	private let appFactory: IAppFactory = Di()
+	private var appCoordinator: ICoordinator?
 	var window: UIWindow?
 
 	func scene(
@@ -9,6 +11,11 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 		options connectionOptions: UIScene.ConnectionOptions
 	) {
 		guard let scene = (scene as? UIWindowScene) else { return }
-		self.window = Di.makeKeyWindow(scene: scene)
+		let (window, coordinator) = appFactory.makeKeyWindowWithCoordinator(scene: scene)
+		self.window = window
+		self.appCoordinator = coordinator
+
+		window.makeKeyAndVisible()
+		coordinator.start()
 	}
 }

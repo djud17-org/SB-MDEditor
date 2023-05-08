@@ -1,10 +1,3 @@
-//
-//  File.swift
-//  SB-MDEditor
-//
-//  Created by Давид Тоноян  on 25.04.2023.
-//
-
 import Foundation
 
 final class File {
@@ -70,6 +63,20 @@ final class File {
 			ext: "",
 			size: .zero,
 			filetype: .directory,
+			creationDate: Date(),
+			modificationDate: Date()
+		)
+	}
+
+	/// Готовит пустое описание для файла-md.
+	/// - Returns: пустое описание файла-md
+	static func makePrototypeFile() -> File {
+		File(
+			name: "Untitled",
+			path: "",
+			ext: "md",
+			size: .zero,
+			filetype: .file,
 			creationDate: Date(),
 			modificationDate: Date()
 		)

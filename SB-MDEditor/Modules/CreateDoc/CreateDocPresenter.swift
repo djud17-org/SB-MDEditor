@@ -1,12 +1,3 @@
-//
-//  CreateDocPresenter.swift
-//  SB-MDEditor
-//
-//  Created by SERGEY SHLYAKHIN on 02.05.2023.
-//
-
-import UIKit
-
 protocol ICreateDocPresenter {
 	/// Подготовить данные к показу на вью.
 	func present(response: CreateDocModel.Response)
@@ -33,7 +24,7 @@ private extension CreateDocPresenter {
 
 		var title = data.file.name
 		if title.isEmpty {
-			title = "Untitle"
+			title = "Untitled"
 		}
 
 		return .showFile(

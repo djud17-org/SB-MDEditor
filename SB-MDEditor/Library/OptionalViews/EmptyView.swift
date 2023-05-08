@@ -1,9 +1,3 @@
-//
-//  EmptyView.swift
-//  SB-MDEditor
-//
-//  Created by Антон Заричный on 20.04.2023.
-//
 import UIKit
 
 final class EmptyView: UIView {
@@ -45,6 +39,7 @@ private extension EmptyView {
 
 	func makeEmptyImageView() -> UIImageView {
 		let image = UIImageView()
+		image.contentMode = .center
 		return image
 	}
 
@@ -57,15 +52,9 @@ private extension EmptyView {
 
 	func setupContainer() {
 		let backgroundView = UIView()
-		backgroundView.backgroundColor = Theme.color(usage: .white)
 		addSubview(backgroundView)
-		backgroundView.makeConstraints { make in
-			[
-				make.leadingAnchor.constraint(equalTo: leadingAnchor),
-				make.trailingAnchor.constraint(equalTo: trailingAnchor),
-				make.bottomAnchor.constraint(equalTo: bottomAnchor)
-			]
-		}
+
+		backgroundView.makeEqualToSuperview()
 
 		let stackContainer = UIStackView()
 		stackContainer.axis = .vertical
@@ -75,9 +64,9 @@ private extension EmptyView {
 
 		let insets = UIEdgeInsets(
 			top: Theme.spacing(usage: .standard),
-			left: Theme.spacing(usage: .standard2),
-			bottom: Theme.spacing(usage: .standard2),
-			right: Theme.spacing(usage: .standard2)
+			left: Theme.spacing(usage: .standard),
+			bottom: Theme.spacing(usage: .standard),
+			right: Theme.spacing(usage: .standard)
 		)
 
 		[
@@ -89,19 +78,3 @@ private extension EmptyView {
 		stackContainer.makeEqualToSuperview(insets: insets)
 	}
 }
-
-#if canImport(SwiftUI) && DEBUG
-import SwiftUI
-struct EmptyViewProvider: PreviewProvider {
-	static var previews: some View {
-		let emptyView = EmptyView()
-		emptyView.update(with: EmptyInputData.emptyFolder)
-		return Group {
-			VStack(spacing: 0) {
-				emptyView.preview().frame(height: 100).padding(.bottom, 20)
-			}
-			.preferredColorScheme(.light)
-		}
-	}
-}
-#endif

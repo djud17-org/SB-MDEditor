@@ -2,21 +2,21 @@ import UIKit
 
 // MARK: - AppFactory
 
-protocol AppFactory {
-	static func makeKeyWindow(scene: UIWindowScene) -> UIWindow
+protocol IAppFactory {
+	func makeKeyWindowWithCoordinator(scene: UIWindowScene) -> (UIWindow, ICoordinator)
 }
 
-extension Di: AppFactory {
-	static func makeKeyWindow(scene: UIWindowScene) -> UIWindow {
+extension Di: IAppFactory {
+	func makeKeyWindowWithCoordinator(scene: UIWindowScene) -> (UIWindow, ICoordinator) {
 		let window = UIWindow(windowScene: scene)
 
-		let rootViewController = RootViewController()
-		let di = Di(rootVC: rootViewController)
-		rootViewController.factory = di
-		rootViewController.start()
+		let navigationController = UINavigationController()
+		navigationController.navigationBar.prefersLargeTitles = true
 
-		window.rootViewController = rootViewController
-		window.makeKeyAndVisible()
-		return window
+		let router = Router(rootController: navigationController)
+		let cooridnator = makeApplicationCoordinator(router: router)
+
+		window.rootViewController = navigationController
+		return (window, cooridnator)
 	}
 }
