@@ -16,7 +16,10 @@ final class AboutCoordinator: BaseCoordinator {
 	deinit {
 		print("AboutCoordinator deinit")
 	}
+}
 
+// MARK: - show Modules
+private extension AboutCoordinator {
 	func showAboutModule() {
 		let module = factory.makeAboutModule()
 		let moduleVC = module.viewController as? AboutViewController

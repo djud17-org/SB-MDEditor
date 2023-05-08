@@ -16,7 +16,10 @@ final class AppCoordinator: BaseCoordinator {
 			runOnboardingFlow()
 		}
 	}
+}
 
+// MARK: - run Flows
+private extension AppCoordinator {
 	func runOnboardingFlow() {
 		let coordinator = factory.makeOnboardingCoordinator(router: router)
 		coordinator.finishFlow = { [weak self, weak coordinator] in

@@ -16,7 +16,10 @@ final class OnboardingCoordinator: BaseCoordinator {
 	deinit {
 		print("OnboardingCoordinator deinit")
 	}
+}
 
+// MARK: - show Modules
+private extension OnboardingCoordinator {
 	func showOnboardingModule() {
 		let module = factory.makeOnboardingModule()
 		let moduleVC = module.viewController as? OnboardingViewController
