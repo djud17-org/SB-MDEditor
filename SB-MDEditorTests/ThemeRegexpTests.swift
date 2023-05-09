@@ -6,30 +6,122 @@
 //
 
 import XCTest
+@testable import SB_MDEditor
 
 final class ThemeRegexpTests: XCTestCase {
 
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
+	func test_regexp_paragraph_shouldBeTrue() {
+		let text = "# Paragraph"
 
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
+		let result = regexp(text: text, with: MarkdownRegexp.pattern(usage: .paragraph))
 
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
-    }
+		XCTAssertNotNil(result, "Неверное выражение для Абзаца")
+	}
 
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
+	func test_regexp_header_shouldBeTrue() {
+		let text = "# Paragraph"
 
+		let result = regexp(text: text, with: MarkdownRegexp.pattern(usage: .header))
+
+		XCTAssertNotNil(result, "Неверное выражение для Заголовка")
+	}
+
+	func test_regexp_pnumberedList_shouldBeTrue() {
+		let text =
+"""
+1. Один
+2. Два
+3. Три
+"""
+
+		let result = regexp(text: text, with: MarkdownRegexp.pattern(usage: .numberedList))
+
+		XCTAssertNotNil(result, "Неверное выражение для Нумерованного списка")
+	}
+
+	func test_regexp_unorderedList_shouldBeTrue() {
+		let text =
+"""
+- Один
+- Два
+- Три
+"""
+
+		let result = regexp(text: text, with: MarkdownRegexp.pattern(usage: .unorderedList))
+
+		XCTAssertNotNil(result, "Неверное выражение для Ненумерованного списка")
+	}
+
+	func test_regexp_link_shouldBeTrue() {
+		let text = "[Markdown Guide](https://www.markdownguide.org)"
+
+		let result = regexp(text: text, with: MarkdownRegexp.pattern(usage: .link))
+
+		XCTAssertNotNil(result, "Неверное выражение для Ссылки")
+	}
+
+	func test_regexp_boldText_shouldBeTrue() {
+		let text = "**boldText**"
+
+		let result = regexp(text: text, with: MarkdownRegexp.pattern(usage: .boldText))
+
+		XCTAssertNotNil(result, "Неверное выражение для Жирного текста")
+	}
+
+	func test_regexp_italicText_shouldBeTrue() {
+		let text = "*italicText*"
+
+		let result = regexp(text: text, with: MarkdownRegexp.pattern(usage: .italicText))
+
+		XCTAssertNotNil(result, "Неверное выражение для Курсивного текста")
+	}
+
+	func test_regexp_cite_shouldBeTrue() {
+		let text = "> This is cite"
+
+		let result = regexp(text: text, with: MarkdownRegexp.pattern(usage: .cite))
+
+		XCTAssertNotNil(result, "Неверное выражение для Цитаты")
+	}
+
+	func test_regexp_inlineCode_shouldBeTrue() {
+		let text = "`This is code inline`"
+
+		let result = regexp(text: text, with: MarkdownRegexp.pattern(usage: .inlineCode))
+
+		XCTAssertNotNil(result, "Неверное выражение для Кода в строке")
+	}
+
+	func test_regexp_blockCode_shouldBeTrue() {
+		let text =
+"""
+```swift
+let a = 1
+print(a)
+```
+"""
+
+		let result = regexp(text: text, with: MarkdownRegexp.pattern(usage: .blockCode))
+
+		XCTAssertNotNil(result, "Неверное выражение для Блока кода")
+	}
+
+	func test_regexp_horizontalLine_shouldBeTrue() {
+		let text = "---"
+
+		let result = regexp(text: text, with: MarkdownRegexp.pattern(usage: .horizontalLine))
+
+		XCTAssertNotNil(result, "Неверное выражение для Кода в строке")
+	}
 }
+
+	private extension ThemeRegexpTests {
+		func regexp(text: String, with pattern: String) -> NSTextCheckingResult? {
+			let range = NSRange(text.startIndex..., in: text)
+			// swiftlint:disable force_try
+			let regex = try! NSRegularExpression(pattern: pattern)
+			let result = regex.firstMatch(in: text, range: range)
+
+			return result
+		}
+	}

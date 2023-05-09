@@ -78,6 +78,8 @@
 		609CAFF929FD466100834937 /* OpenDocViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 609CAFF429FD466100834937 /* OpenDocViewController.swift */; };
 		609CAFFA29FD466100834937 /* OpenDocModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 609CAFF529FD466100834937 /* OpenDocModels.swift */; };
 		609CAFFF29FD46ED00834937 /* OpenDocCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 609CAFFE29FD46ED00834937 /* OpenDocCellModel.swift */; };
+		609FD2F82A0A50740090F628 /* Theme+Regexp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 609FD2F72A0A50740090F628 /* Theme+Regexp.swift */; };
+		609FD2FA2A0A79660090F628 /* ThemeRegexpTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 609FD2F92A0A79660090F628 /* ThemeRegexpTests.swift */; };
 		60D43BB729F1A61300C5AF4F /* MD_Bandle in Resources */ = {isa = PBXBuildFile; fileRef = 60D43BB629F1A61300C5AF4F /* MD_Bandle */; };
 		ABD1DB6129F7BE4D00C7B471 /* About.md in Resources */ = {isa = PBXBuildFile; fileRef = ABD1DB6029F7BE4D00C7B471 /* About.md */; };
 /* End PBXBuildFile section */
@@ -176,6 +178,8 @@
 		609CAFF429FD466100834937 /* OpenDocViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenDocViewController.swift; sourceTree = "<group>"; };
 		609CAFF529FD466100834937 /* OpenDocModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenDocModels.swift; sourceTree = "<group>"; };
 		609CAFFE29FD46ED00834937 /* OpenDocCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenDocCellModel.swift; sourceTree = "<group>"; };
+		609FD2F72A0A50740090F628 /* Theme+Regexp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Theme+Regexp.swift"; sourceTree = "<group>"; };
+		609FD2F92A0A79660090F628 /* ThemeRegexpTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeRegexpTests.swift; sourceTree = "<group>"; };
 		60D43BB629F1A61300C5AF4F /* MD_Bandle */ = {isa = PBXFileReference; lastKnownFileType = folder; path = MD_Bandle; sourceTree = "<group>"; };
 		ABD1DB6029F7BE4D00C7B471 /* About.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = About.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -307,6 +311,7 @@
 			isa = PBXGroup;
 			children = (
 				5A48064129DBCB8D0096B7D8 /* Swift_BaseTests.swift */,
+				609FD2F92A0A79660090F628 /* ThemeRegexpTests.swift */,
 			);
 			path = "SB-MDEditorTests";
 			sourceTree = "<group>";
@@ -387,6 +392,7 @@
 				5ACEB26D29EE0E37008E80A2 /* Theme+Sizes+Spacing.swift */,
 				5ACEB26F29EE0E96008E80A2 /* Theme+DateFormatter.swift */,
 				5A8F68D829FB06FD00749CDF /* Theme+Constants.swift */,
+				609FD2F72A0A50740090F628 /* Theme+Regexp.swift */,
 			);
 			path = Theme;
 			sourceTree = "<group>";
@@ -699,6 +705,7 @@
 				5ACEB27929EE64D9008E80A2 /* Di.swift in Sources */,
 				5ACEB28E29EE7AB5008E80A2 /* MainViewController.swift in Sources */,
 				5ACEB28129EE6EC7008E80A2 /* RootViewController.swift in Sources */,
+				609FD2F82A0A50740090F628 /* Theme+Regexp.swift in Sources */,
 				5ACEB26E29EE0E37008E80A2 /* Theme+Sizes+Spacing.swift in Sources */,
 				5ACEB27029EE0E96008E80A2 /* Theme+DateFormatter.swift in Sources */,
 				609CAFF929FD466100834937 /* OpenDocViewController.swift in Sources */,
@@ -763,6 +770,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				609FD2FA2A0A79660090F628 /* ThemeRegexpTests.swift in Sources */,
 				5A48064229DBCB8D0096B7D8 /* Swift_BaseTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
