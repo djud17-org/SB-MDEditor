@@ -66,6 +66,8 @@
 		5AFA77CE29F4B36A0010478E /* Di+ServiceFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFA77CD29F4B36A0010478E /* Di+ServiceFactory.swift */; };
 		5AFA77D129F4B3D10010478E /* FilesStorageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFA77D029F4B3D10010478E /* FilesStorageProvider.swift */; };
 		6004CE2B29F564520074D9E5 /* EmptyInputData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6004CE2A29F564520074D9E5 /* EmptyInputData.swift */; };
+		602BDA032A0D588400026E65 /* Theme+Regexp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 602BDA022A0D588400026E65 /* Theme+Regexp.swift */; };
+		602BDA052A0D58E900026E65 /* ThemeRegexpTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 602BDA042A0D58E900026E65 /* ThemeRegexpTests.swift */; };
 		608C74C729FDC0C100E71D80 /* OpenDocCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 608C74C629FDC0C100E71D80 /* OpenDocCell.swift */; };
 		609CAFF729FD466100834937 /* OpenDocInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 609CAFF229FD466100834937 /* OpenDocInteractor.swift */; };
 		609CAFF829FD466100834937 /* OpenDocPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 609CAFF329FD466100834937 /* OpenDocPresenter.swift */; };
@@ -157,6 +159,8 @@
 		5AFA77D029F4B3D10010478E /* FilesStorageProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilesStorageProvider.swift; sourceTree = "<group>"; };
 		6004CE2A29F564520074D9E5 /* EmptyInputData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyInputData.swift; sourceTree = "<group>"; };
 		6004CE2C29F5646C0074D9E5 /* EmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
+		602BDA022A0D588400026E65 /* Theme+Regexp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Theme+Regexp.swift"; sourceTree = "<group>"; };
+		602BDA042A0D58E900026E65 /* ThemeRegexpTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeRegexpTests.swift; sourceTree = "<group>"; };
 		608C74C629FDC0C100E71D80 /* OpenDocCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenDocCell.swift; sourceTree = "<group>"; };
 		609CAFF229FD466100834937 /* OpenDocInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenDocInteractor.swift; sourceTree = "<group>"; };
 		609CAFF329FD466100834937 /* OpenDocPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenDocPresenter.swift; sourceTree = "<group>"; };
@@ -266,6 +270,7 @@
 			isa = PBXGroup;
 			children = (
 				5A48064129DBCB8D0096B7D8 /* Swift_BaseTests.swift */,
+				602BDA042A0D58E900026E65 /* ThemeRegexpTests.swift */,
 			);
 			path = "SB-MDEditorTests";
 			sourceTree = "<group>";
@@ -366,6 +371,7 @@
 				5ACEB26D29EE0E37008E80A2 /* Theme+Sizes+Spacing.swift */,
 				5ACEB26F29EE0E96008E80A2 /* Theme+DateFormatter.swift */,
 				5A8F68D829FB06FD00749CDF /* Theme+Constants.swift */,
+				602BDA022A0D588400026E65 /* Theme+Regexp.swift */,
 			);
 			path = Theme;
 			sourceTree = "<group>";
@@ -719,6 +725,7 @@
 				5ACEB29B29EECC91008E80A2 /* AboutViewController.swift in Sources */,
 				609CAFF729FD466100834937 /* OpenDocInteractor.swift in Sources */,
 				5A8F690F2A00B89C00749CDF /* CreateDocPresenter.swift in Sources */,
+				602BDA032A0D588400026E65 /* Theme+Regexp.swift in Sources */,
 				5ACEB27829EE64D9008E80A2 /* Di+ModuleFactory.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -727,6 +734,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				602BDA052A0D58E900026E65 /* ThemeRegexpTests.swift in Sources */,
 				5A48064229DBCB8D0096B7D8 /* Swift_BaseTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

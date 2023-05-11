@@ -45,6 +45,9 @@ internal enum Asset {
   internal static let accentColor = ColorAsset(name: "AccentColor")
   internal enum Menu {
     internal static let aboutMenuIcon = ImageAsset(name: "aboutMenuIcon")
+    internal static let addDirectoryIcon = ImageAsset(name: "addDirectoryIcon")
+    internal static let addFileIcon = ImageAsset(name: "addFileIcon")
+    internal static let backIcon = ImageAsset(name: "backIcon")
     internal static let newFileMenuIcon = ImageAsset(name: "newFileMenuIcon")
     internal static let openMenuIcon = ImageAsset(name: "openMenuIcon")
   }
@@ -52,7 +55,6 @@ internal enum Asset {
     internal static let emptyPlaceholder = ImageAsset(name: "EmptyPlaceholder")
     internal static let recentFilesPlaceholder = ImageAsset(name: "recentFilesPlaceholder")
   }
-  internal static let icBack = ImageAsset(name: "ic_back")
   internal static let icBook = ImageAsset(name: "ic_book")
   internal static let icCompress = ImageAsset(name: "ic_compress")
   internal static let icFile = ImageAsset(name: "ic_file")
@@ -73,11 +75,13 @@ internal enum Asset {
   ]
   internal static let allImages: [ImageAsset] = [
     Menu.aboutMenuIcon,
+    Menu.addDirectoryIcon,
+    Menu.addFileIcon,
+    Menu.backIcon,
     Menu.newFileMenuIcon,
     Menu.openMenuIcon,
     Placeholders.emptyPlaceholder,
     Placeholders.recentFilesPlaceholder,
-    icBack,
     icBook,
     icCompress,
     icFile,
