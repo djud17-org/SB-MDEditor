@@ -2,7 +2,7 @@ import UIKit
 
 final class Router: IRouter {
 	private weak var rootController: UINavigationController?
-	private var completions: [UIViewController : () -> Void]
+	private var completions: [UIViewController: () -> Void]
 
 	init(rootController: UINavigationController) {
 		self.rootController = rootController
